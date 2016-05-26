@@ -1,8 +1,8 @@
 # heimdall-webapp
-The UI and Core will live in one repo but eventually we'll separate the UI and Core into their own repositories.
+Helping technologoists and software developers collaborate and gain insight across the software development landscape.
 
 ## UI
-Based on the Aurelia JS Framework
+Aurelia JS Framework + Bootstrap
 
 ## Core
-Spring Boot with Jetty and a SQLite datastore
+Node + Loopback
