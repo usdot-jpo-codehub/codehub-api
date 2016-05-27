@@ -5,3 +5,4 @@ node_js:
 install:
 - npm install -g gulp
 - npm install -g jspm
+- npm install
