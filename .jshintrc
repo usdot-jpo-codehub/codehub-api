@@ -14,6 +14,7 @@
   "quotmark": "single",
   "regexp": true,
   "undef": true,
+  "predef": ["describe", "it"],
   "unused": false,
   "trailing": true,
   "sub": true,
