@@ -7,3 +7,6 @@ install:
 - npm install -g jspm
 - npm install -g coveralls
 - npm install
+addons:
+    code_climate:
+        repo_token: 3afd257602a0575da973d7013198b4163ee7806fd72b1c46cd6646b4b8767d95

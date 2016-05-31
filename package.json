@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node .",
     "pretest": "jshint .",
-    "test": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "test": "mocha",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "posttest": "nsp check"
   },
   "dependencies": {
