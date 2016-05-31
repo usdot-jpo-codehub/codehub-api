@@ -8,9 +8,9 @@ install:
 - npm install -g coveralls
 - npm install
 before_deploy:
-- zip -r latest-heimdall-webapp *
+- zip -rq latest-heimdall-webapp *
 - mkdir -p dpl_cd_upload
-- mv latest.zip dpl_cd_upload/latest-heimdall-webapp.zip
+- mv latest-heimdall-webapp.zip dpl_cd_upload/latest-heimdall-webapp.zip
 deploy:
 - provider: s3
   access_key_id: &1
