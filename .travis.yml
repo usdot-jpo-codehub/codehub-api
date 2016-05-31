@@ -1,35 +1,10 @@
-language:
-- node_js
-node_js:
-- 4.4.3
-install:
-- npm install -g gulp
-- npm install -g jspm
-- npm install -g coveralls
-- npm install
-before_deploy:
-- zip -r latest *
-- mkdir -p dpl_cd_upload
-- mv latest.zip dpl_cd_upload/latest.zip
 deploy:
-- provider: s3
-  access_key_id: &1
-    secure: ldZiYvy66PWlM5l30uXKjzarUYmoGlQhL7FlEW+bmIFj72QPgoMFiGh19IzjacH55hoQeWXtyWgIsJqVENAfF0Vn41NLKfnxFIiMORzCX36k5kntAbN5OzJkL/xq4cjcOqzNqhBYcoufmaIrLfUnBniACiWb183joa9GUEwbH3CsSRUgJA+nhsstekHIJG3iLG3JpS+i4koU48f2fnWCXBxREGQvHGs9zc6UI6/fB01jK5eE/vCa/64ruwOTFiQok5tu68emYP5PyM1UmFsC/v+OxxVchpctff4JB7sTHkaJTeGo6XSh1D1Wn+LQrf/odhL+3Xhs011UZue8pxesiU8gj/fg5fQ3mGIUU7bBpjrA4ch18zQuwyzloV25vWDKq7Mu9UdAw2/P1owIlTYkg5TG94tiHEA8F3OoWXflhP3saLzR2WTP4jR2Z3F1kTPhZth0jw0voZXodO+RDhz2GiDBW0fUV5LLUuK/Lj8j3Tn3WDWxXq13jse9VOiFsgi1B7yKtBlUeSCcWWyskzEgIG2Gupn1lE0MfGNR9DhAWzpz0hQU9c038Nv8DadLuOrQKl+Ya18dSJS6ukz8e5OAL62STKNfavgGx3cldZJ+PdvZt1DFYkBL5bZCLqHa9r/52jDRF6pNQECIp2kZkMoDyZ2CRGJoHUAWSmD8egInS5I=
-  secret_access_key: &2
-    secure: 7xGccUtKEA52rouiAUoKW3+lrAlfDcLFFrUKeUvFOiEQB1+AEhnwrD1XLyWD3ckHkJnQFfCFyZUB36G7x0MfoXX1003S2y3FZPcQxIajexJqna/AhMi7obC+l35xnljo7bBtuasxuNlEr1RLhlqM9+2LUCe4QT8jgR3UBEu/c3nyfW3RStfTM+8wrKfYCNApSUyw8WEL7I3QqIuxM9jhQS00YOJV4PoQFX+rxO1L8AxaiDFvpXiaHQe5PxUo8mGvA4DCl1LphDP4skDzm2JCnL701qT2FbtVvZzAxiV04p+rapSfnSWP7w3gfEStYC/+D8q1VdzDi74CuR+Dln/jhMJBny5TJ4hGZkmXRNSTuBL7bYP59CMLnnovH4nI/MVEIKH7yMCB7JErXYwszHC+gBncXTR2eMr+gKlWP6CdcUh5RpJybAJxVTR6DrFk739QSVT5DWnL1L5EQIy6X5klAq38o1SL435r4a0oRko3sATv3J5CR9fbXyww/Y5MhOngfsB+0VUAB5mR8Z0rviBsvkWPtyO/zkfvV/Ag25szqfGjehJhADVHjhxWE3ArxHZYtdp6O/RJSqIWK5PrQKnnF6Txdh4DDdugcf2AzmmXNW+Fe0NAwaG2M8oT8FNbKTAeb+GXEQzjmK2aDep6tdt5h0B8/wpdnNouc4GMK5QKgBk=
-  local_dir: dpl_cd_upload
-  skip_cleanup: true
-  on: &3
+  provider: s3
+  access_key_id: E61gyYMqJ42ZFF96CrytuMworhUZMb2j9+9PKgQ1
+  secret_access_key:
+    secure: o7+WZ4UM0RfoaJ3JgXpydPKTitBzxxwAX8Ucg9TVRPj5D+4a2LYYMw9X+K/3cOPF0PGn7Yplk3Ta1+xOvV2XZw8SHxPdPXk3xfD8eUbapOD/q13aD3jeLkSmQsbx3GoFb7mLmh8Pb2NOIqhjUX1k9lN0ue/bfv8hQC2ZFUTO/ANvMKdBUmfa2ci3wDT5gDI5GzWo51yuL+4xzOjOfaXUi9fGsek2tR2JR39H/qu369Louhg7Ivj6LgvzPgIBj4YMW7LpNATyxE8mxmEqSaefQs9IRUI+IhkY4rbWkgLAN68l3jwXswLQKm6y5+dfgFpkGBKcp3LWBLOxV51LpxSJbpg7SGZBkD1G0Gzq9MPlFPOdV3xXR54F2veP6qe0puTNjR+RsnAmNupp77jMPDQ6liF03JyYFtpkukQjSm+OunQoJ7btHa60MXiivROucU1ukXcihH14CbrJaxuataQ0bxO2Y1sOkM0UBR/gDWBEzhfym/YK7PeJOUM2zsZkorXHUb1lcr7tiM3nYf2sco2yJxOOcqcOK76sNJDsRLj3zzd5FF+o9rilUB9uSpIk7oFxMEEyrlGNONPbDK1xN+ymlXNm3FkPRjiNYpecgR2sdgpCJt94zOmpJUK9nEfi2jIrP+nOlRpo+apfmC8Tc6/Vr3+Sw+B6qZB297mEZ2NOd4g=
+  bucket: aasdf
+  local-dir: asdf
+  acl: ''
+  on:
     repo: Project-Heimdall/heimdall-webapp
-  bucket: codedeploy-heimdall-webapp
-  region: us-west-2
-- provider: codedeploy
-  access_key_id: *1
-  secret_access_key: *2
-  bucket: codedeploy-heimdall-webapp
-  key: latest.zip
-  bundle_type: zip
-  application: codedeploy-heimdall-webapp
-  deployment_group: codedeploy-heimdall-webapps
-  region: us-east-1
-  on: *3
