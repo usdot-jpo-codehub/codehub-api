@@ -29,7 +29,7 @@ deploy:
   bucket: codedeploy-heimdall-webapp
   key: latest.zip
   bundle_type: zip
-  application: codedeploy-heimdall-webapp
-  deployment_group: codedeploy-heimdall-webapps
+  application: CodeDeploy-HeimdallWebapp
+  deployment_group: CodeDeploy-HeimdallWebapp-Group
   region: us-east-1
   on: *3
