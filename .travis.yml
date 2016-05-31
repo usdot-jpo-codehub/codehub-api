@@ -26,7 +26,7 @@ deploy:
 - provider: codedeploy
   access_key_id: *1
   secret_access_key: *2
-  bucket: camelspeed-heimdall-webapp
+  bucket: codedeploy-heimdall-webapp
   key: latest-heimdall-webapp.zip
   bundle_type: zip
   application: codedeploy-heimdall-webapp
