@@ -8,9 +8,9 @@ install:
 - npm install -g coveralls
 - npm install
 before_deploy:
-- zip -rq latest-heimdall-webapp *
+- zip -r latest *
 - mkdir -p dpl_cd_upload
-- mv latest-heimdall-webapp.zip dpl_cd_upload/latest-heimdall-webapp.zip
+- mv latest.zip dpl_cd_upload/latest.zip
 deploy:
 - provider: s3
   access_key_id: &1
@@ -27,7 +27,7 @@ deploy:
   access_key_id: *1
   secret_access_key: *2
   bucket: codedeploy-heimdall-webapp
-  key: latest-heimdall-webapp.zip
+  key: latest.zip
   bundle_type: zip
   application: codedeploy-heimdall-webapp
   deployment_group: codedeploy-heimdall-webapps
