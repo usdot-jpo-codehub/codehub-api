@@ -8,7 +8,7 @@ install:
 - npm install -g coveralls
 - npm install
 before_deploy:
-- zip -r latest *
+- zip -rq latest *
 - mkdir -p dpl_cd_upload
 - mv latest.zip dpl_cd_upload/latest.zip
 deploy:
