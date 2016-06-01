@@ -1,2 +1,2 @@
-cd /webapps/stage
+cd /opt/stage
 slc start
