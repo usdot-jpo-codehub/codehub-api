@@ -2,15 +2,20 @@ language:
 - node_js
 node_js:
 - 4.4.3
+env:
+  global:
+    - BUILD_PKG_NAME = heimdall-webapp-1.0.0.tgz
+    - BUILD_PKG_DIR = ..
 install:
 - npm install -g gulp
 - npm install -g jspm
 - npm install -g coveralls
-- npm install
+- npm install -g strongloop
+script:
+- slc build --pack --install
 before_deploy:
-- zip -rq latest *
 - mkdir -p dpl_cd_upload
-- mv latest.zip dpl_cd_upload/latest.zip
+- mv $BUILD_PKG_DIR/$BUILD_PKG_NAME dpl_cd_upload/$BUILD_PKG_NAME
 deploy:
 - provider: s3
   access_key_id: &1
@@ -27,8 +32,8 @@ deploy:
   access_key_id: *1
   secret_access_key: *2
   bucket: codedeploy-heimdall-webapp
-  key: latest.zip
-  bundle_type: zip
+  key: $BUILD_PKG_NAME
+  bundle_type: tgz
   application: CodeDeploy-HeimdallWebapp
   deployment_group: CodeDeploy-HeimdallWebapp-Group
   region: us-east-1
