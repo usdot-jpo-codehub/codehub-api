@@ -3,9 +3,10 @@ language:
 node_js:
 - 4.4.3
 env:
-  - BUILD_PKG_NAME = heimdall-webapp-1.0.0.tgz
-  - BUILD_PKG_SRC_DIR = ..
-  - BUILD_PKG_DEST_DIR = dpl_cd_upload
+  global:
+    - BUILD_PKG_NAME = heimdall-webapp-1.0.0.tgz
+    - BUILD_PKG_SRC_DIR = ..
+    - BUILD_PKG_DEST_DIR = dpl_cd_upload
 install:
 - npm install -g gulp
 - npm install -g jspm
