@@ -97,12 +97,12 @@ hooks:
 #   in the script specified in "location".
   AfterInstall:
     - location: install_dependencies.sh
-      timeout: 30
+      timeout: 300
 # During the ApplicationStart deployment lifecycle event, run the commands
 #   in the script specified in "location".
   ApplicationStart:
     - location: start_app.sh
-      timeout: 120
+      timeout: 300
 # During the ValidateService deployment lifecycle event, run the commands
 #   in the script specified in "location".
 #  ValidateService:
