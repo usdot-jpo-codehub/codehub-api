@@ -10,6 +10,10 @@
 *.swp
 *.tgz
 *.xml
+
+# Ruby is for using the TravisCI SDK tools
+.ruby*
+
 .DS_Store
 .idea
 .project
