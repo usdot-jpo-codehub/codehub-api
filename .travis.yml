@@ -28,7 +28,7 @@ deploy:
     secret_access_key: *2
     bucket: codedeploy-heimdall-webapp
     key: heimdall-webapp-1.0.0.tgz
-    bundle: tgz
+    bundle_type: tgz
     application: CodeDeploy-HeimdallWebapp
     deployment_group: CodeDeploy-HeimdallWebapp-Group
     region: us-east-1
