@@ -2,10 +2,6 @@ language:
   - node_js
 node_js:
   - 4.4.3
-env:
-  - BUILD_PKG_NAME="heimdall-webapp-1.0.0.tgz"
-  - BUILD_PKG_SRC_DIR=".."
-  - BUILD_PKG_DEST_DIR="dpl_cd_upload"
 install:
   - npm install -g gulp
   - npm install -g jspm
@@ -14,15 +10,15 @@ install:
 script:
   - slc build --pack --install
 before_deploy:
-  - "mkdir -p $BUILD_PKG_DEST_DIR"
-  - "mv $BUILD_PKG_SRC_DIR/$BUILD_PKG_NAME $BUILD_PKG_DEST_DIR/$BUILD_PKG_NAME"
+  - mkdir -p dpl_cd_upload
+  - mv ../heimdall-webapp-1.0.0.tgz dpl_cd_upload/heimdall-webapp-1.0.0.tgz
 deploy:
   - provider: s3
     access_key_id: &1
       secure: VQRWV2OHpQtS9J+EVKPmZk4NfORoaWmI9BwD3QLo+ih1/H+qp6zGPWPC7nI9bk4x6j+wpoTbFOBy29UB41bm4O84+/Uo52B1lBYAmPQhX/IBeB5/VdWPavZ0p1nTZU2BW2/6TGH+uhtzrHrlncMeXa9E9PUcYTlTMzAUNCvduYTTALjK29PC6QE/iz8f2V+7TFX3sVa+SSvoTzADe3TKfa29nOWbgb+ICFwcjzmEv5wBe1JPniiLGU5h127BrQaFEOsDk5YhTB4yHQHgDgRd08KhEBpklwxptV0x1Cb4Fe5k0E9CV7ZF2QokzqACdu9YMDGyA3q2s+6QwzfXEzS7/HXUr3Upv5wqGjNEeSZWKPl59uL18WUq9gHRxvSxeYJSsSZHl25Cue1qV0KhT1E+L1eAqUgy3Q5S8zCfAhuRmbnowPtINrJ6UYDNLSMQP4y7fqEvwA1FEB1QjKpMmAe5Tx260r5z+o6GlpL/uk0UgD7LIoDmULiWQbXf3gcMinboihBaDwKUocKlx2KW5sW+PaYD9xK4qTmJBynnU7AORWs8ZOT1E6dXubXgpL/aMQpMH9NCQtQlfBDl4cRel9VMwO5soDkBy6m+jxWIGS4WG+FlqLFxiArMEEv+nbY6E3PaWUg3GMWz5saJ2HP9v29b6vmjaP7bxH+qnKjrSFF9udM=
     secret_access_key: &2
       secure: RIQ+/PKF1Ut+UIjQ9a0iyWwAuOUCXQIS634vkUVnL1i7GIxgrFk5Z2+LhpF4+VXM97cMyfLrqpZtN4ItIKbH+jNkcIkNVCP1DffsFtP5RQWCorPgyU6JqJGWMnE2gIDiQ6YjXMlFAzyR6G2wXJsJ9Cvz4EDbiBdJKxkMEPB+ptzAGgVxmxpxSRHvnA87M4Szy+SlbyuDjNFQO/R4wdY1KeNbdd6o4TkcD5l5rni4T0AHFUQBfeQerCe6yvUVbx1tYGb7gdR+aEI+qbz+8NhnLPuTV31pDmmSLYMPuE9HqH/kTd1dOe/+zcPmH1wtRs4O8vh4EbTfcHeniJGNxXdxiHInQAY/WD5pNoRFdGIYZK2AX5Jx4h4FTl/b2GSBre5sDHY7CXE9UbpEvX4Bg9eURF8RijRIseL1w8oayHYt8F+QJl86qT06PYpCbufw4EmUKg+gFYqZHn0I6XDlTTReSPwnvsMMX3EMLE9bX1NSa/iEmbyX/Eer8ruHM3p9jqzV+Co2JFSO3cVPNbTQVRYqRG3x1aQ5wUl9PdOwVDdLfDUQVkNl81KLpbxUTOPR4e+SLu/o0rlGhfP4FbvbmymQ9prTkuBBAI+joFW5SR+7pwLN2N+DUG5IFt5tfQ6DKiC1qkJKgthTtMeJNOZBH6+RbkrNq5iaygCuXY0cghPpKho=
-    local_dir: "$BUILD_PKG_DEST_DIR"
+    local_dir: dpl_cd_upload
     skip_cleanup: true
     on: &3
       repo: Project-Heimdall/heimdall-webapp
@@ -32,7 +28,7 @@ deploy:
     access_key_id: *1
     secret_access_key: *2
     bucket: codedeploy-heimdall-webapp
-    key: "$BUILD_PKG_NAME"
+    key: heimdall-webapp-1.0.0.tgz
     bundle_type: tgz
     application: CodeDeploy-HeimdallWebapp
     deployment_group: CodeDeploy-HeimdallWebapp-Group
