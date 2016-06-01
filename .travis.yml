@@ -9,7 +9,6 @@ install:
   - npm install -g strongloop
 script:
   - slc build --pack --install
-before_deploy:
   - mkdir -p dpl_cd_upload
   - mv ../heimdall-webapp-1.0.0.tgz dpl_cd_upload/heimdall-webapp-1.0.0.tgz
 deploy:
@@ -29,7 +28,6 @@ deploy:
     secret_access_key: *2
     bucket: codedeploy-heimdall-webapp
     key: heimdall-webapp-1.0.0.tgz
-    bundle_type: tgz
     application: CodeDeploy-HeimdallWebapp
     deployment_group: CodeDeploy-HeimdallWebapp-Group
     region: us-east-1
