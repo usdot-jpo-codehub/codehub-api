@@ -8,6 +8,11 @@ install:
   - npm install -g coveralls
   - npm install -g strongloop
 script:
+  - cd client
+  - npm install
+  - jspm install -y
+  - gulp build
+  - cd ..
   - slc build --install --bundle
   - zip -rq heimdall-webapp-1.0.0.zip *
   - mkdir -p dpl_cd_upload
