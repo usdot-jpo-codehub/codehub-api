@@ -8,9 +8,6 @@ cache:
 env:
   - global:
     - secure: ZISrC+n/GHsMXI5YoddKs78vK2WmkCCt5VYrC8cmXtx3pytDRf9hKomqxh3BpoqAQc5tBuMSS5jDIC+mxnplI4z/rORSMvo/aM2i3i33//vkKOrVDZi5buKnoaTBzQLHZHTI69xPkSk0H0lWGEZZPdYrsJ+OlSbsk+vQXq9rztg/G2Btohhk+5plW33CoorjxXl/r0V4zDC4E7eYS+2KJUJ/VOhLQcm6LafkjKM3RetWByUMz1Qy1iuhmLCuG4au4Frw7hAFHRTldGK+xsL3wER14k93rv5j7kC2fQC0zEEHHvIL0uu5kKLJOCt2qLY+nxz/mVagJb+3rP6h8NOFvwoTQ2qH8SQChjF08Sv/q1pi74IVyhburG08Ln2CtxEWpPDHH4O4XYTujhg4dw5NEjgogA8H80hVmCAD3QWQSPU8MxCfGW6JYR7/Hz08DaDoenNC6RDRrT96H9R0EWO3Cokd0WjcNfF4eXxxPCxh4HZhBGu4RQCosImTMtPNK+RQMCtZIlV9a03SBfW3+gbEcQ7t2iQLKiq9Pa1WVwLxBm0BLn+IMA9tSZ7DVsqcSIXOs32BXyU9tAuvW2zZGNNQ4GNlehz4RLZ8H77+5CJt/OGL59ipH6LcXk+PspjthZUXNt+SPGPZOfZj2MXeCXuvxd1osZecXEEgk+efsgoMCFI=
-before_install:
-  # GitHub Token needed to avoid GitHub API Rate Limit Thresholds
-  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 install:
   - npm install -g gulp
   - npm install -g jspm
@@ -19,6 +16,8 @@ install:
   - cd client
   - npm install
   - jspm install -y
+  # GitHub Token needed to avoid GitHub API Rate Limit Thresholds
+  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
 script:
   - cd client
   - gulp build
