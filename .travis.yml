@@ -2,6 +2,9 @@ language:
   - node_js
 node_js:
   - 4.4.3
+cache:
+  - directories:
+    - node_modules
 install:
   - npm install -g gulp
   - npm install -g jspm
@@ -11,14 +14,14 @@ install:
 #  - npm install
 #  - jspm install -y
 script:
-  - cd client
-  - gulp build
-  - cd ..
+  # - cd client
+  # - gulp build
+  # - cd ..
   - slc build --install
 before_deploy:
-  - cd client
-  - rm -rf node_modules/ jspm_modules/
-  - cd ..
+  # - cd client
+  # - rm -rf node_modules/ jspm_modules/
+  # - cd ..
   - rm -rf node_modules/
   - zip -rq heimdall-webapp-1.0.0.zip *
   - mkdir -p dpl_cd_upload
