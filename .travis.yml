@@ -7,13 +7,19 @@ install:
   - npm install -g jspm
   - npm install -g coveralls
   - npm install -g strongloop
-script:
   - cd client
   - npm install
   - jspm install -y
+script:
+  - cd client
   - gulp build
   - cd ..
-  - slc build --install --bundle
+  - slc build --install
+before_deploy:
+  - cd client
+  - rm -rf node_modules/ jspm_modules/
+  - cd ..
+  - rm -rf node_modules/
   - zip -rq heimdall-webapp-1.0.0.zip *
   - mkdir -p dpl_cd_upload
   - mv heimdall-webapp-1.0.0.zip dpl_cd_upload/heimdall-webapp-1.0.0.zip
