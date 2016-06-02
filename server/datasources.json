@@ -2,5 +2,11 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "stage-db": {
+    "name": "stage-db",
+    "localStorage": "",
+    "file": "",
+    "connector": "memory"
   }
 }
