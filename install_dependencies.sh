@@ -5,4 +5,4 @@ yum -y install nodejs
 npm install -g npm
 npm install -g strong-pm
 npm install -g strongloop
-sl-pm-install --upstart=0.6
+sl-pm-install --upstart=0.6 --force
