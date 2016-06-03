@@ -1,3 +1,8 @@
+################################
+# heimdall-webapp build script for TravisCI
+#
+# author: Johnny Mohseni
+################################
 language:
   - node_js
 node_js:
@@ -25,7 +30,8 @@ script:
   - slc build --install
 before_deploy:
   - cd client
-  - rm -rf node_modules/ jspm_modules/
+  - rm -rf node_modules/
+  - gulp clean # remove client/dist folder
   - cd ..
   - rm -rf node_modules/
   - zip -rq heimdall-webapp-1.0.0.zip *
