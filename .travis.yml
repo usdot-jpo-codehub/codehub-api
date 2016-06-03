@@ -15,9 +15,9 @@ install:
   - npm install -g strongloop
   - cd client
   - npm install
-  - jspm install -y
   # GitHub Token needed to avoid GitHub API Rate Limit Thresholds
   - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+  - jspm install -y
 script:
   - cd client
   - gulp build
