@@ -30,12 +30,13 @@ script:
   - cd ..
   - slc build --install
 before_deploy:
+  # This section runs PER PROVIDER listed in the deploy section.  This means
+  # idempotent behavior for all these steps is required in order to avoid
+  # insidious bugs and unwanted side-effects.
   - cd client
   - gulp clean # remove client/dist folder
-  - rm -rf node_modules/
   - cd ..
-  - rm -rf node_modules/
-  - zip -rq heimdall-webapp-1.0.0.zip *
+  - zip -rq heimdall-webapp-1.0.0.zip * -x 'node_modules' -x 'client/node_modules'
   - mkdir -p dpl_cd_upload
   - mv heimdall-webapp-1.0.0.zip dpl_cd_upload/heimdall-webapp-1.0.0.zip
 deploy:
@@ -45,7 +46,6 @@ deploy:
     secret_access_key: &2
       secure: RIQ+/PKF1Ut+UIjQ9a0iyWwAuOUCXQIS634vkUVnL1i7GIxgrFk5Z2+LhpF4+VXM97cMyfLrqpZtN4ItIKbH+jNkcIkNVCP1DffsFtP5RQWCorPgyU6JqJGWMnE2gIDiQ6YjXMlFAzyR6G2wXJsJ9Cvz4EDbiBdJKxkMEPB+ptzAGgVxmxpxSRHvnA87M4Szy+SlbyuDjNFQO/R4wdY1KeNbdd6o4TkcD5l5rni4T0AHFUQBfeQerCe6yvUVbx1tYGb7gdR+aEI+qbz+8NhnLPuTV31pDmmSLYMPuE9HqH/kTd1dOe/+zcPmH1wtRs4O8vh4EbTfcHeniJGNxXdxiHInQAY/WD5pNoRFdGIYZK2AX5Jx4h4FTl/b2GSBre5sDHY7CXE9UbpEvX4Bg9eURF8RijRIseL1w8oayHYt8F+QJl86qT06PYpCbufw4EmUKg+gFYqZHn0I6XDlTTReSPwnvsMMX3EMLE9bX1NSa/iEmbyX/Eer8ruHM3p9jqzV+Co2JFSO3cVPNbTQVRYqRG3x1aQ5wUl9PdOwVDdLfDUQVkNl81KLpbxUTOPR4e+SLu/o0rlGhfP4FbvbmymQ9prTkuBBAI+joFW5SR+7pwLN2N+DUG5IFt5tfQ6DKiC1qkJKgthTtMeJNOZBH6+RbkrNq5iaygCuXY0cghPpKho=
     local_dir: dpl_cd_upload
-    skip_cleanup: true
     on: &3
       repo: Project-Heimdall/heimdall-webapp
       branch: master
