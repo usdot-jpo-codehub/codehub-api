@@ -37,7 +37,6 @@ before_deploy:
   - mkdir -p dpl_cd_upload
   - mv heimdall-webapp-1.0.0.zip dpl_cd_upload/heimdall-webapp-1.0.0.zip
 deploy:
-  - skip_cleanup: true
   - provider: s3
     access_key_id: &1
       secure: VQRWV2OHpQtS9J+EVKPmZk4NfORoaWmI9BwD3QLo+ih1/H+qp6zGPWPC7nI9bk4x6j+wpoTbFOBy29UB41bm4O84+/Uo52B1lBYAmPQhX/IBeB5/VdWPavZ0p1nTZU2BW2/6TGH+uhtzrHrlncMeXa9E9PUcYTlTMzAUNCvduYTTALjK29PC6QE/iz8f2V+7TFX3sVa+SSvoTzADe3TKfa29nOWbgb+ICFwcjzmEv5wBe1JPniiLGU5h127BrQaFEOsDk5YhTB4yHQHgDgRd08KhEBpklwxptV0x1Cb4Fe5k0E9CV7ZF2QokzqACdu9YMDGyA3q2s+6QwzfXEzS7/HXUr3Upv5wqGjNEeSZWKPl59uL18WUq9gHRxvSxeYJSsSZHl25Cue1qV0KhT1E+L1eAqUgy3Q5S8zCfAhuRmbnowPtINrJ6UYDNLSMQP4y7fqEvwA1FEB1QjKpMmAe5Tx260r5z+o6GlpL/uk0UgD7LIoDmULiWQbXf3gcMinboihBaDwKUocKlx2KW5sW+PaYD9xK4qTmJBynnU7AORWs8ZOT1E6dXubXgpL/aMQpMH9NCQtQlfBDl4cRel9VMwO5soDkBy6m+jxWIGS4WG+FlqLFxiArMEEv+nbY6E3PaWUg3GMWz5saJ2HP9v29b6vmjaP7bxH+qnKjrSFF9udM=
@@ -49,6 +48,7 @@ deploy:
       branch: master
     bucket: codedeploy-heimdall-webapp
     region: us-west-2
+    skip_cleanup: true
   - provider: codedeploy
     access_key_id: *1
     secret_access_key: *2
@@ -59,3 +59,4 @@ deploy:
     deployment_group: CodeDeploy-HeimdallWebapp-Group
     region: us-east-1
     on: *3
+    skip_cleanup: true
