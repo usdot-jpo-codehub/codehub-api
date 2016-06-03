@@ -31,8 +31,8 @@ script:
   - slc build --install
 before_deploy:
   - cd client
-  - rm -rf node_modules/
   - gulp clean # remove client/dist folder
+  - rm -rf node_modules/
   - cd ..
   - rm -rf node_modules/
   - zip -rq heimdall-webapp-1.0.0.zip *
