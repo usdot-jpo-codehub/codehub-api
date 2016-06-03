@@ -1,8 +1,11 @@
-################################
+#####################################################
 # heimdall-webapp build script for TravisCI
 #
+# Builds, tests, packages, and deploys the Node app
+# to AWS on every code commit.
+#
 # author: Johnny Mohseni
-################################
+#####################################################
 language:
   - node_js
 node_js:
