@@ -11,7 +11,9 @@ npm install -g strongloop
 # We will need to figure out a better way to handle this.
 cd client
 npm install -g gulp
+npm install -g jspm
 npm install
+jspm install -y
 gulp build
 
 # Install and Pack the Node/Loopback Dependencies
