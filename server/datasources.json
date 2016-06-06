@@ -1,12 +1,13 @@
 {
   "db": {
     "name": "db",
-    "connector": "memory"
+    "connector": "memory",
+    "file": "projectData.json"
   },
   "stage-db": {
     "name": "stage-db",
     "localStorage": "",
-    "file": "",
+    "file": "projectData.json",
     "connector": "memory"
   }
 }

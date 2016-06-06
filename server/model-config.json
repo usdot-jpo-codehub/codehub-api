@@ -39,5 +39,9 @@
   "repo": {
     "dataSource": "stage-db",
     "public": true
+  },
+  "project": {
+    "dataSource": "stage-db",
+    "public": true
   }
 }

@@ -1,0 +1,29 @@
+{
+  "name": "project",
+  "plural": "projects",
+  "base": "repo",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "html_url": {
+      "type": "string"
+    },
+    "fork": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
