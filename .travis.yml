@@ -33,7 +33,7 @@ before_deploy:
   # This section runs PER PROVIDER listed in the deploy section.  This means
   # idempotent behavior for all these steps is required in order to avoid
   # insidious bugs and unwanted side-effects.
-  - zip -rq heimdall-webapp-1.0.0.zip * -x 'node_modules' -x 'client/node_modules'
+  - zip -rq heimdall-webapp-1.0.0.zip * -x 'node_modules/*' -x 'client/node_modules/*'
   - mkdir -p dpl_cd_upload
   - mv heimdall-webapp-1.0.0.zip dpl_cd_upload/heimdall-webapp-1.0.0.zip
 deploy:
