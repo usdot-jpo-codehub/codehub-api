@@ -18,7 +18,7 @@ System.register(["aurelia-framework", "aurelia-http-client"], function (_export,
       HttpClient = _aureliaHttpClient.HttpClient;
     }],
     execute: function () {
-      baseUrl = "http://0.0.0.0:3000/api/projects";
+      baseUrl = "/api/projects";
 
       _export("ProjectData", ProjectData = (_dec = inject(HttpClient), _dec(_class = function () {
         function ProjectData(httpClient) {

@@ -25,7 +25,6 @@ System.register(["aurelia-framework", "./projectData", "aurelia-router"], functi
           _classCallCheck(this, List);
 
           this.heading = 'Projects List';
-          this.projects = [];
 
           this.service = data;
           this.currentPage = 0;

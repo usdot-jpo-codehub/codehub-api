@@ -5,8 +5,6 @@ import {Router} from "aurelia-router";
 export class List {
   heading = 'Projects List';
 
-  projects = [];
-
   constructor(data, router) {
     this.service = data;
     this.currentPage = 0;
@@ -22,8 +20,6 @@ export class List {
   };
 
   getData() {
-    //implement spinner
-
     this.currentPage++;
     return this.service.getAll()
       .then(projects => {
