@@ -24,11 +24,19 @@
       </div>
 
       <div class="row">
-        <div repeat.for="item of repoData">
+        <div repeat.for="repo of projects">
           <div class="col-lg-3">
               <div class="card">
                   <div class="card-header clearfix">
-                      <i class="fa fa-code fa-lg card-icon code"></i>
+                      <div if.bind="repo.type === 'code'">
+                          <i class="fa fa-code fa-lg card-icon code"></i>
+                      </div>
+                      <div if.bind="repo.type === 'component'">
+                          <i class="fa fa-cube fa-lg card-icon component"></i>
+                      </div>
+                      <div if.bind="repo.type === 'stack'">
+                          <i class="fa fa-database fa-lg card-icon stack"></i>
+                      </div>
                       <div class="card-details pull-right">
                           <!-- <span class="user-icon">AG</span> -->
                           <span><strong>Last Commit:</strong> 06/01/2016 14:00</span>
@@ -36,7 +44,8 @@
                   </div>
 
                   <div class="card-content">
-                        <h3>${item}</h3>
+                        <h2>${repo.name}</h2>
+                        <p>${repo.description}</p>
                   </div>
 
                   <div class="card-footer">
