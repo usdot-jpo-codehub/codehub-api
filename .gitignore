@@ -22,3 +22,4 @@ coverage
 node_modules
 jspm_packages
 npm-debug.log
+client/dist/*
