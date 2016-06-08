@@ -1,10 +1,10 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "/api/projects";
+let baseUrl = "/api/repositories";
 
 @inject(HttpClient)
-export class ProjectData {
+export class ProjectAllStaticData {
 
   constructor(httpClient) {
     this.http = httpClient;
@@ -30,7 +30,6 @@ export class ProjectData {
   getAll() {
     return this.http.get(baseUrl)
       .then(response => {
-        console.log(response.content);
         return response.content;
       });
   }
