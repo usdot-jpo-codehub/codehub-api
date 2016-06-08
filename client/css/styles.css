@@ -89,7 +89,7 @@ fieldset[disabled] .btn-primary.active {
 
 .navbar-default {
   background-color: #005D6A;
-  border-color: #ffffff;
+  border: none ;
 }
 
 .navbar-default .navbar-nav > li > a,
