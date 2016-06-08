@@ -1,0 +1,41 @@
+{
+  "name": "favorite",
+  "plural": "favorites",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "number"
+    },
+    "contributors": {
+      "type": "number"
+    },
+    "commits": {
+      "type": "number"
+    },
+    "last_commit": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "html_url": {
+      "type": "string"
+    },
+    "forks": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

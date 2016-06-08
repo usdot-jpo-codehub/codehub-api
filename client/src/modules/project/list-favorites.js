@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework';
-import {ProjectData} from "./projectData";
+import {FavoriteProject} from "./favoriteProject";
 import {Router} from "aurelia-router";
-@inject(ProjectData, Router)
+@inject(FavoriteProject, Router)
 export class List {
   heading = 'Projects List';
 
