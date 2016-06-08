@@ -6,10 +6,11 @@
                   </div>
                   <div id="navbar">
                       <ul class="nav navbar-nav">
-                          <li class="active"><a href="#">Feature Projects</a></li>
-                          <li><a href="#">Browse</a></li>
-                          <li><a href="#">Favorites</a></li>
+                          <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : 'stage'}">
+                            <a href.bind="row.href">${row.title}</a>
+                          </li>
                       </ul>
+
                       <ul class="nav navbar-nav navbar-right">
                           <li><button type="button" class="btn btn-link navbar-btn" data-toggle="modal" data-target="#loginModal">Sign in</button>
                       </ul>
