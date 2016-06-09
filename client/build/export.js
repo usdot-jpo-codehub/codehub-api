@@ -21,7 +21,7 @@ module.exports = {
     [
       // include font-awesome.css and its fonts files
       'font-awesome', [
-        '/css/font-awesome.min.css',
+        '/styles/font-awesome.min.css',
         '/fonts/*'
       ]
     ], [
