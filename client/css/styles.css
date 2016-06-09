@@ -1,14 +1,14 @@
 /* General Styles */
 
 html {
-	position: relative;
-	min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body{
-	background-color: #2E3234;
-	color: #e1e1e1;
-	margin-bottom: 60px;
+  background-color: #2E3234;
+  color: #e1e1e1;
+  margin-bottom: 60px;
 }
 
 a{
@@ -74,50 +74,50 @@ footer a:focus{
   text-align: center;
 }
 
-.btn-primary { 
-	color: #ffffff; 
-	background-color: #501226; 
-	border-color: #501226; 
-} 
+.btn-primary {
+  color: #ffffff;
+  background-color: #501226;
+  border-color: #501226;
+}
 
-.btn-primary:hover, 
-.btn-primary:focus, 
-.btn-primary:active, 
-.btn-primary.active, 
-.open .dropdown-toggle.btn-primary { 
-	color: #ffffff; 
-	background-color: #DC3269; 
-	border-color: #501226; 
-} 
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #DC3269;
+  border-color: #501226;
+}
 
-.btn-primary:active, 
-.btn-primary.active, 
-.open .dropdown-toggle.btn-primary { 
-	background-image: none; 
-} 
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
 
-.btn-primary.disabled, 
-.btn-primary[disabled], 
-fieldset[disabled] .btn-primary, 
-.btn-primary.disabled:hover, 
-.btn-primary[disabled]:hover, 
-fieldset[disabled] .btn-primary:hover, 
-.btn-primary.disabled:focus, 
-.btn-primary[disabled]:focus, 
-fieldset[disabled] .btn-primary:focus, 
-.btn-primary.disabled:active, 
-.btn-primary[disabled]:active, 
-fieldset[disabled] .btn-primary:active, 
-.btn-primary.disabled.active, 
-.btn-primary[disabled].active, 
-fieldset[disabled] .btn-primary.active { 
-	background-color: #501226; 
-	border-color: #501226; 
-} 
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #501226;
+  border-color: #501226;
+}
 
-.btn-primary .badge { 
-	color: #501226; 
-	background-color: #ffffff; 
+.btn-primary .badge {
+  color: #501226;
+  background-color: #ffffff;
 }
 
 .label-info{
@@ -194,13 +194,13 @@ fieldset[disabled] .btn-primary.active {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-	background-color: transparent !important;
-	color: #ffffff;
+  background-color: transparent !important;
+  color: #ffffff;
 }
 
 .dropdown-menu {
-	padding-top: 0;
-	padding-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .navbar-default .dropdown-menu:before {
@@ -230,8 +230,8 @@ fieldset[disabled] .btn-primary.active {
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-	background-color: #555555;
-	color: white !important;
+  background-color: #555555;
+  color: white !important;
 }
 
 /* Round Button Styles */
@@ -260,8 +260,7 @@ fieldset[disabled] .btn-primary.active {
 
 /* Card Styles */
 
-.card,
-.card-link{
+.card {
     margin-top: 10px;
     box-sizing: border-box;
     border-radius: 2px;
@@ -272,13 +271,8 @@ fieldset[disabled] .btn-primary.active {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-.card-link{
-    display: block;
-}
-
-.card .card-header,
-.card-link .card-header{
-  border-bottom: 1px solid #D1D1D1;
+.card .card-header{
+  border: 1px solid #D1D1D1;
   padding: 0 10px;
   min-height: 35px;
   margin-bottom: 20px;
@@ -324,13 +318,14 @@ fieldset[disabled] .btn-primary.active {
 .card-link .card-content{
     padding: 0 10px;
     margin: 25px 0;
-    height: 150px;
+    min-height: 250px;
 }
 
 .card .card-footer,
 .card-link .card-footer{
     display:flex;
     justify-content: center;
+    flex-wrap: wrap;
     border-top: 1px solid #555555;
 }
 
@@ -341,6 +336,7 @@ fieldset[disabled] .btn-primary.active {
     text-align: center;
     padding: 5px 0;
     font-size: 12px;
+    margin: 0 5px;
 }
 
 .code {
@@ -442,9 +438,17 @@ a.card-link:focus .card-header {
 /* Miscellaneous Styles */
 
 .row-title{
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .page-title h1{
-	margin-top: 0;
+  margin-top: 0;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1200px) {
+  .card-icon{
+    top: 15px;
+  }
 }

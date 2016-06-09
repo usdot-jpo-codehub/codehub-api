@@ -47,5 +47,9 @@
   "repository": {
     "dataSource": "stage-db",
     "public": true
+  },
+  "favorite": {
+    "dataSource": "stage-db",
+    "public": true
   }
 }
