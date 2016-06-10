@@ -1,7 +1,7 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "/stage/api/projects";
+let baseUrl = "/api/projects";
 
 @inject(HttpClient)
 export class ProjectData {
