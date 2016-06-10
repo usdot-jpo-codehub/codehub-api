@@ -1,7 +1,7 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "/stage/api/repositories";
+let baseUrl = "/api/repositories";
 
 @inject(HttpClient)
 export class ProjectAllStaticData {

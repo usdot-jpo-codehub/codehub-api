@@ -1,10 +1,10 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "/api/projects";
+let baseUrl = '/api/projects?filter={"where": {"name": {"inq": ["Ruby on Rails", "Hadoop With Python","Docker Cloud"]}}}';
 
 @inject(HttpClient)
-export class ProjectData {
+export class SearchProjectData {
 
   constructor(httpClient) {
     this.http = httpClient;
@@ -28,6 +28,13 @@ export class ProjectData {
   }
 
   getAll() {
+    return this.http.get(baseUrl)
+      .then(response => {
+        return response.content;
+      });
+  }
+  searchByName(searchText) {
+    alert(searchText);
     return this.http.get(baseUrl)
       .then(response => {
         return response.content;
