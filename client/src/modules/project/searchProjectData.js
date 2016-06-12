@@ -1,7 +1,7 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = '/api/projects?filter={"where": {"name": {"inq": ["Ruby on Rails", "Hadoop With Python","Docker Cloud"]}}}';
+let baseUrl = '/api/projects';
 
 @inject(HttpClient)
 export class SearchProjectData {
@@ -34,8 +34,8 @@ export class SearchProjectData {
       });
   }
   searchByName(searchText) {
-    alert(searchText);
-    return this.http.get(baseUrl)
+    let adjusted_url = baseUrl + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
+    return this.http.get(adjusted_url)
       .then(response => {
         return response.content;
       });
