@@ -41,6 +41,24 @@ export class SearchProjectData {
       });
   }
 
+  searchAllByName(searchText) {
+    let adjusted_url = '/api/repositories' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
+    //console.log(adjusted_url);
+    return this.http.get(adjusted_url)
+      .then(response => {
+        return response.content;
+      });
+  }
+
+  searchFavoritesByName(searchText) {
+    let adjusted_url = '/api/favorites' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
+    //console.log(adjusted_url);
+    return this.http.get(adjusted_url)
+      .then(response => {
+        return response.content;
+      });
+  }
+
   save(project) {
     var request = this.http.createRequest();
     if (project.id) {
