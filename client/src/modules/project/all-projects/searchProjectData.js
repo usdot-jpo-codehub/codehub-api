@@ -50,15 +50,6 @@ export class SearchProjectData {
       });
   }
 
-  searchFavoritesByName(searchText) {
-    let adjusted_url = '/api/favorites' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    //console.log(adjusted_url);
-    return this.http.get(adjusted_url)
-      .then(response => {
-        return response.content;
-      });
-  }
-
   save(project) {
     var request = this.http.createRequest();
     if (project.id) {

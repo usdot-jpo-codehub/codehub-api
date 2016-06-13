@@ -1,5 +1,6 @@
 <template>
   <require from="./search-project-all"></require>
+  <require from="./number-format"></require>
   <div class="container-fluid bg_main">
       <div class="row">
           <search-project-all></search-project-all>
@@ -38,22 +39,22 @@
                   <div class="card-footer">
                           <div class="flex-item">
                               <span class="label label-info">
-                                  <span class="text-uppercase">Emails:</span> ${repo.email}
+                                  <span class="text-uppercase">Emails:</span> ${repo.email | numberFormat:'00'}
                               </span>
                           </div>
                           <div class="flex-item">
                               <span class="label label-info">
-                                  <span class="text-uppercase">Commits:</span> ${repo.commits}
+                                  <span class="text-uppercase">Commits:</span> ${repo.commits | numberFormat:'00'}
                               </span>
                           </div>
                           <div class="flex-item">
                               <span class="label label-info">
-                                  <span class="text-uppercase">Forks:</span> ${repo.forks}
+                                  <span class="text-uppercase">Forks:</span> ${repo.forks | numberFormat:'00'}
                               </span>
                           </div>
                           <div class="flex-item">
                               <span class="label label-info">
-                                  <span class="text-uppercase">Contributors:</span> ${repo.contributors}
+                                  <span class="text-uppercase">Contributors:</span> ${repo.contributors | numberFormat:'00'}
                               </span>
                           </div>
                   </div>
