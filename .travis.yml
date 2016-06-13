@@ -19,6 +19,7 @@ install:
   - npm install -g coveralls
   - npm install -g strongloop
   - cd client
+  # Loads all DEV and PROD dependencies since we need them.  Later we prune.
   - npm install
   # GitHub Token needed to avoid GitHub API Rate Limit Thresholds
   - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
@@ -27,13 +28,16 @@ install:
 script:
   - cd client
   - gulp build
+  # Prune the node_modules since they are mostly DEV and it increases the package ~150MB
+  - npm prune --production
   - cd ..
+  # Pruning is embedded in this call for the root directory
   - slc build --install
 before_deploy:
   # This section runs PER PROVIDER listed in the deploy section.  This means
   # idempotent behavior for all these steps is required in order to avoid
   # insidious bugs and unwanted side-effects.
-  - zip -rq heimdall-webapp-1.0.0.zip * -x 'node_modules' -x 'client/node_modules'
+  - zip -rq heimdall-webapp-1.0.0.zip *
   - mkdir -p dpl_cd_upload
   - mv heimdall-webapp-1.0.0.zip dpl_cd_upload/heimdall-webapp-1.0.0.zip
 deploy:
