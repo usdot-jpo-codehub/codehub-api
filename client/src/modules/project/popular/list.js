@@ -1,12 +1,15 @@
 import {inject} from 'aurelia-framework';
 import {ProjectData} from "./projectData";
 import {Router} from "aurelia-router";
+
 @inject(ProjectData, Router)
 export class List {
   heading = 'Projects List';
+  queries = [];
 
-  constructor(data, router) {
-    this.service = data;
+
+  constructor(projectData, router) {
+    this.projectData = projectData;
     this.currentPage = 0;
     this.router = router;
   };
@@ -21,7 +24,7 @@ export class List {
 
   getData() {
     this.currentPage++;
-    return this.service.getAll()
+    return this.projectData.getAll()
       .then(projects => {
        this.projects = projects;
 
