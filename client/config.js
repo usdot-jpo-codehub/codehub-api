@@ -1,5 +1,4 @@
 System.config({
-  baseUrl: "/",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -13,6 +12,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  baseUrl: "/",
   meta: {
     "bootstrap": {
       "deps": [
