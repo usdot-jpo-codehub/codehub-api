@@ -398,8 +398,8 @@ fieldset[disabled] .btn-primary.active {
 
 /* Search Results */
 
-.results-header h2{
-  margin-top: 0;
+.results-header{
+  margin-bottom: 0;
 }
 
 .card-search{

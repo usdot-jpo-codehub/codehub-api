@@ -34,26 +34,8 @@ export class SearchProjectData {
       });
   }
   searchByName(searchText) {
-    let adjusted_url = baseUrl + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    return this.http.get(adjusted_url)
-      .then(response => {
-        return response.content;
-      });
-  }
-
-  searchAllByName(searchText) {
-    let adjusted_url = '/api/repositories' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    //console.log(adjusted_url);
-    return this.http.get(adjusted_url)
-      .then(response => {
-        return response.content;
-      });
-  }
-
-  searchFavoritesByName(searchText) {
-    let adjusted_url = '/api/favorites' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    //console.log(adjusted_url);
-    return this.http.get(adjusted_url)
+    //let adjusted_url = baseUrl + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
+    return this.http.get(baseUrl)
       .then(response => {
         return response.content;
       });
