@@ -230,6 +230,12 @@ fieldset[disabled] .btn-primary.active {
   color: white !important;
 }
 
+.user-avatar{
+  margin-right: 10px;
+  height: 24px;
+  width: 24px;
+}
+
 /* Round Button Styles */
 
 .btn-fab {
@@ -268,7 +274,11 @@ fieldset[disabled] .btn-primary.active {
 
 .card-block {
   padding: 1.25rem;
-  min-height: 150px;
+
+}
+
+.card-fixed .card-block{
+    min-height: 150px; 
 }
 
 .card-title {
