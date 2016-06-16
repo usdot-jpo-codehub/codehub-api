@@ -1,4 +1,4 @@
-x/* General Styles */
+/* General Styles */
 
 html {
   position: relative;
@@ -116,7 +116,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .label-info{
-  /*background-color: #155569;*/
+  background-color: #155569;
   padding: 5px;
 }
 
@@ -302,8 +302,6 @@ fieldset[disabled] .btn-primary.active {
 
 .card-header {
   padding: .75rem 1.25rem;
-  background-color: #f5f5f5;
-
   background-color: #424242;
 }
 
@@ -369,19 +367,29 @@ fieldset[disabled] .btn-primary.active {
   padding: 0 10px;
 }
 
-.card-icon{
+.card h2{
+  margin-top: 0;
+}
+
+.card h2 small{
+  font-size: 35%;
+}
+
+.card h2 .card-icon{
   border-radius: 100px;
   color: #f6f6f6;
   padding: 12px 10px;
   font-size: 15px;
+  position: absolute;
 }
 
-.repo-name{
+.card h2 .repo-name{
   width: 65%;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-left: 45px;
 }
 
 .code {
@@ -404,6 +412,23 @@ fieldset[disabled] .btn-primary.active {
 
 .card-search{
   min-height: initial;
+}
+
+.card-search h2{
+  margin-top: 0;
+}
+
+.card-search h2 small{
+  font-size: 35%;
+}
+
+.card-search h2 .card-icon{
+  position: absolute;
+}
+
+.card-search h2 .repo-name{
+  width: initial;
+  margin-left: 50px
 }
 
 .card-search .card-header{
