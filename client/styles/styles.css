@@ -497,7 +497,10 @@ fieldset[disabled] .btn-primary.active {
   font-size: 14px;
   vertical-align: -8%;
 }
-
+.pagination-actions {
+  text-align: center;
+  margin-top: 20px;
+}
 /* Media queries */
 
 @media screen and (max-width: 1200px) {
