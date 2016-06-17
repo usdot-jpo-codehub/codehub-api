@@ -14,7 +14,7 @@
         <div repeat.for="repo of projects">
           <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="">
-              <a href="#" class="card card-fixed">
+              <a route-href="route:project-details-favorites" class="card card-fixed">
                 <div class="card-header">
                   <h2 class="card-title clearfix">
                     <span class="project-type" if.bind="repo.type === 'code'">
