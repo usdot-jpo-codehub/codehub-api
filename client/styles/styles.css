@@ -272,6 +272,18 @@ fieldset[disabled] .btn-primary.active {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.card{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.card:hover,
+.card:focus {
+  background-color: #8E8E8E;
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .card-block {
   padding: 1.25rem;
 
@@ -312,24 +324,25 @@ fieldset[disabled] .btn-primary.active {
 
 .card-header {
   padding: .75rem 1.25rem;
-  background-color: #424242;
+  /*background-color: #424242;*/
 }
 
 .card-header:first-child {
   border-radius: .25rem .25rem 0 0;
 }
 
-.card .card-footer,
-.card-link .card-footer{
+.card-footer{
+  border-top: 1px solid #555555;
+}
+
+.flex{
   display:flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  border-top: 1px solid #555555;
   padding: .75rem 2.25rem;
 }
 
-.card .card-footer .flex-item,
-.card-link .card-footer .flex-item{
+.flex-item{
   text-align: center;
   padding: 5px 0;
   font-size: 12px;
@@ -342,6 +355,7 @@ fieldset[disabled] .btn-primary.active {
   font-size: 12px;
 }
 
+
 .card-footer:last-child {
   border-radius: 0 0 .25rem .25rem;
 }
@@ -349,6 +363,11 @@ fieldset[disabled] .btn-primary.active {
 .project-icon{
   height: 25px;
   width: 25px;
+}
+
+.vargant-icon{
+  height: 15px;
+  width: 15px;
 }
 
 .icon-dropdown{

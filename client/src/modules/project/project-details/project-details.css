@@ -129,6 +129,14 @@
   margin-top: 5px;
 }
 
+.proj-details .card{
+  min-height: 350px;
+}
+
+.card-detail .flex{
+  justify-content: flex-start;
+}
+
 @media screen and (min-width: 768px) {
 	.media-list-stream .media-object {
 	    width: 60px;
