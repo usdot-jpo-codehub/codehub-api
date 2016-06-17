@@ -1,5 +1,21 @@
 <template>
-  <div class="container-fluid">
+  <require from="./search-project-favorites"></require>
+  <div class="container-fluid project-details bg_main">
+    <div class="row">
+      <search-project-favorites></search-project-favorites>
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>Booz Allen / 18F</h1>
+          <nav class="project-pager">
+            <ul class="pager">
+              <li class="display-count">Displaying <input class="display-input" type="number" placeholder="1"> of 100</li>
+              <li><a href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i> Prev</a></li>
+              <li><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i> Next</a></li>
+            </ul>
+          </nav>
+        </div>
+     </div>
+    </div>
     <div class="row">
       <div class="col-lg-8">
         <div class="row proj-details">

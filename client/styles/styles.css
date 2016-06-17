@@ -63,10 +63,13 @@ footer a{
 
 .page-header{
   margin: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .page-header h1{
   text-align: center;
+  display: inline-block;
 }
 
 .btn-primary {
@@ -159,6 +162,18 @@ fieldset[disabled] .btn-primary.active {
 .btn-secondary-outline.disabled:hover,
 .btn-secondary-outline:disabled:hover {
   border-color: white;
+}
+
+.pager li > a{
+  background-color: #2E3234;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.pager li > a:hover,
+.pager li > a:focus{
+  background-color: #ffffff;
+  color:#2E3234;
 }
 
 /* Navbar Styles */
@@ -520,6 +535,38 @@ fieldset[disabled] .btn-primary.active {
 
 .page-title h1{
   margin-top: 0;
+}
+
+.project-details .page-header{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.project-details .page-header h1{
+  flex-grow:1;
+  /*text-align: center;*/
+  margin-left: 289px;
+}
+
+.project-details .page-header .project-pager{
+  /*flex-grow: 1;*/
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.project-details .page-header .project-pager .pager{
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.display-input{
+  width: 25px;
+}
+
+.display-count{
+  /*margin-right: 10px;*/
+  /*margin-left: -10px;*/
 }
 
 .label .octicon{
