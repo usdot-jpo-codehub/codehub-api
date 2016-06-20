@@ -446,42 +446,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: #a999de;
 }
 
-/* Search Results */
 
-.results-header{
-  margin-bottom: 0;
-}
-
-.card-search{
-  min-height: initial;
-}
-
-.card-search h2{
-  margin-top: 0;
-}
-
-.card-search h2 small{
-  font-size: 35%;
-}
-
-.card-search h2 .card-icon{
-  position: absolute;
-}
-
-.card-search h2 .repo-name{
-  width: initial;
-  margin-left: 50px
-}
-
-.card-search .card-header{
-  min-height: initial;
-}
-
-.card-search .card-footer{
-  border-top: none;
-  justify-content: flex-start;
-  padding: 0 10px;
-}
 
 /* Project count */
 
