@@ -287,13 +287,13 @@ fieldset[disabled] .btn-primary.active {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card{
+.card-link{
   color: #ffffff;
   text-decoration: none;
 }
 
-.card:hover,
-.card:focus {
+.card-link:hover,
+.card-link:focus {
   background-color: #8E8E8E;
   color: #ffffff;
   text-decoration: none;
@@ -339,7 +339,6 @@ fieldset[disabled] .btn-primary.active {
 
 .card-header {
   padding: .75rem 1.25rem;
-  /*background-color: #424242;*/
 }
 
 .card-header:first-child {
@@ -369,7 +368,6 @@ fieldset[disabled] .btn-primary.active {
   padding: 5px 0;
   font-size: 12px;
 }
-
 
 .card-footer:last-child {
   border-radius: 0 0 .25rem .25rem;
@@ -545,7 +543,6 @@ fieldset[disabled] .btn-primary.active {
 
 .project-details .page-header h1{
   flex-grow:1;
-  /*text-align: center;*/
   margin-left: 289px;
 }
 
@@ -563,11 +560,6 @@ fieldset[disabled] .btn-primary.active {
 .display-input{
   width: 45px;
   color: #000000;
-}
-
-.display-count{
-  /*margin-right: 10px;*/
-  /*margin-left: -10px;*/
 }
 
 .label .octicon{
