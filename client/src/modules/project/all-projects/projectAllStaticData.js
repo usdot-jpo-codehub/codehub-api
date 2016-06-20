@@ -1,7 +1,7 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-http-client";
 
-let baseUrl = "/api/repositories";
+let baseUrl = "https://api.github.com";
 
 @inject(HttpClient)
 export class ProjectAllStaticData {
@@ -27,13 +27,13 @@ export class ProjectAllStaticData {
       });
   }
 
-  getAll() {
-    return this.http.get(baseUrl)
+  getAll(org) {
+    var org_url = baseUrl + "/orgs/"+org+"/repos";
+    return this.http.get(org_url)
       .then(response => {
         return response.content;
       });
   }
-
   save(project) {
     var request = this.http.createRequest();
     if (project.id) {
