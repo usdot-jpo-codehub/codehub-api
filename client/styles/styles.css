@@ -287,13 +287,13 @@ fieldset[disabled] .btn-primary.active {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card{
+.card-link{
   color: #ffffff;
   text-decoration: none;
 }
 
-.card:hover,
-.card:focus {
+.card-link:hover,
+.card-link:focus {
   background-color: #8E8E8E;
   color: #ffffff;
   text-decoration: none;
