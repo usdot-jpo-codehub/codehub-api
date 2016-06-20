@@ -561,7 +561,8 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .display-input{
-  width: 25px;
+  width: 45px;
+  color: #000000;
 }
 
 .display-count{
