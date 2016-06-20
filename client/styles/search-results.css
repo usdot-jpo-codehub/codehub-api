@@ -17,8 +17,11 @@
   width: 100%;
 }
 
-.card-search h2 small{
-  font-size: 35%;
+.card-search h2 .repo-name .fa{
+  position: absolute;
+  top: 15px;
+  margin-left: 15px;
+  color: #ffffff;
 }
 
 .card-search h2 .card-icon{
