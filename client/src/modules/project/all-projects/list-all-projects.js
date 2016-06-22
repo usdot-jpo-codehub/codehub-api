@@ -1,14 +1,18 @@
 import {inject} from 'aurelia-framework';
 import {ProjectAllStaticData} from "./projectAllStaticData";
 import {Router} from "aurelia-router";
+import {bindable} from 'aurelia-framework';
+
 @inject(ProjectAllStaticData, Router)
 export class ListAllProjects {
   heading = 'Projects List';
-
+  projectsList = [];
   constructor(data, router) {
     this.service = data;
     this.currentPage = 0;
     this.router = router;
+    this.projects = [];
+    this.orgs = ["boozallen", "booz-allen-hamilton", "netflix"];
   };
 
   gotoProject(project){
@@ -19,17 +23,21 @@ export class ListAllProjects {
     this.router.navigateToRoute('create');
   };
 
-  getData() {
+  getData(org) {
     this.currentPage++;
-    return this.service.getAll()
+    this.service.getAll(org)
       .then(projects => {
-       this.projects = projects;
-
+          this.projectsList = JSON.parse(JSON.stringify(projects));
+          for(var i = 0; i < this.projectsList.length; i++){
+            this.projects.push(this.projectsList[i]);
+          }
      });
 
   }
-
   activate() {
-    return this.getData();
+    for(var i=0;i<this.orgs.length; i++){
+      this.getData(this.orgs[i]);
+    }
+
   }
 }

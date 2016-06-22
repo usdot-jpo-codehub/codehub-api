@@ -35,7 +35,6 @@ export class SearchProjectData {
   }
   searchAllByName(searchText) {
     //let adjusted_url = '/api/repositories' + '?filter={"where": {"name": {"inq": [' + '"'+searchText +'"'+ ']}}}';
-    //console.log(adjusted_url);
     return this.http.get(baseUrl)
       .then(response => {
         return response.content;
