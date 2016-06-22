@@ -5,6 +5,8 @@ cache:
 env:
   global:
   - secure: ZISrC+n/GHsMXI5YoddKs78vK2WmkCCt5VYrC8cmXtx3pytDRf9hKomqxh3BpoqAQc5tBuMSS5jDIC+mxnplI4z/rORSMvo/aM2i3i33//vkKOrVDZi5buKnoaTBzQLHZHTI69xPkSk0H0lWGEZZPdYrsJ+OlSbsk+vQXq9rztg/G2Btohhk+5plW33CoorjxXl/r0V4zDC4E7eYS+2KJUJ/VOhLQcm6LafkjKM3RetWByUMz1Qy1iuhmLCuG4au4Frw7hAFHRTldGK+xsL3wER14k93rv5j7kC2fQC0zEEHHvIL0uu5kKLJOCt2qLY+nxz/mVagJb+3rP6h8NOFvwoTQ2qH8SQChjF08Sv/q1pi74IVyhburG08Ln2CtxEWpPDHH4O4XYTujhg4dw5NEjgogA8H80hVmCAD3QWQSPU8MxCfGW6JYR7/Hz08DaDoenNC6RDRrT96H9R0EWO3Cokd0WjcNfF4eXxxPCxh4HZhBGu4RQCosImTMtPNK+RQMCtZIlV9a03SBfW3+gbEcQ7t2iQLKiq9Pa1WVwLxBm0BLn+IMA9tSZ7DVsqcSIXOs32BXyU9tAuvW2zZGNNQ4GNlehz4RLZ8H77+5CJt/OGL59ipH6LcXk+PspjthZUXNt+SPGPZOfZj2MXeCXuvxd1osZecXEEgk+efsgoMCFI=
+  - HEIMDALL_VERSION_NUMBER=1.0.0
+  - HEIMDALL_PACKAGE_NAME=heimdall-webapp-$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.zip
 install:
 - npm install -g gulp
 - npm install -g jspm
@@ -22,9 +24,9 @@ script:
 - cd ..
 - slc build --install
 before_deploy:
-- zip -rq heimdall-webapp-1.0.0.zip *
+- zip -rq $HEIMDALL_PACKAGE_NAME *
 - mkdir -p dpl_cd_upload
-- mv heimdall-webapp-1.0.0.zip dpl_cd_upload/heimdall-webapp-1.0.0.zip
+- mv $HEIMDALL_PACKAGE_NAME dpl_cd_upload/$HEIMDALL_PACKAGE_NAME
 deploy:
 - provider: s3
   access_key_id: &1
@@ -42,7 +44,7 @@ deploy:
   access_key_id: *1
   secret_access_key: *2
   bucket: codedeploy-heimdall-webapp
-  key: heimdall-webapp-1.0.0.zip
+  key: $HEIMDALL_PACKAGE_NAME
   bundle_type: zip
   application: CodeDeploy-HeimdallWebapp
   deployment_group: CodeDeploy-HeimdallWebapp-Group
