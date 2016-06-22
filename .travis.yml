@@ -8,20 +8,9 @@ env:
   - HEIMDALL_VERSION_NUMBER=1.0.0
   - HEIMDALL_PACKAGE_NAME=heimdall-webapp-$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.zip
 install:
-- npm install -g gulp
-- npm install -g jspm
 - npm install -g coveralls
 - npm install -g strongloop
-- cd client
-- npm install
-- jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
-- jspm install -y
-- cd ..
 script:
-- cd client
-- gulp build
-- npm prune --production
-- cd ..
 - slc build --install
 before_deploy:
 - zip -rq $HEIMDALL_PACKAGE_NAME *
