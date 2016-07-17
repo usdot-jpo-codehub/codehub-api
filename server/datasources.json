@@ -19,6 +19,7 @@
       "accepts": "application/json",
       "content-type": "application/json"
     },
+
     "operations": [
       {
         "template": {
@@ -26,10 +27,9 @@
           "url": "http://localhost:9200/remote_projects/_search?size=20"
         },
         "functions": {
-          "searchPopular": [],
-          "findRepos": []
-        }
+          "searchPopular": []
       }
+    }
     ]
   }
 }
