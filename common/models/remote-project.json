@@ -1,0 +1,63 @@
+{
+  "name": "remote-project",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "full_name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "number"
+    },
+    "commits": {
+      "type": "number"
+    },
+    "forks": {
+      "type": "number"
+    },
+    "contributors": {
+      "type": "number"
+    },
+    "organization": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "html_url": {
+      "type": "string"
+    },
+    "readme_url": {
+      "type": "string"
+    },
+    "stars": {
+      "type": "number"
+    },
+    "watchers": {
+      "type": "number"
+    },
+    "releases": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

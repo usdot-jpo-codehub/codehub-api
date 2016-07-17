@@ -9,5 +9,27 @@
     "localStorage": "",
     "file": "projectData.json",
     "connector": "memory"
+  },
+  "stage-elastic": {
+    "name": "stage-elastic",
+    "connector": "rest",
+    "debug": false,
+    "crud": true,
+    "headers": {
+      "accepts": "application/json",
+      "content-type": "application/json"
+    },
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:9200/remote_projects/_search?size=20"
+        },
+        "functions": {
+          "searchPopular": [],
+          "findRepos": []
+        }
+      }
+    ]
   }
 }

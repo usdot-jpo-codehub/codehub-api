@@ -51,5 +51,9 @@
   "favorite": {
     "dataSource": "stage-db",
     "public": true
+  },
+  "remote-project": {
+    "dataSource": "stage-elastic",
+    "public": true
   }
 }
