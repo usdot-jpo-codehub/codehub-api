@@ -9,5 +9,21 @@
     "localStorage": "",
     "file": "projectData.json",
     "connector": "memory"
+  },
+  "search-ds": {
+    "name": "search-ds",
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://52.0.39.126:3002/api/projects"
+        },
+        "functions": {
+          "find": [],
+          "findById": []
+        }
+      }
+    ]
   }
 }

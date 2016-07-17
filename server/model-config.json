@@ -51,5 +51,9 @@
   "favorite": {
     "dataSource": "stage-db",
     "public": true
+  },
+  "KitKat": {
+    "dataSource": "search-ds",
+    "public": true
   }
 }
