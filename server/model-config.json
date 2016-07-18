@@ -55,5 +55,9 @@
   "remote-project": {
     "dataSource": "stage-elastic",
     "public": true
-}
+  },
+  "KitKat": {
+    "dataSource": "github-search-ds",
+    "public": true
+  }
 }

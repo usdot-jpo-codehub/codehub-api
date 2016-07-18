@@ -28,8 +28,27 @@
         },
         "functions": {
           "searchPopular": []
+        }
       }
-    }
+    ]
+  },
+  "github-search-ds": {
+    "name": "github-search-ds",
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://54.211.175.180:9200/readmes/_search"
+        },
+        "query": {
+          "q": "{q}"
+        },
+        "functions": {
+          "find": [],
+          "findById": []
+        }
+      }
     ]
   }
 }
