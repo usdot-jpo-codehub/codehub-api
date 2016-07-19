@@ -6,11 +6,15 @@
     "validateUpsert": true
   },
   "properties": {
-    "name": {
+    "project_name": {
       "type": "string",
       "required": true
     },
-    "description": {
+    "project_description": {
+      "type": "string",
+      "required": true
+    },
+    "repository": {
       "type": "string",
       "required": true
     },
@@ -34,13 +38,10 @@
       "type": "string",
       "required": true
     },
-    "type": {
-      "type": "string"
-    },
     "language": {
       "type": "string"
     },
-    "html_url": {
+    "content": {
       "type": "string"
     },
     "readme_url": {
@@ -53,6 +54,9 @@
       "type": "number"
     },
     "releases": {
+      "type": "number"
+    },
+    "rank": {
       "type": "number"
     }
   },
