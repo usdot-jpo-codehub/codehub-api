@@ -41,7 +41,7 @@
     "public": true
   },
   "project": {
-    "dataSource": "stage-db",
+    "dataSource": "stage-elastic",
     "public": true
   },
   "repository": {
@@ -50,10 +50,6 @@
   },
   "favorite": {
     "dataSource": "stage-db",
-    "public": true
-  },
-  "remote-project": {
-    "dataSource": "stage-elastic",
     "public": true
   }
 }
