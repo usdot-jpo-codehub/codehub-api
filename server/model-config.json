@@ -41,7 +41,7 @@
     "public": true
   },
   "project": {
-    "dataSource": "stage-db",
+    "dataSource": "stage-elastic",
     "public": true
   },
   "repository": {

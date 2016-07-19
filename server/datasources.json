@@ -9,5 +9,27 @@
     "localStorage": "",
     "file": "projectData.json",
     "connector": "memory"
+  },
+  "stage-elastic": {
+    "name": "stage-elastic",
+    "connector": "rest",
+    "debug": false,
+    "crud": true,
+    "headers": {
+      "accepts": "application/json",
+      "content-type": "application/json"
+    },
+
+    "operations": [
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://54.173.14.8:9200/projects/_search/?sort=rank:desc&size=20"
+        },
+        "functions": {
+          "find": []
+        }
+      }
+    ]
   }
 }
