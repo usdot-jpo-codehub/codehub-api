@@ -24,7 +24,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://localhost:9200/readmes/_search"
+          "url": "http://54.173.14.8:9200/readmes/_search"
         },
         "functions": {
           "find": []
