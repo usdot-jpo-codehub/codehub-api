@@ -1,75 +1,84 @@
 {
- "db": {
-   "name": "db",
-   "connector": "memory",
-   "file": "projectData.json"
- },
- "stage-db": {
-   "name": "stage-db",
-   "localStorage": "",
-   "file": "projectData.json",
-   "connector": "memory"
- },
- "stage-elastic": {
-   "name": "stage-elastic",
-   "connector": "rest",
-   "debug": false,
-   "crud": true,
-   "operations": [
-     {
-       "template": {
-         "method": "POST",
-         "url": "http://54.173.14.8:9200/projects/_search",
-         "headers": {
-           "accepts": "application/json",
-           "content-type": "application/json"
+"db": {
+  "name": "db",
+  "connector": "memory",
+  "file": "projectData.json"
+},
+"stage-db": {
+  "name": "stage-db",
+  "localStorage": "",
+  "file": "projectData.json",
+  "connector": "memory"
+},
+"stage-elastic": {
+  "name": "stage-elastic",
+  "connector": "rest",
+  "debug": false,
+  "crud": true,
+  "operations": [
+    {
+      "template": {
+        "method": "POST",
+        "url": "http://54.173.14.8:9200/projects/_search?q={params}",
+        "headers": {
+          "accepts": "application/json",
+          "content-type": "application/json"
+        },
+        "query": {
+           "x": "{x}"
          },
-         "body": {
-           "query":{
-             "multi_match" : {
-               "query":      "{q}",
-               "type":       "cross_fields",
-               "fields":     ["project_name", "project_description"],
-               "operator":   "or"
-             }
-           },
-           "sort" : { "rank" : { "order" : "desc" }},
-           "size" : 20
-         }
-       },
-       "functions": {
-         "search": [
-           "q"
-         ]
-       }
-     },
-
-     {
-       "template": {
-         "method": "POST",
-         "url": "http://54.173.14.8:9200/projects/_search",
-         "headers": {
-           "accepts": "application/json",
-           "content-type": "application/json"
-         },
-         "body": {
-           "query":{
-             "multi_match" : {
-               "query":      "{q}",
-               "type":       "cross_fields",
-               "fields":     ["project_name", "project_description","content"],
-               "operator":   "or"
-             }
-           },
-           "sort" : { "rank" : { "order" : "desc" }}
-         }
-       },
-       "functions": {
-         "searchAll": [
-           "q"
-         ]
-       }
-     }
-   ]
- }
+        "body": {
+          "query":{
+            "multi_match" : {
+              "query":      "x",
+              "type":       "cross_fields",
+              "fields":     ["project_name","project_description"],
+              "operator":   "or"
+            }
+          },
+          "sort" : { "rank" : { "order" : "desc" }}
+        }
+      },
+      "functions": {
+        "search": [
+          "params"
+        ]
+      }
+    },
+    {
+      "template": {
+        "method": "GET",
+        "url": "http://54.173.14.8:9200/projects/_search",
+        "headers": {
+          "accepts": "application/json",
+          "content-type": "application/json"
+        },
+        "body": {
+          "sort" : { "rank" : { "order" : "desc" }},
+          "size":226
+        }
+      },
+      "functions": {
+        "find": []
+      }
+    },
+    {
+      "template": {
+        "method": "GET",
+        "url": "http://54.173.14.8:9200/projects/_search",
+        "headers": {
+          "accepts": "application/json",
+          "content-type": "application/json"
+        },
+        "body": {
+          "sort" : { "rank" : { "order" : "desc" }},
+          "size":20
+        }
+      },
+      "functions": {
+        "searchByPopularity":[]
+      }
+    }
+  ]
+}
 }

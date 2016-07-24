@@ -25,15 +25,18 @@ function transform(projarry){
   }
   return projs;
 }
-
-   Project.afterRemote('search', function(ctx, Project, next) {
-     //var projs = [];
+  Project.afterRemote('find', function(ctx, project, next) {
+      ctx.result = transform(ctx.result.hits.hits);
+      next();
+    });
+   Project.afterRemote('search', function(ctx, project, next) {
+       ctx.result = transform(ctx.result.hits.hits);
+       next();
+     });
+   Project.afterRemote('searchByPopularity', function(ctx, Project, next) {
      ctx.result = transform(ctx.result.hits.hits);
      next();
    });
 
-   Project.afterRemote('searchAll', function(ctx, Project, next) {
-    ctx.result = transform(ctx.result.hits.hits);
-     next();
-   });
+
 };
