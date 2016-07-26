@@ -32,11 +32,10 @@
             "multi_match" : {
               "query":      "x",
               "type":       "cross_fields",
-              "fields":     ["project_name","project_description"],
+              "fields":     ["project_name^3","project_description^2", "content"],
               "operator":   "or"
             }
-          },
-          "sort" : { "rank" : { "order" : "desc" }}
+          }
         }
       },
       "functions": {
