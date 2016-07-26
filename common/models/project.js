@@ -42,6 +42,7 @@ function transformProject(proj){
         "content":proj._source.content,
         "readme_url":proj._source.readme_url,
         "contributors":proj._source.contributors,
+        "stars":proj._source.stars,
         "watchers":proj._source.watchers,
         "releases":proj._source.releases,
         "rank":proj._source.rank,
