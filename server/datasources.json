@@ -19,7 +19,7 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://54.173.14.8:9200/projects/_search?q={params}",
+        "url": "http://52.3.92.237:9200/projects/_search?q={params}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -47,7 +47,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://54.173.14.8:9200/projects/_search/?q={id}",
+        "url": "http://52.3.92.237:9200/projects/_search/?q={id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -65,7 +65,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://54.173.14.8:9200/projects/_search",
+        "url": "http://52.3.92.237:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -81,7 +81,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://54.173.14.8:9200/projects/_search",
+        "url": "http://52.3.92.237:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
