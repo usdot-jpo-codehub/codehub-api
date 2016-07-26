@@ -42,6 +42,7 @@ function transformProject(proj){
         "content":proj._source.content,
         "readme_url":proj._source.readme_url,
         "contributors":proj._source.contributors,
+        "stars":proj._source.stars,
         "watchers":proj._source.watchers,
         "releases":proj._source.releases,
         "rank":proj._source.rank,
@@ -57,9 +58,7 @@ function transformProject(proj){
     });
 
     Project.afterRemote('findById', function(ctx, project, next) {
-        console.log(ctx.result.hits.hits[0]);
         ctx.result = transformProject(ctx.result.hits.hits[0]);
-        console.log(ctx.result);
         next();
       });
      Project.afterRemote('search', function(ctx, project, next) {
