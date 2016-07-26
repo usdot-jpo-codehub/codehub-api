@@ -48,6 +48,24 @@
     {
       "template": {
         "method": "GET",
+        "url": "http://54.173.14.8:9200/projects/_search/?q={id}",
+        "headers": {
+          "accepts": "application/json",
+          "content-type": "application/json"
+        },
+        "query": {
+           "x": "{x}"
+         }
+      },
+      "functions": {
+        "findById": [
+          "id"
+        ]
+      }
+    },
+    {
+      "template": {
+        "method": "GET",
         "url": "http://54.173.14.8:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
