@@ -57,9 +57,7 @@ function transformProject(proj){
     });
 
     Project.afterRemote('findById', function(ctx, project, next) {
-        console.log(ctx.result.hits.hits[0]);
         ctx.result = transformProject(ctx.result.hits.hits[0]);
-        console.log(ctx.result);
         next();
       });
      Project.afterRemote('search', function(ctx, project, next) {
