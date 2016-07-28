@@ -1,5 +1,4 @@
 module.exports = function(Project) {
-
 function transform(projarry){
   var projs = [];
   for(proj of projarry){
@@ -37,6 +36,10 @@ function transform(projarry){
         next();
       });
 
+    Project.afterRemote('findSuggestion', function(ctx, project, next) {
+        ctx.result = ctx.result['term-suggest'][0].options;
+        next();
+      });
     Project.afterRemote('findById', function(ctx, project, next) {
         ctx.result = transform(ctx.result.hits.hits)[0];
         next();
@@ -50,6 +53,5 @@ function transform(projarry){
        ctx.result = transform(ctx.result.hits.hits);
        next();
      });
-
 
 };
