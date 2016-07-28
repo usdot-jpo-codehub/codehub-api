@@ -19,23 +19,34 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://52.3.92.237:9200/projects/_search?q={params}",
+        "url": "http://localhost:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
         },
         "query": {
-           "x": "{x}"
+           "x": "{params}"
          },
         "body": {
           "query":{
-            "multi_match" : {
-              "query":      "x",
-              "type":       "cross_fields",
-              "fields":     ["project_name^3","project_description^2", "content"],
-              "operator":   "or"
-            }
-          }
+             "bool" : {
+                 "must" : [ {
+                     "multi_match" : {
+                       "query":      "{params}",
+                       "fields":     ["project_name^3","project_description^2", "content"],
+                       "operator":   "or",
+                       "fuzziness" : "AUTO",
+                       "prefix_length" : "1"
+                     }
+                 } ],
+                 "should" : {
+                     "match_phrase" : {
+                         "_all" : "{params}"
+                     }
+                 }
+             }
+   },
+   "size" : "1000"
         }
       },
       "functions": {
@@ -44,10 +55,11 @@
         ]
       }
     },
+
     {
       "template": {
         "method": "GET",
-        "url": "http://52.3.92.237:9200/projects/_search/?q={id}",
+        "url": "http://localhost:9200/projects/_search?q={id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -65,7 +77,34 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://52.3.92.237:9200/projects/_search",
+        "url": "http://localhost:9200/projects/_search?q={params}",
+        "headers": {
+          "accepts": "application/json",
+          "content-type": "application/json"
+        },
+        "query": {
+           "x": "{params}"
+         },
+         "body":{
+           "query":{
+             "multi_match" : {
+                  "query":      "params",
+                  "fields":     ["project_name","language","project_description"],
+                  "operator":   "or"
+              }
+           }
+         }
+      },
+      "functions": {
+        "findTestEs": [
+          "params"
+        ]
+      }
+    },
+    {
+      "template": {
+        "method": "GET",
+        "url": "http://localhost:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -81,7 +120,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://52.3.92.237:9200/projects/_search",
+        "url": "http://localhost:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
