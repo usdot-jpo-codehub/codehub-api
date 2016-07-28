@@ -77,18 +77,19 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://localhost:9200/projects/_search?q={params}",
+        "url": "http://localhost:9200/{seg}/?q={params}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
         },
         "query": {
-           "x": "{params}"
+           "x": "{params}",
+           "seg":"{seg}"
          },
          "body":{
            "query":{
              "multi_match" : {
-                  "query":      "params",
+                  "query":      ["params","seg"],
                   "fields":     ["project_name","language","project_description"],
                   "operator":   "or"
               }
@@ -97,7 +98,7 @@
       },
       "functions": {
         "findTestEs": [
-          "params"
+          "seg","params"
         ]
       }
     },
