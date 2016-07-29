@@ -40,23 +40,25 @@ function transform(projarry){
         ctx.result = ctx.result['term-suggest'][0].options;
         next();
       });
-      Project.afterRemote('findSimilarProjects', function(ctx, project, next) {
-          var proj_id = ctx.args.id;
-          ctx.result = ctx.result[proj_id];
-          next();
-        });
+
+    Project.afterRemote('findSimilarProjects', function(ctx, project, next) {
+      var proj_id = ctx.args.id;
+      ctx.result = ctx.result[proj_id];
+      next();
+    });
+
     Project.afterRemote('findById', function(ctx, project, next) {
-        ctx.result = transform(ctx.result.hits.hits)[0];
-        next();
-      });
+      ctx.result = transform(ctx.result.hits.hits)[0];
+      next();
+    });
+
      Project.afterRemote('search', function(ctx, project, next) {
-         ctx.result = transform(ctx.result.hits.hits);
-         next();
-       });
+       ctx.result = transform(ctx.result.hits.hits);
+       next();
+     });
 
      Project.afterRemote('searchByPopularity', function(ctx, Project, next) {
        ctx.result = transform(ctx.result.hits.hits);
        next();
      });
-
 };
