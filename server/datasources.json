@@ -77,14 +77,11 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://52.3.92.237:9200/projects/_suggest/?q={params}",
+        "url": "http://52.3.92.237:9200/projects/_suggest?q={params}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
         },
-        "query": {
-           "x": "{params}"
-         },
          "body":{
              "term-suggest" : {
                   "text" : "{params}",
