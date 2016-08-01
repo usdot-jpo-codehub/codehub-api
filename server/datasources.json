@@ -97,11 +97,11 @@
     {
       "template": {
         "method": "GET",
-        "url": "https://api.github.com/repos/{org}/{params}/contents/pom.xml",
+        "url": "https://api.github.com/repos/{org}/{project_name}/contents/pom.xml?client_id=&client_secret=",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json",
-          "User-Agent":"natesol-code21"
+          "User-Agent":""
         },
         "query": {
            "x": "{x}"
@@ -110,7 +110,7 @@
       "functions": {
         "findProjectDependencies": [
           "org",
-          "params"
+          "project_name"
         ]
       }
     },
