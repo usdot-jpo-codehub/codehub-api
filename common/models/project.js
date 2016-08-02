@@ -16,6 +16,7 @@ function transform(projarry){
         "content":proj._source.content,
         "readme_url":proj._source.readme_url,
         "contributors":proj._source.contributors,
+        "contributors_list":proj._source.contributors_list,
         "stars":proj._source.stars,
         "watchers":proj._source.watchers,
         "releases":proj._source.releases,
@@ -87,5 +88,8 @@ function transform(projarry){
        ctx.result = transform(ctx.result.hits.hits);
        next();
      });
+
+
+
 
 };
