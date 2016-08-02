@@ -118,7 +118,7 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://52.3.92.237:9200/projects/_suggest?q={params}",
+        "url": "http://52.3.92.237:9200/projects/_suggest",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
