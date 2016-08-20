@@ -36,7 +36,7 @@ deploy:
   key: $HEIMDALL_PACKAGE_NAME
   bundle_type: zip
   application: dev-heimdall-api-app
-  deployment_group: dev-heimdall-api-app-group
+  deployment_group: dev-heimdall-api-group
   region: us-east-1
   on: *3
   skip_cleanup: true
