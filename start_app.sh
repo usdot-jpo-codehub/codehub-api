@@ -1,4 +1,4 @@
 cd /opt/heimdall
 /sbin/initctl start strong-pm
-sl-pmctl create heimdall-webapp-service
-slc deploy -s heimdall-webapp-service
+sl-pmctl create heimdall-api-service
+slc deploy -s heimdall-api-service
