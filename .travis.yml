@@ -30,7 +30,7 @@ deploy:
   region: us-west-2
   skip_cleanup: true
 - provider: codedeploy
-  secret_key_id: *1
+  access_key_id: *1
   secret_access_key: *2
   bucket: dev-heimdall-api-codedeploy
   key: $HEIMDALL_PACKAGE_NAME
