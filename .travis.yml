@@ -1,10 +1,9 @@
 language: node_js
-node_js: 4.4.3
+node_js: 4.5.0
 cache:
   directories: node_modules
 env:
   global:
-  - secure: n8GwYQhEkFEbioYb1Al/NwJpZUyv6KJGQXkKaQ7YCIZU89Hdwhv4EEu6Tg96wFfwTNMMgi+FT5boPo29rkoHSjmWEEd9LShKAGiKAewk4iopaxfZo2sw2df7m18q10t0F2ADKCMr7Eeu4XhySTlt7PXeg7Kop4Wm3i4j8XtrJJIcfnn9K4er38xJVK44JcCa/X3zOtt9WYLiMOt69klf6iSdnFT00/iNnqOJzfUP2o9AkF3GjofRdgaxx3Om+Eiht+Pqk74x4dysKPR/iJ689iXkEK8LIoXQx2uLNeHEVKg1moiwzGJlTG2StdABxpiFhTfbp5uGmYrKaYStawrCJ5Kd3ymprbfNFmZ23bZT//ruqzAJkU6V07/x4pLoj/qdMfsvNKPNlBNnjTrk1tdmEzJLKPzW4nK1Bj3HRQKWrtMcLCQPxzHoazAisgH5kjqQJ5hRXGuOtH9s3Cq3zJnnGEqe5/N1fWcE+8n4guN1m+kg+jZpTyfNozTQyAlsnyaaCn0IExGiE9Lj1O3NBAX56XB+pjMyPYk0KfXZRPhNabw7aBJVO2BjmMGve+zhIq8/jnclODFBBPAQVM56UezLr/unDXSfC2ccPus5pbuV6uZSe7ocf3RON6kdTW8z7bBK/0fBijV+3MLCNb2qU18WzdEwaDsXHw41eqBB85HVF7M=
   - HEIMDALL_VERSION_NUMBER=1.0.0
   - HEIMDALL_PACKAGE_NAME=heimdall-api-dev-$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.zip
 install:
