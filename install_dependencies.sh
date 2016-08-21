@@ -30,8 +30,8 @@ SLPMCTL=$?
 if [ $SLPMINSTALL != 0 ] || [ $SLPMCTL != 0 ]
 then
   npm install -g strong-pm
+  sl-pm-install --upstart=0.6 --force
 fi
 
 slc build --pack
-sl-pm-install --upstart=0.6 --force
 
