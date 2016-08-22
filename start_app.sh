@@ -2,10 +2,15 @@
 
 cd /opt/heimdall
 
-sl-pmctl status heimdall-api-service 2>&1 >/dev/null | grep -q 'Error: Unknown "ServerService" id "undefined"'
+/sbin/initctl status strong-pm | grep -q 'strong-pm stop/waiting'
 if [ $? = 0 ]
 then
   /sbin/initctl start strong-pm
+fi
+
+sl-pmctl status heimdall-api-service 2>&1 >/dev/null | grep -q 'Error: Unknown "ServerService" id "undefined"'
+if [ $? = 0 ]
+then
   sl-pmctl create heimdall-api-service
   sl-pmctl set-size heimdall-api-service 1
 else
