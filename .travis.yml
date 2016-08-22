@@ -5,7 +5,7 @@ cache:
 env:
   global:
   - HEIMDALL_VERSION_NUMBER=1.0.0
-  - HEIMDALL_PACKAGE_NAME=heimdall-api-dev-$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.zip
+  - HEIMDALL_PACKAGE_NAME=heimdall-api-prod-$HEIMDALL_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.zip
 install:
 - npm install -g coveralls
 - npm install -g strongloop
@@ -18,24 +18,24 @@ before_deploy:
 deploy:
 - provider: s3
   access_key_id: &1
-    secure: dmK4s8fb+OUUxWTAhCJugZbexLUXNsr9ITi93E46V1+3uzU5eDUKk0SMByWb981H8sBFeFu56yJse84nBAELPR6p8L4T92Q128GPuYrKI2n7jqU6gz7nrvaC41SYojjDzDWsRo4M6R8gU+AwSTns07k3pgz+ItX4Px7hTv5co6/vnknMWsYqzwCi2ZqdM8sgU58syscpwDcpC/ykWHf9hDg0B3qMyTKiaUd+m2dO/m07lOm8ayxxS3Phr/UUQeTuREh/dJ9UCdL+lryzAwpk9pKXmj1FEoBEGbzeJE30zG/HzEEwHv+R8LUFXFdJ6deCP3hyVbyRR3dfQF1snBYmBtakbd+mndzAp0TG9Yzza9W4SvAqJeCPRqHDxmzRFGKrLtdSbAYLxNNpilW6OATnPWcSE5pHguFN15wkH4KN7vNYvLbxZfSar1wl83QkIaH//1is2Njq4nFjNTZBQDt6RKtZLYNu6lypHkVm8fKZM58QU2azzmz4HpmWJxQf65gmuesgZkDKBs5bw5XNOD6XGfI8czy9lA3Uaib+Qm+w3pFj2ZpqLoE86/ZbsJQcR/N+ohc9GJOcH/ZTZ+J/v//ibVjnojuKBn4D4zEV18fJ+nq5LmayGDH01CiYsepnf31zDZFZfdlBh2NhjPxZT1PQ4T7pbfbMiRZZmBEWitC1Fok=
+    secure: wPRgCBkxzIk68nkR7+ZCiHBS9h9QgdvPH+60Q1cyVXZCGULkRVZEudWQGOaHnZT+wfvc7oidxzAzW6mstIxuf2Jr/m/Ap6gA6qDCzpctYJO9FCfsdcUJmwSna/FBpwas4bQ3OQO6K7yP3vdQKRlC/N6R55UYCCvkOr+4mysd3p5uwxNScK5cz3OA493kt5bl4dw9aBUu/IIl7ifWc6cjYgRX+VPIDih0D8i9kgMONjZYvHr3H9pfsWZpRkoRN6IATga3tnyIgnDFvQ7zeePZgrWZgEaBwxev10idFN3njevGMK2Hbak8inNjsfZ5gux3B4+7Ri9hjWKy1PB+hJo0XWBHyOUjel1y2yTjqDASFxXbHUyqx8mBHrMdGJfZWW04e1VlFSFgsjLlj91Do5cVv8gv5RLHZW1JvtXngkr47oWxnrN3Kdfq0S0zzjgUYbx+p0UTwT9T0NXVNasUO1Efhd1j3+AAuY9cu1whX6AMthWYHEns5uPdzdzC3+iVpqkjmV0NPOhYbai/jupgggi6ksRMAwT+fq0FhJd7VrA8V6cGt+h9fkL2zIM1b7noiNjU4I8fBWL2m+0B3k9HeJT/RxqxLxxyZTWbFANZhxJm4M4i8KLLVm0uG5SZYbWo3mk7B/225jVR+XveqKkKZcabDxyr9DNrCZEm5bP852QyLrc=
   secret_access_key: &2
-    secure: vaQYlKnvqISl2Qyu9WV0i4oaDDte8yah/9CJG4wvJK/+dIeErpXezyAPXHwtLF+qrlkMVcFzDL7tCFokXPCWKv9Xf5BlFYbEJYCkr+Qu0lFVlsM1desc3QDIGOgCH2aGGXBEMa3oBt6vp8jCjcXsEJmSu7OmMl/62la4cpveMMx3pL1D7GoO12uuck0tLEJ3sPTlHzv261hAZdVV8JhK3HlzFsdtsEmm485Ju4BM3t5iNzgNL/GPOSBNDpwFgvVzLV4znMVFtcAbQ015zuExRm2CoIjPI4OzBdXWCKHszqRaVdpgirI4j1PywofPK+nJ0t00BJvzY5XFG4gwCxjjy+ZKhdxZM7xirl7d9nmCBeLn6ste1J9SiLW1fHSxAWq3yV7KeL+EPwh3W9Q2cavyyv2aeiwKNAloD3fPgNKc40CVxH2Zi8KUnFxrTEdT/viQUal9zr4xV1U9Ma+nnVvRHw0YhQU+bw/PpfyV4lgehC+ddYyDTItNnJregBZ4Mx5lfr+/cEbADLz5R1PN76YfD7qnGE3faf1j9zGxcMJcZyVTNy6ChH5KF/ILuaWeqNuPNO32/tDdb4Vpu9m5FMdUrshKUObKQscnv6iuigbwG1Dc3hVAEqzTJ6g4L0SKj5jbFKzrszqwDb0AEJTgZ0FgAgrwjQNI5YW7dgYS8wkGrbM=
+    secure: mZ/qFNSfBkiDbLnHhJzxkIKE5GkNHkscNJOuU+bTRLBULas9Gdu3pykkJ+lf6UYeGhnN83BG27FSWyQttPC6MNnXEbmMa5PQf/mRt0GG3VexSQxb1J1vbN2hLiBrwbKerR4PQRnmZ/DNQpROo0p+ApBoUl8Tljo42UfYUCeNe59K6aRMeWzqUJ+hczvqK4ZxzDRgTa6PeWgCMlPuuYBsSvPabD4pi4ZHEXU4tltHOBS5NfEtFWFHRuT8LK0BvRViSdNREfj+B5RC28yq973mIdiMKaTCdNf+eUGYKE2YuhifwOpESui1HwCKgwWgB/VC+LzeV/FsPntrnfWbPrlrbs+lEJomBu+Sz17MS/4eZlG2g3m8MUh+BWz68dyibMKLJ7FVZitFNRArUwNfqflkshiZk4a7ctVy+ND3itfEvySbbxMEMTq3NAnLIcAHwoFkKnCezsxMtwTZzE3P96ve4c5VbH03COAYs1XZ9TtoCsnhfeVyjmxyL7+6mpPEzFTyIsYYrJ7fbdRtvIfMe7DBvgKXVxpmXNQqG5r+HqOfAlwt21Jtikf2LYlwPPPQora3wL7MHbIaBwe9HQ1yQE9Fvt9T7vVcFGew5T+aRosHV9720Q0DlpM3/+tFg8ogKvJEf1SUjkum70J7eDZKhL4qSdNeCBNc88Km+muMrpWvKJI=
   local_dir: dpl_cd_upload
   on: &3
     repo: Project-Heimdall/heimdall-webapp
-    branch: development
-  bucket: dev-heimdall-api-codedeploy
+    branch: master
+  bucket: prod-heimdall-api-codedeploy
   region: us-west-2
   skip_cleanup: true
 - provider: codedeploy
   access_key_id: *1
   secret_access_key: *2
-  bucket: dev-heimdall-api-codedeploy
+  bucket: prod-heimdall-api-codedeploy
   key: $HEIMDALL_PACKAGE_NAME
   bundle_type: zip
-  application: dev-heimdall-api-app
-  deployment_group: dev-heimdall-api-group
+  application: prod-heimdall-api-app
+  deployment_group: prod-heimdall-api-group
   region: us-east-1
   on: *3
   skip_cleanup: true
