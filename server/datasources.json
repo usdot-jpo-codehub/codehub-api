@@ -19,7 +19,7 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://localhost:9200/projects/_search",
+        "url": "http://54.82.43.15:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -59,7 +59,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://localhost:9200/projects/logs/{id}",
+        "url": "http://54.82.43.15:9200/projects/logs/{id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -75,10 +75,9 @@
       }
     },
 
-    {
       "template": {
         "method": "GET",
-        "url": "http://54.174.236.98:5009/recommendation-service/api/v1/document_sim?docid={id}",
+        "url": "http://54.82.43.15:5009/recommendation-service/api/v1/document_sim_dev?docid={id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -97,7 +96,7 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://localhost:9200/projects/_suggest",
+        "url": "http://54.82.43.15:9200/projects/_suggest",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -122,7 +121,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://localhost:9200/projects/logs/{id}",
+        "url": "http://54.82.43.15:9200/projects/logs/{id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json",
@@ -141,7 +140,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://localhost:9200/projects/_search",
+        "url": "http://54.82.43.15:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -157,7 +156,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://localhost:9200/projects/_search",
+        "url": "http://54.82.43.15:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
