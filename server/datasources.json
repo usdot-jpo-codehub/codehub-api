@@ -59,7 +59,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://54.165.103.241:9200/projects/_search?q={id}",
+        "url": "http://54.165.103.241:9200/projects/logs/{id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -74,8 +74,8 @@
         ]
       }
     },
-
     {
+
       "template": {
         "method": "GET",
         "url": "http://54.82.43.15:5009/recommendation-service/api/v1/document_sim_dev?docid={id}",
@@ -90,27 +90,6 @@
       "functions": {
         "findSimilarProjects": [
           "id"
-        ]
-      }
-    },
-
-    {
-      "template": {
-        "method": "GET",
-        "url": "https://api.github.com/repos/{org}/{project_name}/contents/pom.xml?client_id=&client_secret=",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json",
-          "User-Agent":""
-        },
-        "query": {
-           "x": "{x}"
-         }
-      },
-      "functions": {
-        "findProjectDependencies": [
-          "org",
-          "project_name"
         ]
       }
     },
@@ -143,28 +122,19 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://54.165.103.241:9200/{seg}/?q={params}",
+        "url": "http://54.165.103.241:9200/projects/logs/{id}",
         "headers": {
           "accepts": "application/json",
-          "content-type": "application/json"
+          "content-type": "application/json",
+          "User-Agent":""
         },
         "query": {
-           "x": "{params}",
-           "seg":"{seg}"
-         },
-         "body":{
-           "query":{
-             "multi_match" : {
-                  "query":      ["params","seg"],
-                  "fields":     ["project_name","language","project_description"],
-                  "operator":   "or"
-              }
-           }
+           "x": "{x}"
          }
       },
       "functions": {
-        "findTestEs": [
-          "seg","params"
+        "findProjectDependencies": [
+          "id"
         ]
       }
     },
