@@ -19,7 +19,7 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://52.90.231.61:9200/projects/_search",
+        "url": "http://54.165.103.241:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -59,7 +59,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://52.90.231.61:9200/projects/logs/{id}",
+        "url": "http://54.165.103.241:9200/projects/logs/{id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -97,7 +97,7 @@
     {
       "template": {
         "method": "POST",
-        "url": "http://52.90.231.61:9200/projects/_suggest",
+        "url": "http://54.165.103.241:9200/projects/_suggest",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -122,7 +122,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://52.90.231.61:9200/projects/logs/{id}",
+        "url": "http://54.165.103.241:9200/projects/logs/{id}",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json",
@@ -141,7 +141,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://52.90.231.61:9200/projects/_search",
+        "url": "http://54.165.103.241:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
@@ -157,7 +157,7 @@
     {
       "template": {
         "method": "GET",
-        "url": "http://52.90.231.61:9200/projects/_search",
+        "url": "http://54.165.103.241:9200/projects/_search",
         "headers": {
           "accepts": "application/json",
           "content-type": "application/json"
