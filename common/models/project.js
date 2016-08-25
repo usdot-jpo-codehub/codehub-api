@@ -33,12 +33,22 @@ function processTransformation(proj){
 
   function filterDependencies(repo){
       var filtered_content = []
-      for(var filtered of repo['_source']['project_dependency']){
-          filtered_content.push(filtered)
+      if(repo['_source']['project_dependency']){
+          if(repo['_source']['project_dependency'].length > 0){
+            for(var filtered of repo['_source']['project_dependency']){
+                filtered_content.push(filtered)
+            }
+          }
+            filtered_repo = processTransformation(repo)
+            filtered_repo['project_dependency'] = filtered_content
+            return filtered_repo
+
       }
-      filtered_repo = processTransformation(repo)
-      filtered_repo['project_dependency'] = filtered_content
-      return filtered_repo
+      else{
+        return processTransformation(repo)
+      }
+
+
   }
 
     Project.afterRemote('find', function(ctx, project, next) {
