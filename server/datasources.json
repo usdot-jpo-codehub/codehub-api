@@ -106,7 +106,7 @@
          }
       },
       "functions": {
-        "findSuggestion": [
+        "findSuggestions": [
           "params"
         ]
       }
@@ -126,7 +126,7 @@
          }
       },
       "functions": {
-        "findProjectDependencies": [
+        "findComponentDependencies": [
           "id"
         ]
       }
@@ -161,7 +161,7 @@
         }
       },
       "functions": {
-        "searchByPopularity":[]
+        "findPopular":[]
       }
     }
   ]

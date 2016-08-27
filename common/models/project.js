@@ -11,7 +11,7 @@ module.exports = function(Project) {
   });
 
   // TODO:  Move to another API.  Not Project Specific
-  Project.afterRemote('findSuggestion', function(ctx, project, next) {
+  Project.afterRemote('findSuggestions', function(ctx, project, next) {
     ctx.result = ctx.result['term-suggest'][0].options;
     next();
   });
@@ -38,7 +38,7 @@ module.exports = function(Project) {
   });
 
   // TODO:  API needs rework.  Either rethink its home or fix its name/path
-  Project.afterRemote('searchByPopularity', function(ctx, Project, next) {
+  Project.afterRemote('findPopular', function(ctx, Project, next) {
     ctx.result = transform(ctx.result.hits.hits);
     next();
   });
