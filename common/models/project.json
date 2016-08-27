@@ -58,6 +58,9 @@
     },
     "rank": {
       "type": "number"
+    },
+    "project_dependency": {
+      "type": "array"
     }
   },
   "validations": [],

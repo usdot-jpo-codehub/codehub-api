@@ -33,7 +33,7 @@
     "public": false
   },
   "project": {
-    "dataSource": "stage-elastic",
+    "dataSource": "search-service",
     "public": true
   }
 }

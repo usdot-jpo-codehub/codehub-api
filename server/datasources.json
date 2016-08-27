@@ -1,17 +1,10 @@
 {
 "db": {
   "name": "db",
-  "connector": "memory",
-  "file": "projectData.json"
-},
-"stage-db": {
-  "name": "stage-db",
-  "localStorage": "",
-  "file": "projectData.json",
   "connector": "memory"
 },
-"stage-elastic": {
-  "name": "stage-elastic",
+"search-service": {
+  "name": "search-service",
   "connector": "rest",
   "debug": false,
   "crud": true,
@@ -113,7 +106,7 @@
          }
       },
       "functions": {
-        "findSuggestion": [
+        "findSuggestions": [
           "params"
         ]
       }
@@ -133,7 +126,7 @@
          }
       },
       "functions": {
-        "findProjectDependencies": [
+        "findComponentDependencies": [
           "id"
         ]
       }
@@ -168,7 +161,7 @@
         }
       },
       "functions": {
-        "searchByPopularity":[]
+        "findPopular":[]
       }
     }
   ]
