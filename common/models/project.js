@@ -27,7 +27,7 @@ module.exports = function(Project) {
 
   // TODO: Rethink home for Project Dependencies and how they are retrieved.
   Project.afterRemote('findById', function(ctx, project, next) {
-    ctx.result = addCodeDependencies(ctx.result)
+    ctx.result = addComponentDependencies(ctx.result)
     next();
   });
 
@@ -54,18 +54,18 @@ module.exports = function(Project) {
   // Add any project code dependencies a project may have.
   // If there are then simply transform the existing results and
   //
-  function addCodeDependencies(repo){
+  function addComponentDependencies(repo){
     var dependencies = []
-    if(!repo['_source']['project_dependency']) {
+    if(!repo['_source']['componentDependencies']) {
       return mapProject(repo);
     }
 
     //noinspection JSAnnotator
-    for(var dependency of repo['_source']['project_dependency']) {
+    for(var dependency of repo['_source']['componentDependencies']) {
       dependencies.push(dependency)
     }
     var results = mapProject(repo)
-    results['project_dependency'] = dependencies
+    results['componentDependencies'] = dependencies
     return results;
   }
 

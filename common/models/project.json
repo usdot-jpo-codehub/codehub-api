@@ -59,7 +59,7 @@
     "rank": {
       "type": "number"
     },
-    "project_dependency": {
+    "componentDependencies": {
       "type": "array"
     }
   },
