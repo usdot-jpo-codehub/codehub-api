@@ -110,6 +110,8 @@ module.exports = function(Project) {
       "watchers": _source.watchers,
       "releases": _source.releases,
       "rank": _source.rank,
+      "organizationUrl": _source.organization_url,
+      "repositoryUrl": _source.repository_url,
       "id": project._id
     };
   }
