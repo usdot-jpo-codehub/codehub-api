@@ -38,6 +38,13 @@
       "type": "string",
       "required": true
     },
+    "organization_url": {
+      "type": "string",
+      "required": true
+    },
+    "repository_url": {
+      "type": "string"
+    },
     "language": {
       "type": "string"
     },
