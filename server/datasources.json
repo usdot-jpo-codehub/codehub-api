@@ -157,7 +157,7 @@
         },
         "body": {
           "sort" : { "rank" : { "order" : "desc" }},
-          "size":20
+          "size":6
         }
       },
       "functions": {
