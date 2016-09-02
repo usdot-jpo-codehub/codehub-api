@@ -22,7 +22,12 @@
               "bool": {
                 "should": {
                   "match": {
-                    "_all": "{params}"
+                    "_all": {
+                      "query": "{params}",
+                      "fuzziness": "AUTO",
+                      "operator": "or",
+                      "prefix_length": "1"
+                    }
                   }
                 }
               }
