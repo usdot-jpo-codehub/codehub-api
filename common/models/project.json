@@ -34,6 +34,9 @@
     "contributors": {
       "type": "number"
     },
+    "contributors_list": {
+      "type": "array"
+    },
     "organization": {
       "type": "string",
       "required": true

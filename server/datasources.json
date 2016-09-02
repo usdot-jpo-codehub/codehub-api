@@ -1,169 +1,160 @@
 {
-"db": {
-  "name": "db",
-  "connector": "memory"
-},
-"search-service": {
-  "name": "search-service",
-  "connector": "rest",
-  "debug": false,
-  "crud": true,
-  "operations": [
-    {
-      "template": {
-        "method": "POST",
-        "url": "http://54.165.103.241:9200/projects/_search",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json"
-        },
-        "query": {
-           "x": "{params}"
-         },
-        "body": {
-          "query":{
-             "bool" : {
-                 "must" : [ {
-                     "multi_match" : {
-                       "query":      "{params}",
-                       "fields":     ["project_name^3","project_description^2", "content"],
-                       "operator":   "or",
-                       "fuzziness" : "AUTO",
-                       "prefix_length" : "1"
-                     }
-                 } ],
-                 "should" : {
-                     "match_phrase" : {
-                         "_all" : "{params}"
-                     }
-                 }
-             }
-   },
-   "size" : "1000"
-        }
-      },
-      "functions": {
-        "search": [
-          "params"
-        ]
-      }
-    },
-
-    {
-      "template": {
-        "method": "GET",
-        "url": "http://54.165.103.241:9200/projects/logs/{id}",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json"
-        },
-        "query": {
-           "x": "{x}"
-         }
-      },
-      "functions": {
-        "findById": [
-          "id"
-        ]
-      }
-    },
-    {
-
-      "template": {
-        "method": "GET",
-        "url": "http://54.82.43.15:5007/recommendation-service/api/v1/document_sim?docid={id}",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json"
-        },
-        "query": {
-           "x": "{x}"
-         }
-      },
-      "functions": {
-        "findSimilarProjects": [
-          "id"
-        ]
-      }
-    },
-
-    {
-      "template": {
-        "method": "POST",
-        "url": "http://54.165.103.241:9200/projects/_suggest",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json"
-        },
-         "body":{
-             "term-suggest" : {
-                  "text" : "{params}",
-                  "completion" : {
-                      "field" : "suggest",
-                      "size" : 10
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "search-service": {
+    "name": "search-service",
+    "connector": "rest",
+    "debug": false,
+    "crud": true,
+    "operations": [
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://54.165.103.241:9200/projects/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "x": "{params}"
+          },
+          "body": {
+            "query": {
+              "bool": {
+                "should": {
+                  "match": {
+                    "_all": "{params}"
                   }
+                }
               }
-         }
-      },
-      "functions": {
-        "findSuggestions": [
-          "params"
-        ]
-      }
-    },
-
-    {
-      "template": {
-        "method": "GET",
-        "url": "http://54.165.103.241:9200/projects/logs/{id}",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json",
-          "User-Agent":""
+            },
+            "size": "1000"
+          }
         },
-        "query": {
-           "x": "{x}"
-         }
-      },
-      "functions": {
-        "findComponentDependencies": [
-          "id"
-        ]
-      }
-    },
-    {
-      "template": {
-        "method": "GET",
-        "url": "http://54.165.103.241:9200/projects/_search",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json"
-        },
-        "body": {
-          "size":1000
+        "functions": {
+          "search": [
+            "params"
+          ]
         }
       },
-      "functions": {
-        "find": []
-      }
-    },
-    {
-      "template": {
-        "method": "GET",
-        "url": "http://54.165.103.241:9200/projects/_search",
-        "headers": {
-          "accepts": "application/json",
-          "content-type": "application/json"
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://54.165.103.241:9200/projects/logs/{id}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "x": "{x}"
+          }
         },
-        "body": {
-          "sort" : { "rank" : { "order" : "desc" }},
-          "size":6
+        "functions": {
+          "findById": [
+            "id"
+          ]
         }
       },
-      "functions": {
-        "findPopular":[]
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://54.82.43.15:5007/recommendation-service/api/v1/document_sim?docid={id}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "x": "{x}"
+          }
+        },
+        "functions": {
+          "findSimilarProjects": [
+            "id"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "http://54.165.103.241:9200/projects/_suggest",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "body": {
+            "term-suggest": {
+              "text": "{params}",
+              "completion": {
+                "field": "suggest",
+                "size": 10
+              }
+            }
+          }
+        },
+        "functions": {
+          "findSuggestions": [
+            "params"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://54.165.103.241:9200/projects/logs/{id}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "query": {
+            "x": "{x}"
+          }
+        },
+        "functions": {
+          "findComponentDependencies": [
+            "id"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://54.165.103.241:9200/projects/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "body": {
+            "size": 1000
+          }
+        },
+        "functions": {
+          "find": []
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://54.165.103.241:9200/projects/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "body": {
+            "sort": {
+              "rank": {
+                "order": "desc"
+              }
+            },
+            "size": 6
+          }
+        },
+        "functions": {
+          "findPopular": []
+        }
       }
-    }
-  ]
-}
+    ]
+  }
 }
