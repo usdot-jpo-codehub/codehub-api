@@ -17,9 +17,6 @@
             "accepts": "application/json",
             "content-type": "application/json"
           },
-          "query": {
-            "x": "{params}"
-          },
           "body": {
             "query": {
               "bool": {
