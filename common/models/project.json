@@ -37,14 +37,6 @@
     "contributors_list": {
       "type": "array"
     },
-    "organization": {
-      "type": "string",
-      "required": true
-    },
-    "organization_url": {
-      "type": "string",
-      "required": true
-    },
     "repository_url": {
       "type": "string"
     },
@@ -71,6 +63,35 @@
     },
     "componentDependencies": {
       "type": "array"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "object"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "org_type": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string",
+      "required": true
+    },
+    "organization_url": {
+      "type": "string",
+      "required": true
+    },
+    "org_avatar_url": {
+      "type": "string"
     }
   },
   "validations": [],

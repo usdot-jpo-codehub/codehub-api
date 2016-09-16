@@ -93,8 +93,12 @@ module.exports = function(Project) {
     const _source = project._source;
 
     return {
-      "project_name": _source['project_name'],
       "organization": _source.organization,
+      "organizationUrl": _source.organization_url,
+      "organizationType": _source.org_type,
+      "organizationAvatarUrl": _source.org_avatar_url,
+      "origin": _source.origin,
+      "project_name": _source['project_name'],
       "full_name": _source.full_name,
       "project_description": _source.project_description,
       "repository": _source.repository,
@@ -102,6 +106,7 @@ module.exports = function(Project) {
       "commits": _source.commits,
       "email": _source.email,
       "language": _source.language,
+      "languages": _source.languages,
       "content": _source.content,
       "readme_url": _source.readme_url,
       "contributors": _source.contributors,
@@ -110,8 +115,8 @@ module.exports = function(Project) {
       "watchers": _source.watchers,
       "releases": _source.releases,
       "rank": _source.rank,
-      "organizationUrl": _source.organization_url,
       "repositoryUrl": _source.repository_url,
+      "updatedAt": _source.updated_at,
       "id": project._id
     };
   }
