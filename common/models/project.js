@@ -37,6 +37,11 @@ module.exports = function(Project) {
     next();
   });
 
+  Project.afterRemote('findSonarHealthMetrics', function(ctx, project, next) {
+    ctx.result = getSonarHealthMetrics(ctx.result);
+    next();
+  });
+
   // TODO:  API needs rework.  Either rethink its home or fix its name/path
   Project.afterRemote('findPopular', function(ctx, Project, next) {
     ctx.result = transform(ctx.result.hits.hits);
@@ -67,6 +72,14 @@ module.exports = function(Project) {
     var results = mapProject(repo)
     results['componentDependencies'] = dependencies
     return results;
+  }
+
+  function getSonarHealthMetrics(repo){
+    var metrics = []
+    if(repo['_source']['project_health_metrics']) {
+      metrics = repo['_source']['project_health_metrics']
+    }
+    return metrics
   }
 
   //

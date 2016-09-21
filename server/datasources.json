@@ -156,6 +156,25 @@
         "functions": {
           "findPopular": []
         }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://54.165.103.241:9200/projects/logs/{id}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "query": {
+            "x": "{x}"
+          }
+        },
+        "functions": {
+          "findSonarHealthMetrics": [
+            "id"
+          ]
+        }
       }
     ]
   }
