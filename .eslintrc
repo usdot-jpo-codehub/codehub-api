@@ -13,7 +13,9 @@
     // Rules added for webapp
     "no-underscore-dangle": 0, // ElasticSearch convention
     "strict": 0, // Not fully supporting ES6 yet so 'use string' is required
-    "func-names": 0 // ES5 module exports do not have function names
+    "func-names": 0, // ES5 module exports do not have function names
+    "new-cap": 0, // Loopback convention and ES5 limitation
+    "no-console" : 0 // Currently using console to output to terminal
   },
   "env": {
     "browser": true,
