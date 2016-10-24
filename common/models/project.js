@@ -62,11 +62,71 @@ function addComponentDependencies(repo) {
 }
 
 function getSonarHealthMetrics(repo) {
-  let metrics = [];
+  let metrics = {};
   if (repo._source.project_health_metrics) {
     metrics = repo._source.project_health_metrics;
   }
   return metrics;
+}
+
+function computeBugsAndVulnerabilities(metrics){
+  var bugs_vulnerabilities = 0;
+  var metric_string = JSON.stringify(metrics['bugs'])
+  if(metrics['bugs']){
+    var bugs = JSON.parse(JSON.stringify(metrics['bugs']));
+    bugs_vulnerabilities = bugs_vulnerabilities + parseInt(bugs['val']);
+  }
+  if(metrics['vulnerabilities']){
+    var vulnerabilities = JSON.parse(JSON.stringify(metrics['vulnerabilities']));
+    bugs_vulnerabilities = bugs_vulnerabilities + parseInt(vulnerabilities['val']);
+  }
+  return bugs_vulnerabilities
+}
+
+function processLanguageStat(repos){
+  var hits = repos.hits.hits;
+  var lang_summary = [];
+  var language_counts_stat = {"Java":0,"JavaScript":0,"Go":0,"CSS":0,"Python":0,"CoffeeScript":0,"Shell":0,"Ruby":0,
+  "Puppet":0,"HTML":0,"Swift":0,"C":0,"C++":0,"C-Sharp":0,"PHP":0,"XML":0,"Objective-C":0,"Visual Basic 6":0,"VB.NET":0};
+  var language_percentage_stat = {"Java":0,"JavaScript":0,"Go":0,"CSS":0,"Python":0,"CoffeeScript":0,"Shell":0,"Ruby":0,
+  "Puppet":0,"HTML":0,"Swift":0,"C":0,"C++":0,"C-Sharp":0,"PHP":0,"XML":0,"Objective-C":0,"Visual Basic 6":0,"VB.NET":0};
+  var total_count = 0;
+  for(var repo of repos.hits.hits){
+      if(repo._source.language !== null){
+      var lang = repo._source.language;
+      language_counts_stat[lang] = Number(language_counts_stat[lang] + 1);
+      if(!isNaN(total_count)){
+        total_count = total_count + language_counts_stat[lang];
+      }
+
+
+    }
+  }
+  for(var lang in language_percentage_stat){
+    language_percentage_stat[lang] = parseFloat(language_counts_stat[lang])/parseFloat(total_count);
+  }
+    lang_summary.push(language_counts_stat);
+    lang_summary.push(language_percentage_stat);
+    return lang_summary;
+  }
+
+function processEnterpriseInsight(repos) {
+  var repos_summary = {};
+  var bugs_vulnerabilities = 0;
+  var language_counts_stat = {};
+  var language_percentage_stat = language_percentage_stat;
+  var lang_summary = processLanguageStat(repos);
+  for(var repo of repos.hits.hits){
+    let metrics = getSonarHealthMetrics(repo)
+    bugs_vulnerabilities = bugs_vulnerabilities + computeBugsAndVulnerabilities(metrics)
+  }
+  repos_summary = {
+    number_of_projects:repos.hits.total,
+    bugs_vulnerabilities:bugs_vulnerabilities,
+    language_counts_stat:lang_summary[0],
+    language_percentage_stat:lang_summary[1]
+  }
+  return repos_summary;
 }
 
 //
@@ -124,7 +184,14 @@ module.exports = function (Project) {
   });
 
   Project.afterRemote('findSonarHealthMetrics', (ctx, project, next) => {
+    console.log(ctx.result)
+    console.log("+++++++")
     ctx.result = getSonarHealthMetrics(ctx.result);
+    next();
+  });
+
+  Project.afterRemote('findEnterpriseInsight', (ctx, project, next) => {
+    ctx.result = processEnterpriseInsight(ctx.result);
     next();
   });
 
