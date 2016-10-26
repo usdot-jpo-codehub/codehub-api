@@ -175,6 +175,24 @@
             "id"
           ]
         }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://172.31.18.217:9200/projects/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "body": {
+            "size": 1000
+          }
+        },
+        "functions": {
+          "findEnterpriseInsight": [
+          ]
+        }
       }
     ]
   }
