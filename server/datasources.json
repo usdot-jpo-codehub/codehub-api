@@ -160,7 +160,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://54.165.103.241:9200/projects/logs/{id}",
+          "url": "http://172.31.18.217:9200/projects/logs/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -179,7 +179,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://54.165.103.241:9200/projects/_search",
+          "url": "http://172.31.18.217:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
