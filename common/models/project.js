@@ -14,10 +14,10 @@ function mapProject(project) {
   const _source = project._source;
 
   return {
-    organization: _source.organization,
-    organizationUrl: _source.organization_url,
-    organizationType: _source.org_type,
-    organizationAvatarUrl: _source.org_avatar_url,
+    organization: _source.organization.organization,
+    organizationUrl: _source.organization.organization_url,
+    organizationType: _source.organization.org_type,
+    organizationAvatarUrl: _source.organization.org_avatar_url,
     origin: _source.origin,
     project_name: _source.project_name,
     full_name: _source.full_name,
@@ -28,8 +28,8 @@ function mapProject(project) {
     email: _source.email,
     language: _source.language,
     languages: _source.languages,
-    content: _source.content,
-    readme_url: _source.readme_url,
+    content: _source.readMe.content,
+    readme_url: _source.readMe.readme_url,
     contributors: _source.contributors,
     contributors_list: _source.contributors_list,
     stars: _source.stars,
@@ -63,8 +63,8 @@ function addComponentDependencies(repo) {
 
 function getSonarHealthMetrics(repo) {
   let metrics = {};
-  if (repo._source.project_health_metrics) {
-    metrics = repo._source.project_health_metrics;
+  if (repo._source.metrics) {
+    metrics = repo._source.metrics;
   }
   return metrics;
 }
