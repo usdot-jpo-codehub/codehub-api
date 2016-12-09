@@ -20,16 +20,21 @@
           "body": {
             "query": {
               "bool": {
-                "should": {
-                  "match": {
+                "should": [
+                  {"match": {
                     "_all": {
                       "query": "{params}",
                       "fuzziness": "AUTO",
                       "operator": "or",
                       "prefix_length": "1"
+                      }
                     }
-                  }
-                }
+                  },
+                  {"match": { "project_name": { "query": "{params}" } } },
+                  {"match": { "project_description": { "query": "{params}" } } },
+                  {"match": { "content": { "query": "{params}"} } },
+                  {"match": { "language": { "query": "{params}"} } }
+                ]
               }
             },
             "size": "1000"
