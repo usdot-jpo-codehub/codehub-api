@@ -20,16 +20,21 @@
           "body": {
             "query": {
               "bool": {
-                "should": {
-                  "match": {
+                "should": [
+                  {"match": {
                     "_all": {
                       "query": "{params}",
                       "fuzziness": "AUTO",
                       "operator": "or",
                       "prefix_length": "1"
+                      }
                     }
-                  }
-                }
+                  },
+                  {"match": { "project_name": { "query": "{params}" } } },
+                  {"match": { "project_description": { "query": "{params}" } } },
+                  {"match": { "content": { "query": "{params}"} } },
+                  {"match": { "language": { "query": "{params}"} } }
+                ]
               }
             },
             "size": "1000"
@@ -62,7 +67,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://54.82.43.15:5007/recommendation-service/api/v1/document_sim?docid={id}",
+          "url": "http://172.31.25.172/recommendation-service/api/v1/document_sim?docid={id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
