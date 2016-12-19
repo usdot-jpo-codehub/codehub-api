@@ -12,7 +12,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://54.197.179.169:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -44,7 +44,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/logs/{id}",
+          "url": "http://54.197.179.169:9200/projects/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -80,7 +80,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://172.31.18.217:9200/projects/_suggest",
+          "url": "http://54.197.179.169:9200/projects/_suggest",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -104,7 +104,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/logs/{id}",
+          "url": "http://54.197.179.169:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -123,7 +123,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://54.197.179.169:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -139,7 +139,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://54.197.179.169:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -160,7 +160,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/code/project/{id}",
+          "url": "http://54.197.179.169:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -179,7 +179,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://54.197.179.169:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",

@@ -42,6 +42,15 @@ function mapProject(project) {
   };
 }
 
+function mapCode(project) {
+  const _source = project._source;
+
+  return {
+    
+    componentDependencies:_source.componentDependencies
+  };
+}
+
 //
 // Add any project code dependencies a project may have.
 // If there are then simply transform the existing results and
@@ -57,6 +66,21 @@ function addComponentDependencies(repo) {
     dependencies.push(dependency);
   }
   const results = mapProject(repo);
+  results.componentDependencies = dependencies;
+  return results;
+}
+
+function addCodeComponentDependencies(repo) {
+  const dependencies = [];
+  if (!repo._source.componentDependencies) {
+    return mapCode(repo);
+  }
+
+  // noinspection JSAnnotator
+  for (const dependency of repo._source.componentDependencies) {
+    dependencies.push(dependency);
+  }
+  const results = mapCode(repo);
   results.componentDependencies = dependencies;
   return results;
 }
@@ -307,6 +331,13 @@ module.exports = function (Project) {
     ctx.result = addComponentDependencies(ctx.result);
     next();
   });
+
+  // TODO: Rethink home for Project Dependencies and how they are retrieved.
+  Project.afterRemote('findComponentDependencies', (ctx, project, next) => {
+    ctx.result = addCodeComponentDependencies(ctx.result);
+    next();
+  });
+
 
   // TODO: Rethink Search API Home
   Project.afterRemote('search', (ctx, project, next) => {
