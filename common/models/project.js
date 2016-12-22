@@ -14,10 +14,10 @@ function mapProject(project) {
   const _source = project._source;
 
   return {
-    organization: _source.organization,
-    organizationUrl: _source.organization_url,
-    organizationType: _source.org_type,
-    organizationAvatarUrl: _source.org_avatar_url,
+    organization: _source.organization.organization,
+    organizationUrl: _source.organization.organization_url,
+    organizationType: _source.organization.org_type,
+    organizationAvatarUrl: _source.organization.org_avatar_url,
     origin: _source.origin,
     project_name: _source.project_name,
     full_name: _source.full_name,
@@ -28,8 +28,8 @@ function mapProject(project) {
     email: _source.email,
     language: _source.language,
     languages: _source.languages,
-    content: _source.content,
-    readme_url: _source.readme_url,
+    content: _source.readMe.content,
+    readme_url: _source.readMe.readme_url,
     contributors: _source.contributors,
     contributors_list: _source.contributors_list,
     stars: _source.stars,
@@ -39,6 +39,15 @@ function mapProject(project) {
     repositoryUrl: _source.repository_url,
     updatedAt: _source.updated_at,
     id: project._id,
+  };
+}
+
+function mapCode(project) {
+  const _source = project._source;
+
+  return {
+    
+    componentDependencies:_source.componentDependencies
   };
 }
 
@@ -61,10 +70,25 @@ function addComponentDependencies(repo) {
   return results;
 }
 
+function addCodeComponentDependencies(repo) {
+  const dependencies = [];
+  if (!repo._source.componentDependencies) {
+    return mapCode(repo);
+  }
+
+  // noinspection JSAnnotator
+  for (const dependency of repo._source.componentDependencies) {
+    dependencies.push(dependency);
+  }
+  const results = mapCode(repo);
+  results.componentDependencies = dependencies;
+  return results;
+}
+
 function getSonarHealthMetrics(repo) {
   let metrics = {};
-  if (repo._source.project_health_metrics) {
-    metrics = repo._source.project_health_metrics;
+  if (repo._source.metrics) {
+    metrics = repo._source.metrics;
   }
   return metrics;
 }
@@ -307,6 +331,13 @@ module.exports = function (Project) {
     ctx.result = addComponentDependencies(ctx.result);
     next();
   });
+
+  // TODO: Rethink home for Project Dependencies and how they are retrieved.
+  Project.afterRemote('findComponentDependencies', (ctx, project, next) => {
+    ctx.result = addCodeComponentDependencies(ctx.result);
+    next();
+  });
+
 
   // TODO: Rethink Search API Home
   Project.afterRemote('search', (ctx, project, next) => {
