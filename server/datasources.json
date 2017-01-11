@@ -209,10 +209,10 @@
             "User-Agent": ""
           },
           "body": {
-            "doc" : {
-                "forks" : "{forks:json}"
-            },
-            "doc_as_upsert" : true
+            "script": "ctx._source.userForkedRepos.push(userForkedRepos);",
+            "params": {
+              "userForkedRepos": "{userForkedReposData:json}"
+            }
           },
           "query": {
             "x": "{x}"
@@ -221,7 +221,7 @@
         "functions": {
           "addForkedProjects": [
             "id",
-            "forks"
+            "userForkedReposData"
           ]
         }
       }
