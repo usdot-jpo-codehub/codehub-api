@@ -67,7 +67,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://54.145.177.244/recommendation-service/api/v1/document_sim?docid={id}",
+          "url": "http://172.31.25.172/recommendation-service/api/v1/document_sim?docid={id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
