@@ -28,8 +28,8 @@
     "commits": {
       "type": "number"
     },
-    "forks": {
-      "type": "number"
+    "forkedRepos": {
+      "type": "array"
     },
     "contributors": {
       "type": "number"
@@ -92,6 +92,9 @@
     },
     "org_avatar_url": {
       "type": "string"
+    },
+    "userForkedRepos": {
+      "type": "array"
     }
   },
   "validations": [],
@@ -99,3 +102,4 @@
   "acls": [],
   "methods": {}
 }
+
