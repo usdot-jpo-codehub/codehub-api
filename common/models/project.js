@@ -23,7 +23,7 @@ function mapProject(project) {
     full_name: _source.full_name,
     project_description: _source.project_description,
     repository: _source.repository,
-    forks: _source.forks,
+    forkedRepos: _source.forks.forkedRepos,
     commits: _source.commits,
     email: _source.email,
     language: _source.language,
@@ -39,6 +39,7 @@ function mapProject(project) {
     repositoryUrl: _source.repository_url,
     updatedAt: _source.updated_at,
     id: project._id,
+    userForkedRepos: _source.userForkedRepos,
   };
 }
 
@@ -46,7 +47,7 @@ function mapCode(project) {
   const _source = project._source;
 
   return {
-    
+
     componentDependencies:_source.componentDependencies
   };
 }
@@ -376,3 +377,4 @@ module.exports = function (Project) {
   Project.disableRemoteMethod('replaceById', true);
   Project.disableRemoteMethod('invoke', true);
 };
+
