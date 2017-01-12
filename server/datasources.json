@@ -202,17 +202,17 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://75.101.208.156:9200/projects/project/{id}/_update",
+          "url": "http://localhost:9200/projects/project/{id}/_update",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
             "User-Agent": ""
           },
           "body": {
-            "script": "ctx._source.userForkedRepos.push(userForkedRepos);",
-            "params": {
-              "userForkedRepos": "{userForkedReposData:json}"
-            }
+            "script": "ctx._source.userForkedRepos = (ctx._source.userForkedRepos) ? ctx._source.userForkedRepos += userForkedReposData : [userForkedReposData]",
+             "params" : {
+                 "userForkedReposData" : "{userForkedReposData:json}"
+             }
           },
           "query": {
             "x": "{x}"
