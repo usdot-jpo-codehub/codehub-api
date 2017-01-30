@@ -33,7 +33,10 @@
                   {"match": { "project_name": { "query": "{params}" } } },
                   {"match": { "project_description": { "query": "{params}" } } },
                   {"match": { "content": { "query": "{params}"} } },
-                  {"match": { "language": { "query": "{params}"} } }
+                  {"match": { "language": { "query": "{params}"} } },
+                  {"match_phrase": { "project_name": { "query": "{params}" } } },
+                  {"match_phrase": { "project_description": { "query": "{params}" } } },
+                  {"match_phrase": { "content": { "query": "{params}"} } }
                 ]
               }
             },
