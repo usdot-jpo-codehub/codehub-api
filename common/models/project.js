@@ -301,8 +301,6 @@ function transform(projects) {
   }
   return transformedProjects;
 }
-
-//
 // Project API
 // READ ONLY
 //
@@ -314,7 +312,27 @@ module.exports = function (Project) {
 
   // TODO:  Move to another API.  Not Project Specific
   Project.afterRemote('findSuggestions', (ctx, project, next) => {
-    ctx.result = ctx.result['term-suggest'][0].options;
+    let suggest_list = ctx.result['term-suggest'][0].options
+    let sub_term = {}
+    let filtered_result = []
+    let sources_buff = []
+    suggest_list.forEach(function(elem){
+    let text_term = elem['text'].split("#")[0]
+    let aggregates = []
+    for(var source_term of suggest_list){
+      let text_arr_term = source_term['text'].split("#")[0]
+      if(text_term == text_arr_term){
+        aggregates.push(source_term['text'].split("#")[1])
+        sub_term[text_term] = aggregates
+        }
+      }
+      var temp = {text:text_term, source:aggregates}
+      if(sources_buff.indexOf(text_term) < 0){
+        filtered_result.push(temp)
+      }
+        sources_buff.push(text_term)
+    });
+    ctx.result = filtered_result
     next();
   });
 
@@ -377,4 +395,3 @@ module.exports = function (Project) {
   Project.disableRemoteMethod('replaceById', true);
   Project.disableRemoteMethod('invoke', true);
 };
-
