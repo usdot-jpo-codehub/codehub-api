@@ -32,7 +32,7 @@
                   },
                   {"match": { "project_name": { "query": "{params}" } } },
                   {"match": { "project_description": { "query": "{params}" } } },
-                  {"match": { "content": { "query": "{params}"} } },
+                  {"match": { "readMe.content": { "query": "{params}"} } },
                   {"match": { "language": { "query": "{params}"} } }
                 ]
               }
