@@ -41,7 +41,7 @@
              "fields" : {
                  "readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
                  "project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
-                 "project_name": {"fragment_size" : 1000, "number_of_fragments" : 5}
+                 "project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
              }
            },
             "size": "1000"
