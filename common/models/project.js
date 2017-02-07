@@ -40,6 +40,7 @@ function mapProject(project) {
     updatedAt: _source.updated_at,
     id: project._id,
     userForkedRepos: _source.userForkedRepos,
+    highlight: project.highlight
   };
 }
 
