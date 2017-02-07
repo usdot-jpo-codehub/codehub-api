@@ -27,23 +27,29 @@
                       "fuzziness": "AUTO",
                       "operator": "or",
                       "prefix_length": "1"
-                      }
                     }
+                  }
                   },
                   {"match": { "project_name": { "query": "{params}" } } },
                   {"match": { "project_description": { "query": "{params}" } } },
                   {"match": { "readMe.content": { "query": "{params}"} } },
-                  {"match": { "language": { "query": "{params}"} } }
+                  {"match": { "language": { "query": "{params}"} } },
+                  {"match_phrase": { "project_name": { "query": "{params}" } } },
+                  {"match_phrase": { "project_description": { "query": "{params}" } } },
+                  {"match_phrase": { "readMe.content": { "query": "{params}"} } },
+                  {"match": { "project_name.substring": { "query": "{params}", "boost": 0.3 } } }
                 ]
               }
             },
             "highlight" : {
-             "fields" : {
-                 "readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
-                 "project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
-                 "project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
-             }
-           },
+              "pre_tags": ["<em class=\"search-highlight\">"],
+              "post_tags": ["</em>"],
+              "fields" : {
+                "readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
+                "project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
+                "project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
+              }
+            },
             "size": "1000"
           }
         },
@@ -217,9 +223,9 @@
           },
           "body": {
             "script": "ctx._source.userForkedRepos = (ctx._source.userForkedRepos) ? ctx._source.userForkedRepos += userForkedReposData : [userForkedReposData]",
-             "params" : {
-                 "userForkedReposData" : "{userForkedReposData:json}"
-             }
+            "params" : {
+              "userForkedReposData" : "{userForkedReposData:json}"
+            }
           },
           "query": {
             "x": "{x}"
