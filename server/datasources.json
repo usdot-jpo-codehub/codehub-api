@@ -222,9 +222,9 @@
             "User-Agent": ""
           },
           "body": {
-            "script": "ctx._source.userForkedRepos = (ctx._source.userForkedRepos) ? ctx._source.userForkedRepos += userForkedReposData : [userForkedReposData]",
-            "params" : {
-              "userForkedReposData" : "{userForkedReposData:json}"
+            "script_file": "forked_custom_update",
+            "params": {
+                "userForkedReposData" : "{userForkedReposData:json}"
             }
           },
           "query": {
