@@ -197,7 +197,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://172.31.18.217:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
