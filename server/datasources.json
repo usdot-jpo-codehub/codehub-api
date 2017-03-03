@@ -24,13 +24,12 @@
                   {"match": {
                     "_all": {
                       "query": "{params}",
-                      "fuzziness": "AUTO",
                       "operator": "or",
                       "prefix_length": "1"
                     }
                   }
                   },
-                  {"match": { "project_name": { "query": "{params}" } } },
+                  {"match": { "project_name": { "query": "{params}", "fuzziness": "2"} } },
                   {"match": { "project_description": { "query": "{params}" } } },
                   {"match": { "readMe.content": { "query": "{params}"} } },
                   {"match": { "language": { "query": "{params}"} } },
