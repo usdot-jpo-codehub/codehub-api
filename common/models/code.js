@@ -59,8 +59,8 @@ function computeBugsAndVulnerabilities(metrics){
 function processTechnicalDebt(repos){
   var technical_debt = 0;
   for (var repo of repos.hits.hits){
-    if(repo._source.project_health_metrics){
-      var metric = repo._source.project_health_metrics;
+    if(repo._source.metrics){
+      var metric = repo._source.metrics;
       if(metric.sqale_index){
         technical_debt = technical_debt + parseInt(metric.sqale_index.val);
       }
@@ -72,11 +72,11 @@ function processTechnicalDebt(repos){
 function processMetricsAggregation(repos){
   var metrics_summary = {"releasibility":{"OK":0,"WARN":0,"ERROR":0},"reliability":{"A":0,"B":0,"C":0,"D":0,"E":0},"security":{"A":0,"B":0,"C":0,"D":0,"E":0},"maintainability":{"A":0,"B":0,"C":0,"D":0,"E":0}};
   for (var repo of repos.hits.hits){
-    if(repo._source.project_health_metrics){
-      var metric = repo._source.project_health_metrics;
+    if(repo._source.metrics){
+      var metric = repo._source.metrics;
       if(metric.security_rating){
         var metric_value  = metric.security_rating.val;
-        switch (metric_value) {
+        switch (parseInt(metric_value)) {
             case 1:
                 metrics_summary.security["A"] = parseInt(metrics_summary.security["A"]) + 1;
                 break;
@@ -93,10 +93,11 @@ function processMetricsAggregation(repos){
                 metrics_summary.security["E"] = parseInt(metrics_summary.security["E"]) + 1;
                 break;
         }
+
       }
       if(metric.reliability_rating){
         var metric_value  = metric.reliability_rating.val;
-        switch (metric_value) {
+        switch (parseInt(metric_value)) {
             case 1:
                 metrics_summary.reliability["A"] = parseInt(metrics_summary.reliability["A"]) + 1;
                 break;
@@ -116,7 +117,7 @@ function processMetricsAggregation(repos){
       }
       if(metric.sqale_rating){
         var metric_value  = metric.sqale_rating.val;
-        switch (metric_value) {
+        switch (parseInt(metric_value)) {
             case 1:
                 metrics_summary.maintainability["A"] = parseInt(metrics_summary.maintainability["A"]) + 1;
                 break;
@@ -137,7 +138,7 @@ function processMetricsAggregation(repos){
 
       if(metric.sqale_rating){
         var metric_value  = metric.sqale_rating.val;
-        switch (metric_value) {
+        switch (parseInt(metric_value)) {
             case 1:
                 metrics_summary.maintainability["A"] = parseInt(metrics_summary.maintainability["A"]) + 1;
                 break;
@@ -158,7 +159,8 @@ function processMetricsAggregation(repos){
 
       if(metric.qualitygates){
         var metric_value  = metric.qualitygates.projectStatus.status;
-        switch (metric_value) {
+        console.log(metric.qualitygates)
+        switch (parseInt(metric_value)) {
             case "OK":
                 metrics_summary.releasibility["OK"] = parseInt(metrics_summary.releasibility["OK"]) + 1;
                 break;
@@ -173,7 +175,7 @@ function processMetricsAggregation(repos){
 
     }
   }
-      return metrics_summary
+    return metrics_summary
 }
 
 
