@@ -35,5 +35,9 @@
   "project": {
     "dataSource": "search-service",
     "public": true
+  },
+  "code": {
+    "dataSource": "code-service",
+    "public": true
   }
 }

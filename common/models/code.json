@@ -22,8 +22,8 @@
     "origin": {
       "type": "string"
     },
-    "language": {
-      "type": "string"
+    "languages": {
+      "type": "object"
     },
     "organization": {
       "type": "string",

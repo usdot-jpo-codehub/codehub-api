@@ -24,12 +24,13 @@
                   {"match": {
                     "_all": {
                       "query": "{params}",
+                      "fuzziness": "AUTO",
                       "operator": "or",
                       "prefix_length": "1"
                     }
                   }
                   },
-                  {"match": { "project_name": { "query": "{params}", "fuzziness": "2"} } },
+                  {"match": { "project_name": { "query": "{params}" } } },
                   {"match": { "project_description": { "query": "{params}" } } },
                   {"match": { "readMe.content": { "query": "{params}"} } },
                   {"match": { "language": { "query": "{params}"} } },
@@ -234,6 +235,32 @@
           "addForkedProjects": [
             "id",
             "userForkedReposData"
+          ]
+        }
+      }
+    ]
+  },
+  "code-service": {
+    "name": "code-service",
+    "connector": "rest",
+    "debug": false,
+    "crud": true,
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://172.31.18.217:9200/code/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "body": {
+            "size": 1000
+          }
+        },
+        "functions": {
+          "findEnterpriseInsight": [
           ]
         }
       }
