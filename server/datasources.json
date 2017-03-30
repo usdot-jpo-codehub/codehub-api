@@ -23,7 +23,7 @@
                 "should": [
                   {"match": {
                     "_all": {
-                      "query": "{params}",                      
+                      "query": "{params}",
                       "operator": "or",
                       "prefix_length": "1"
                     }
@@ -260,6 +260,24 @@
         },
         "functions": {
           "findEnterpriseInsight": [
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://10.194.7.203:9000/api/resources",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "body": {
+            "size": 1000
+          }
+        },
+        "functions": {
+          "getLastProcessedDateTime": [
           ]
         }
       }

@@ -227,8 +227,7 @@ function processEnterpriseInsight(repos) {
     technical_debt:technical_debt,
     language_counts_stat:lang_summary[0],
     language_percentage_stat:lang_summary[1],
-    metrics_summary:metrics_summary
-
+    metrics_summary:metrics_summary,
   }
 
   return repos_summary;
@@ -245,9 +244,20 @@ module.exports = function (Code) {
     next();
   });
 
-
 Code.afterRemote('findEnterpriseInsight', (ctx, code, next) => {
   ctx.result = processEnterpriseInsight(ctx.result);
+  next();
+  });
+
+Code.afterRemote('getLastProcessedDateTime', (ctx, code, next) => {
+  var sonarDateTimeList = [];
+  for(var repo of ctx.result){
+    sonarDateTimeList.push(new Date(repo.date));
+  }
+  sonarDateTimeList.sort ( (a, b) => {
+      return b - a;
+  });
+  ctx.result = sonarDateTimeList[0].toLocaleString();
   next();
 });
   // ================================
