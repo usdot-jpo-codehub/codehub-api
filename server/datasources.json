@@ -12,7 +12,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://10.194.7.208:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -24,13 +24,12 @@
                   {"match": {
                     "_all": {
                       "query": "{params}",
-                      "fuzziness": "AUTO",
                       "operator": "or",
                       "prefix_length": "1"
                     }
                   }
                   },
-                  {"match": { "project_name": { "query": "{params}" } } },
+                  {"match": { "project_name": { "query": "{params}", "fuzziness": "2" } } },
                   {"match": { "project_description": { "query": "{params}" } } },
                   {"match": { "readMe.content": { "query": "{params}"} } },
                   {"match": { "language": { "query": "{params}"} } },
@@ -62,7 +61,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/project/{id}",
+          "url": "http://10.194.7.208:9200/projects/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -80,7 +79,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.25.172/recommendation-service/api/v1/document_sim?docid={id}",
+          "url": "http://10.194.7.210/recommendation-service/api/v1/document_sim?docid={id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -98,7 +97,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://172.31.18.217:9200/projects/_suggest",
+          "url": "http://10.194.7.208:9200/projects/_suggest",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -122,7 +121,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/code/project/{id}",
+          "url": "http://10.194.7.208:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -141,7 +140,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://10.194.7.208:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -157,7 +156,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/projects/_search",
+          "url": "http://10.194.7.208:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -178,7 +177,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/code/project/{id}",
+          "url": "http://10.194.7.208:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -197,7 +196,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/code/_search",
+          "url": "http://10.194.7.208:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -215,7 +214,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://172.31.18.217:9200/projects/project/{id}/_update",
+          "url": "http://10.194.7.208:9200/projects/project/{id}/_update",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -249,7 +248,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://172.31.18.217:9200/code/_search",
+          "url": "http://10.194.7.208:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -261,6 +260,24 @@
         },
         "functions": {
           "findEnterpriseInsight": [
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://10.194.7.203:9000/api/resources",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "body": {
+            "size": 1000
+          }
+        },
+        "functions": {
+          "getLastProcessedDateTime": [
           ]
         }
       }
