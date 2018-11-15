@@ -12,7 +12,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://10.194.7.208:9200/projects/_search",
+          "url": "http://localhost:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -61,7 +61,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.208:9200/projects/project/{id}",
+          "url": "http://localhost:9200/projects/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -79,7 +79,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.210/recommendation-service/api/v1/document_sim?docid={id}",
+          "url": "http://localhost:8082/recommendation-service/api/v1/document_sim?docid={id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -97,7 +97,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://10.194.7.208:9200/projects/_suggest",
+          "url": "http://localhost:9200/projects/_suggest",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -121,7 +121,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.208:9200/code/project/{id}",
+          "url": "http://localhost:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -140,7 +140,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.208:9200/projects/_search",
+          "url": "http://localhost:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -156,7 +156,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.208:9200/projects/_search",
+          "url": "http://localhost:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -177,7 +177,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.208:9200/code/project/{id}",
+          "url": "http://localhost:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -196,7 +196,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.208:9200/code/_search",
+          "url": "http://localhost:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -214,7 +214,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://10.194.7.208:9200/projects/project/{id}/_update",
+          "url": "http://localhost:9200/projects/project/{id}/_update",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -248,7 +248,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.208:9200/code/_search",
+          "url": "http://localhost:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -266,7 +266,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.194.7.203:9000/api/resources",
+          "url": "http://localhost:9000/api/resources",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
