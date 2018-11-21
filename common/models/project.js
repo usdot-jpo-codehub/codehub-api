@@ -14,22 +14,22 @@ function mapProject(project) {
   const _source = project._source;
 
   return {
-    organization: _source.organization.organization,
-    organizationUrl: _source.organization.organization_url,
-    organizationType: _source.organization.org_type,
-    organizationAvatarUrl: _source.organization.org_avatar_url,
+    organization: _source.organization ? _source.organization.organization : null,
+    organizationUrl: _source.organization ? _source.organization.organization_url : null,
+    organizationType: _source.organization ? _source.organization.org_type : null,
+    organizationAvatarUrl: _source.organization ? _source.organization.org_avatar_url : null,
     origin: _source.origin,
     project_name: _source.project_name,
     full_name: _source.full_name,
     project_description: _source.project_description,
     repository: _source.repository,
-    forkedRepos: _source.forks.forkedRepos,
+    forkedRepos: _source.forks ? _source.forks.forkedRepos : null,
     commits: _source.commits,
     email: _source.email,
     language: _source.language,
     languages: _source.languages,
-    content: _source.readMe.content,
-    readme_url: _source.readMe.readme_url,
+    content: _source.readMe ? _source.readMe.content : null,
+    readme_url: _source.readMe ? _source.readMe.readme_url : null,
     contributors: _source.contributors,
     contributors_list: _source.contributors_list,
     stars: _source.stars,
@@ -48,8 +48,7 @@ function mapCode(project) {
   const _source = project._source;
 
   return {
-
-    componentDependencies:_source.componentDependencies
+    componentDependencies: _source.componentDependencies
   };
 }
 
@@ -123,27 +122,27 @@ module.exports = function (Project) {
 
   // TODO:  Move to another API.  Not Project Specific
   Project.afterRemote('findSuggestions', (ctx, project, next) => {
-    let suggest_list = ctx.result['term-suggest'][0].options
-    let sub_term = {}
-    let filtered_result = []
-    let sources_buff = []
-    suggest_list.forEach(function(elem){
-    let text_term = elem['text'].split("#")[0]
-    let aggregates = []
-    for(var source_term of suggest_list){
-      let text_arr_term = source_term['text'].split("#")[0]
-      if(text_term == text_arr_term){
-        aggregates.push(source_term['text'].split("#")[1])
-        sub_term[text_term] = aggregates
+    const suggest_list = ctx.result['term-suggest'][0].options;
+    const sub_term = {};
+    const filtered_result = [];
+    const sources_buff = [];
+    suggest_list.forEach(elem => {
+      const text_term = elem.text.split('#')[0];
+      const aggregates = [];
+      for (const source_term of suggest_list) {
+        const text_arr_term = source_term.text.split('#')[0];
+        if (text_term === text_arr_term) {
+          aggregates.push(source_term.text.split('#')[1]);
+          sub_term[text_term] = aggregates;
         }
       }
-      var temp = {text:text_term, source:aggregates}
-      if(sources_buff.indexOf(text_term) < 0){
-        filtered_result.push(temp)
+      const temp = { text: text_term, source: aggregates };
+      if (sources_buff.indexOf(text_term) < 0) {
+        filtered_result.push(temp);
       }
-        sources_buff.push(text_term)
+      sources_buff.push(text_term);
     });
-    ctx.result = filtered_result
+    ctx.result = filtered_result;
     next();
   });
 
