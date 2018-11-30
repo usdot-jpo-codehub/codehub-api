@@ -266,6 +266,23 @@
       {
         "template": {
           "method": "GET",
+          "url": "http://localhost:9200/code/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "body": {
+            "size": 1000
+          }
+        },
+        "functions": {
+          "find": []
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
           "url": "http://localhost:9000/api/resources",
           "headers": {
             "accepts": "application/json",
@@ -280,7 +297,29 @@
           "getLastProcessedDateTime": [
           ]
         }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:9200/code/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "body": {
+            "sort": [
+                {"metrics.reliability_rating.data" : {"order":"asc"}},
+                {"metrics.security_rating.data" : {"order":"asc"}},
+                {"metrics.sqale_rating.data" : {"order":"asc"}}
+              ],
+            "size" : 6
+          }
+        },
+        "functions": {
+          "findHealthiest": []
+        }
       }
+
     ]
   }
 }
