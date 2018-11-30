@@ -2,20 +2,20 @@
   "parser": "babel-eslint",
   "rules": {
     "no-alert": 0,
-    "import/prefer-default-export" : 0, // Breaks with Aurelia
-    "import/no-unresolved" : 0, // JSPM packages arent detected yet
-    "import/no-extraneous-dependencies" : 0, // JSPM packages arent detected yet
-    "max-len" : 0, // Aurelia route formats tend to be very long
-    "no-param-reassign" : 0, // Aurelia convention
-    "no-unused-vars" : 0, // Importing jQuery libraries show as unused
-    "no-restricted-syntax": 0, // Currently don't have a better way to iterate through objects so we are using for...in
-
-    // Rules added for webapp
-    "no-underscore-dangle": 0, // ElasticSearch convention
-    "strict": 0, // Not fully supporting ES6 yet so 'use string' is required
-    "func-names": 0, // ES5 module exports do not have function names
-    "new-cap": 0, // Loopback convention and ES5 limitation
-    "no-console" : 0 // Currently using console to output to terminal
+    "import/prefer-default-export" : 0,
+    "import/no-unresolved" : 0,
+    "import/no-extraneous-dependencies" : 0,
+    "max-len" : 0,
+    "no-param-reassign" : 0,
+    "no-unused-vars" : 0,
+    "no-restricted-syntax": 0,
+    "no-underscore-dangle": 0,
+    "strict": 0,
+    "func-names": 0,
+    "new-cap": 0,
+    "no-console" : 0,
+    "comma-dangle" : 0,
+    "camelcase" : 0
   },
   "env": {
     "browser": true,

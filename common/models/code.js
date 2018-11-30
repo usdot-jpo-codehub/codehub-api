@@ -244,6 +244,11 @@ module.exports = function (Code) {
     next();
   });
 
+  Code.afterRemote('findHealthiest', (ctx, code, next) => {
+    ctx.result = transform(ctx.result.hits.hits);
+    next();
+  });
+
 Code.afterRemote('findEnterpriseInsight', (ctx, code, next) => {
   ctx.result = processEnterpriseInsight(ctx.result);
   next();
