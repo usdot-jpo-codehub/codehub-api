@@ -217,11 +217,14 @@ function processEnterpriseInsight(repos) {
   var lang_summary = processLanguageStat(repos);
   var metrics_summary = processMetricsAggregation(repos);
   var technical_debt = processTechnicalDebt(repos);
+  let organizationDic = {};
   for(var repo of repos.hits.hits){
     let metrics = getSonarHealthMetrics(repo)
     bugs_vulnerabilities = bugs_vulnerabilities + computeBugsAndVulnerabilities(metrics)
+    organizationDic[repo._source.organization.organization] = organizationDic[repo._source.organization.organization] ? organizationDic[repo._source.organization.organization] + 1 : 1;
   }
   repos_summary = {
+    number_of_organizations: Object.keys(organizationDic).length,
     number_of_projects:repos.hits.total,
     bugs_vulnerabilities:bugs_vulnerabilities,
     technical_debt:technical_debt,
