@@ -115,26 +115,6 @@ function processMetricsAggregation(repos){
                 break;
         }
       }
-      if(metric.sqale_rating){
-        var metric_value  = metric.sqale_rating.val;
-        switch (parseInt(metric_value)) {
-            case 1:
-                metrics_summary.maintainability["A"] = parseInt(metrics_summary.maintainability["A"]) + 1;
-                break;
-            case 2:
-                metrics_summary.maintainability["B"] = parseInt(metrics_summary.maintainability["B"]) + 1;
-                break;
-            case 3:
-                metrics_summary.maintainability["C"] = parseInt(metrics_summary.maintainability["C"]) + 1;
-                break;
-            case 4:
-                metrics_summary.maintainability["D"] = parseInt(metrics_summary.maintainability["D"]) + 1;
-                break;
-            case 5:
-                metrics_summary.maintainability["E"] = parseInt(metrics_summary.maintainability["E"]) + 1;
-                break;
-        }
-      }
 
       if(metric.sqale_rating){
         var metric_value  = metric.sqale_rating.val;
