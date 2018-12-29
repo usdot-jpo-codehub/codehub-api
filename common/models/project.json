@@ -56,7 +56,7 @@
       "type": "number"
     },
     "releases": {
-      "type": "number"
+      "type": "array"
     },
     "rank": {
       "type": "number"
