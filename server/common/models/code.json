@@ -1,0 +1,37 @@
+{
+  "name": "code",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "project_name": {
+      "type": "string",
+      "required": true
+    },
+    "metrics": {
+      "type": "array"
+    },
+    "language": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "object"
+    },
+    "organization": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
