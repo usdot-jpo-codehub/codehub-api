@@ -20,7 +20,6 @@ node {
               script {
                 sh 'npm install'
                 sh 'node node_modules/.bin/mocha'
-
                 sh 'echo Unit Testing is Complete!!'
             }
           }
@@ -33,7 +32,6 @@ node {
         script {
             def scannerHome = tool 'SonarQube Scanner 2.8';
             withSonarQubeEnv('SonarQube') {
-                    sh 'ls "${scannerHome}"/bin/'
                     sh 'cat /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner_2.8/conf/sonar-scanner.properties'
                     sh "${scannerHome}/bin/sonar-scanner -X  -Dsonar.projectName=codehub-api -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-api -Dsonar.sources=common,ops,server,test"
                 }
@@ -46,18 +44,16 @@ node {
           }
       }
 
-      stage('Integration Test1') {
+      stage('Integration Test') {
+      dir ('App'){
           script {
 
-              sh 'echo Integration Test 1 is complete'
+              sh 'docker-compose up -d'
+              sh 'docker-compose logs --tail="all"'
+              sh 'docker-compose down'
+              sh 'echo Integration Test is complete'
           }
       }
-
-      stage('Integration Test2') {
-          script {
-
-              sh 'echo Integration Test 2 is complete'
-          }
       }
 
       stage('Build Codehub-UI Base Image') {
