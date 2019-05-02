@@ -44,7 +44,7 @@ node {
           }
       }
 
-      stage('Integration Test') {
+    stage('Integration Test') {
       dir ('App'){
           script {
 
@@ -54,7 +54,7 @@ node {
               sh 'echo Integration Test is complete'
           }
       }
-      }
+    }
 
       stage('Build Codehub-UI Base Image') {
       dir ('App'){
