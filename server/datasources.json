@@ -12,7 +12,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://10.0.21.212:9200/projects/_search",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -61,7 +61,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/projects/project/{id}",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/projects/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -97,7 +97,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://10.0.21.212:9200/projects/_suggest",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/projects/_suggest",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -121,7 +121,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/code/project/{id}",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -140,7 +140,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/projects/_search",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -156,7 +156,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/projects/_search",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -177,7 +177,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/code/project/{id}",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/code/project/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -196,7 +196,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/code/_search",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -214,7 +214,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://10.0.21.212:9200/projects/project/{id}/_update",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/projects/project/{id}/_update",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -248,7 +248,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/code/_search",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -266,7 +266,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/code/_search",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -301,7 +301,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.21.212:9200/code/_search",
+          "url": "http://internal-dev-codehub-search-118857287.us-east-1.elb.amazonaws.com:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -323,4 +323,3 @@
     ]
   }
 }
-

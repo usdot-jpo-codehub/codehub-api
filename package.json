@@ -14,12 +14,14 @@
     "cors": "^2.5.2",
     "helmet": "^3.14.0",
     "loopback": "^2.22.0",
+    "loopback-api-testing": "^0.3.3",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.3.1",
     "loopback-connector-rest": "^2.0.0",
     "loopback-datasource-juggler": "^2.39.0",
+    "pm2": "^3.5.0",
     "serve-favicon": "^2.0.1",
-    "swagger-ui": "^3.20.0",
+    "swagger-ui": "^3.22.1",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {

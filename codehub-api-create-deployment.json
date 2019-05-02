@@ -1,0 +1,12 @@
+{
+    "applicationName": "codehub-api",
+    "deploymentGroupName": "codehub-api-dg",
+    "revision": {
+        "revisionType": "S3",
+        "s3Location": {
+            "bucket": "codehub-dev-api",
+            "key": "appspec.yaml",
+            "bundleType": "YAML"
+        }
+    }
+}
