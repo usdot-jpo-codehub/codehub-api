@@ -38,11 +38,6 @@ node {
             }
         }
       }
-      stage('508 Complaince') {
-          script {
-              sh 'echo 508 Complaince is complete'
-          }
-      }
 
     stage('Integration Test') {
       dir ('App'){
@@ -56,7 +51,7 @@ node {
       }
     }
 
-      stage('Build Codehub-UI Base Image') {
+      stage('Build Codehub-UI Image') {
       dir ('App'){
           script {
             withAWS(region:'us-east-1') {
