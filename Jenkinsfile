@@ -32,7 +32,6 @@ node {
         script {
             def scannerHome = tool 'SonarQube Scanner 2.8';
             withSonarQubeEnv('SonarQube') {
-                    sh 'cat /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner_2.8/conf/sonar-scanner.properties'
                     sh "${scannerHome}/bin/sonar-scanner -X  -Dsonar.projectName=codehub-api -Dsonar.projectVersion=1.0.0 -Dsonar.projectKey=codehub-api -Dsonar.sources=common,ops,server,test"
                 }
             }
@@ -42,7 +41,6 @@ node {
     stage('Integration Test') {
       dir ('App'){
           script {
-
               sh 'docker-compose up -d'
               sh 'docker-compose logs --tail="all"'
               sh 'docker-compose down'
