@@ -87,7 +87,7 @@ node {
             sh './process_deployment.sh'
           }
         }
-}
+        }
 }
 
 }
