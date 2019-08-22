@@ -79,7 +79,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://10.0.51.10:8082/recommendation-service/api/v1/document_sim?docid={id}",
+          "url": "http://internal-dev-codehub-kindred-600665146.us-east-1.elb.amazonaws.com:8082/recommendation-service/api/v1/document_sim?docid={id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
