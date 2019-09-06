@@ -12,7 +12,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/projects/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -61,7 +61,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/projects/_doc/{id}",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -97,7 +97,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/projects/_suggest",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_suggest",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -121,7 +121,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/code/_doc/{id}",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -140,7 +140,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/projects/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -156,7 +156,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/projects/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -182,7 +182,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/code/_doc/{id}",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -201,7 +201,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/code/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -219,7 +219,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/projects/_doc/{id}/_update",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_doc/{id}/_update",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -245,7 +245,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/projects/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -269,7 +269,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/code/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -287,7 +287,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/code/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -322,7 +322,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com:80/code/_search",
+          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
