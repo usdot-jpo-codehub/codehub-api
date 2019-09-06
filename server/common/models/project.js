@@ -11,8 +11,7 @@
 // Map all json search properties to the Project Model properties
 //
 function mapProject(project) {
-  const _source = project._source;
-
+  const _source = project._source.doc;
   return {
     organization: _source.organization ? _source.organization.organization : null,
     organizationUrl: _source.organization ? _source.organization.organization_url : null,
@@ -40,12 +39,13 @@ function mapProject(project) {
     updatedAt: _source.updated_at,
     id: project._id,
     userForkedRepos: _source.userForkedRepos,
-    highlight: project.highlight
+    highlight: project.highlight,
+    vscan: _source.vscan ? _source.vscan : null
   };
 }
 
 function mapCode(project) {
-  const _source = project._source;
+  const _source = project._source.doc;
 
   return {
     componentDependencies: _source.componentDependencies
@@ -58,12 +58,12 @@ function mapCode(project) {
 //
 function addComponentDependencies(repo) {
   const dependencies = [];
-  if (!repo._source.componentDependencies) {
+  if (!repo._source.doc.componentDependencies) {
     return mapProject(repo);
   }
 
   // noinspection JSAnnotator
-  for (const dependency of repo._source.componentDependencies) {
+  for (const dependency of repo._source.doc.componentDependencies) {
     dependencies.push(dependency);
   }
   const results = mapProject(repo);
@@ -73,12 +73,12 @@ function addComponentDependencies(repo) {
 
 function addCodeComponentDependencies(repo) {
   const dependencies = [];
-  if (!repo._source.componentDependencies) {
+  if (!repo._source.doc.componentDependencies) {
     return mapCode(repo);
   }
 
   // noinspection JSAnnotator
-  for (const dependency of repo._source.componentDependencies) {
+  for (const dependency of repo._source.doc.componentDependencies) {
     dependencies.push(dependency);
   }
   const results = mapCode(repo);
@@ -88,8 +88,8 @@ function addCodeComponentDependencies(repo) {
 
 function getSonarHealthMetrics(repo) {
   let metrics = {};
-  if (repo._source.metrics) {
-    metrics = repo._source.metrics;
+  if (repo._source.doc.metrics) {
+    metrics = repo._source.doc.metrics;
   }
   return metrics;
 }
@@ -107,7 +107,11 @@ function transform(projects) {
   // This ECMAScript 6 feature is supported but not all ES6 features are.
   // noinspection JSAnnotator
   for (const p of projects) {
-    transformedProjects.push(mapProject(p));
+    if(!p._source || !p._source.doc)
+      continue;
+
+    let t = mapProject(p);
+    transformedProjects.push(t);
   }
   return transformedProjects;
 }
@@ -186,18 +190,23 @@ module.exports = function (Project) {
     next();
   });
 
+  Project.afterRemote('getAll', (ctx, project, next) => {
+    ctx.result = transform(ctx.result.hits.hits);
+    next();
+  });
+
   // ================================
   // Disable all writable REST Operations per Loopback 2.x API
   // ================================
 
-  Project.disableRemoteMethod('create', true);
-  Project.disableRemoteMethod('upsert', true);
-  Project.disableRemoteMethod('patchOrCreate', true);
-  Project.disableRemoteMethod('deleteById', true);
-  Project.disableRemoteMethod('replaceOrCreate', true);
-  Project.disableRemoteMethod('prototype.updateAttributes', true);
-  Project.disableRemoteMethod('createChangeStream', true);
-  Project.disableRemoteMethod('updateAll', true);
-  Project.disableRemoteMethod('replaceById', true);
-  Project.disableRemoteMethod('invoke', true);
+  Project.disableRemoteMethodByName('create', true);
+  Project.disableRemoteMethodByName('upsert', true);
+  Project.disableRemoteMethodByName('patchOrCreate', true);
+  Project.disableRemoteMethodByName('deleteById', true);
+  Project.disableRemoteMethodByName('replaceOrCreate', true);
+  Project.disableRemoteMethodByName('prototype.updateAttributes', true);
+  Project.disableRemoteMethodByName('createChangeStream', true);
+  Project.disableRemoteMethodByName('updateAll', true);
+  Project.disableRemoteMethodByName('replaceById', true);
+  Project.disableRemoteMethodByName('invoke', true);
 };

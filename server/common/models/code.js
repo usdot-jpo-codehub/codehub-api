@@ -4,8 +4,7 @@
 // Map all json search properties to the Code Model properties
 //
 function mapCode(code) {
-  const _source = code._source;
-
+  const _source = code._source.doc;
   return {
     organization: _source.organization.organization,
     origin: _source.origin,
@@ -19,8 +18,8 @@ function mapCode(code) {
 
 function getSonarHealthMetrics(repo) {
   let metrics = {};
-  if (repo._source.metrics) {
-    metrics = repo._source.metrics;
+  if (repo._source.doc.metrics) {
+    metrics = repo._source.doc.metrics;
   }
   return metrics;
 }
@@ -59,8 +58,8 @@ function computeBugsAndVulnerabilities(metrics){
 function processTechnicalDebt(repos){
   var technical_debt = 0;
   for (var repo of repos.hits.hits){
-    if(repo._source.metrics){
-      var metric = repo._source.metrics;
+    if(repo._source.doc.metrics){
+      var metric = repo._source.doc.metrics;
       if(metric.sqale_index){
         technical_debt = technical_debt + parseInt(metric.sqale_index.val);
       }
@@ -72,8 +71,8 @@ function processTechnicalDebt(repos){
 function processMetricsAggregation(repos){
   var metrics_summary = {"releasibility":{"OK":0,"WARN":0,"ERROR":0},"reliability":{"A":0,"B":0,"C":0,"D":0,"E":0},"security":{"A":0,"B":0,"C":0,"D":0,"E":0},"maintainability":{"A":0,"B":0,"C":0,"D":0,"E":0}};
   for (var repo of repos.hits.hits){
-    if(repo._source.metrics){
-      var metric = repo._source.metrics;
+    if(repo._source.doc.metrics){
+      var metric = repo._source.doc.metrics;
       if(metric.security_rating){
         var metric_value  = metric.security_rating.val;
         switch (parseInt(metric_value)) {
@@ -139,7 +138,6 @@ function processMetricsAggregation(repos){
 
       if(metric.qualitygates){
         var metric_value  = metric.qualitygates.projectStatus.status;
-        console.log(metric.qualitygates)
         switch (parseInt(metric_value)) {
             case "OK":
                 metrics_summary.releasibility["OK"] = parseInt(metrics_summary.releasibility["OK"]) + 1;
@@ -170,8 +168,8 @@ function processLanguageStat(repos){
   "XSLT":0,"Groovy":0,"C#":0,"Clojure":0,"Nginx":0,"TypeScript":0,"Scala":0};
   var total_count = 0;
   for(var repo of repos.hits.hits){
-      if(repo._source.language != null){
-      var lang = repo._source.language;
+      if(repo._source.doc.language != null){
+      var lang = repo._source.doc.language;
       language_counts_stat[lang] = Number(language_counts_stat[lang] + 1);
     }
   }
@@ -201,18 +199,17 @@ function processEnterpriseInsight(repos) {
   for(var repo of repos.hits.hits){
     let metrics = getSonarHealthMetrics(repo)
     bugs_vulnerabilities = bugs_vulnerabilities + computeBugsAndVulnerabilities(metrics)
-    organizationDic[repo._source.organization.organization] = organizationDic[repo._source.organization.organization] ? organizationDic[repo._source.organization.organization] + 1 : 1;
+    organizationDic[repo._source.doc.organization.organization] = organizationDic[repo._source.doc.organization.organization] ? organizationDic[repo._source.doc.organization.organization] + 1 : 1;
   }
   repos_summary = {
     number_of_organizations: Object.keys(organizationDic).length,
-    number_of_projects:repos.hits.total,
+    number_of_projects:repos.hits.total.value,
     bugs_vulnerabilities:bugs_vulnerabilities,
     technical_debt:technical_debt,
     language_counts_stat:lang_summary[0],
     language_percentage_stat:lang_summary[1],
     metrics_summary:metrics_summary,
   }
-
   return repos_summary;
 }
 
@@ -252,14 +249,14 @@ Code.afterRemote('getLastProcessedDateTime', (ctx, code, next) => {
   // Disable all writable REST Operations per Loopback 2.x API
   // ================================
 
-  Code.disableRemoteMethod('create', true);
-  Code.disableRemoteMethod('upsert', true);
-  Code.disableRemoteMethod('patchOrCreate', true);
-  Code.disableRemoteMethod('deleteById', true);
-  Code.disableRemoteMethod('replaceOrCreate', true);
-  Code.disableRemoteMethod('prototype.updateAttributes', true);
-  Code.disableRemoteMethod('createChangeStream', true);
-  Code.disableRemoteMethod('updateAll', true);
-  Code.disableRemoteMethod('replaceById', true);
-  Code.disableRemoteMethod('invoke', true);
+  Code.disableRemoteMethodByName('create', true);
+  Code.disableRemoteMethodByName('upsert', true);
+  Code.disableRemoteMethodByName('patchOrCreate', true);
+  Code.disableRemoteMethodByName('deleteById', true);
+  Code.disableRemoteMethodByName('replaceOrCreate', true);
+  Code.disableRemoteMethodByName('prototype.updateAttributes', true);
+  Code.disableRemoteMethodByName('createChangeStream', true);
+  Code.disableRemoteMethodByName('updateAll', true);
+  Code.disableRemoteMethodByName('replaceById', true);
+  Code.disableRemoteMethodByName('invoke', true);
 };
