@@ -12,7 +12,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/projects/_search",
+          "url": "http://localhost:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -29,14 +29,14 @@
                     }
                   }
                   },
-                  {"match": { "project_name": { "query": "{params}", "fuzziness": "2" } } },
-                  {"match": { "project_description": { "query": "{params}" } } },
-                  {"match": { "readMe.content": { "query": "{params}"} } },
-                  {"match": { "language": { "query": "{params}"} } },
-                  {"match_phrase": { "project_name": { "query": "{params}" } } },
-                  {"match_phrase": { "project_description": { "query": "{params}" } } },
-                  {"match_phrase": { "readMe.content": { "query": "{params}"} } },
-                  {"match": { "project_name.substring": { "query": "{params}", "boost": 0.3 } } }
+                  {"match": { "doc.project_name": { "query": "{params}", "fuzziness": "2" } } },
+                  {"match": { "doc.project_description": { "query": "{params}" } } },
+                  {"match": { "doc.readMe.content": { "query": "{params}"} } },
+                  {"match": { "doc.language": { "query": "{params}"} } },
+                  {"match_phrase": { "doc.project_name": { "query": "{params}" } } },
+                  {"match_phrase": { "doc.project_description": { "query": "{params}" } } },
+                  {"match_phrase": { "doc.readMe.content": { "query": "{params}"} } },
+                  {"match": { "doc.project_name.substring": { "query": "{params}", "boost": 0.3 } } }
                 ]
               }
             },
@@ -44,9 +44,9 @@
               "pre_tags": ["<em class=\"search-highlight\">"],
               "post_tags": ["</em>"],
               "fields" : {
-                "readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
-                "project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
-                "project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
+                "doc.readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
+                "doc.project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
+                "doc.project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
               }
             },
             "size": "1000"
@@ -61,7 +61,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/projects/project/{id}",
+          "url": "http://localhost:9200/projects/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -97,7 +97,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/projects/_suggest",
+          "url": "http://localhost:9200/projects/_suggest",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -121,7 +121,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/code/project/{id}",
+          "url": "http://localhost:9200/code/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -140,7 +140,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/projects/_search",
+          "url": "http://localhost:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -156,14 +156,19 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/projects/_search",
+          "url": "http://localhost:9200/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
           },
           "body": {
+            "query": {
+              "exists": {
+                "field": "doc.rank"
+              }
+            },
             "sort": {
-              "rank": {
+              "doc.rank": {
                 "order": "desc"
               }
             },
@@ -177,7 +182,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/code/project/{id}",
+          "url": "http://localhost:9200/code/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -196,7 +201,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/code/_search",
+          "url": "http://localhost:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -214,7 +219,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/projects/project/{id}/_update",
+          "url": "http://localhost:9200/projects/_doc/{id}/_update",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -236,6 +241,22 @@
             "userForkedReposData"
           ]
         }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://localhost:9200/projects/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "body": {
+            "size": 1000
+          }
+        },
+        "functions": {
+          "getAll": []
+        }
       }
     ]
   },
@@ -248,7 +269,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/code/_search",
+          "url": "http://localhost:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -266,7 +287,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/code/_search",
+          "url": "http://localhost:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -301,16 +322,21 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://internal-codehub-prod-search-lb-1973878667.us-east-1.elb.amazonaws.com:9200/code/_search",
+          "url": "http://localhost:9200/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
           },
           "body": {
+            "query": {
+              "exists": {
+                "field": "doc.metrics.reliability_rating.val"
+              }
+            },
             "sort": [
-                {"metrics.reliability_rating.data" : {"order":"asc"}},
-                {"metrics.security_rating.data" : {"order":"asc"}},
-                {"metrics.sqale_rating.data" : {"order":"asc"}}
+                {"doc.metrics.reliability_rating.val" : {"order":"asc"}},
+                {"doc.metrics.security_rating.val" : {"order":"asc"}},
+                {"doc.metrics.sqale_rating.val" : {"order":"asc"}}
               ],
             "size" : 6
           }
