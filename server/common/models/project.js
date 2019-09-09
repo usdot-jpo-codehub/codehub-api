@@ -11,7 +11,7 @@
 // Map all json search properties to the Project Model properties
 //
 function mapProject(project) {
-  const _source = project._source.doc;
+  const _source = project._source;
   return {
     organization: _source.organization ? _source.organization.organization : null,
     organizationUrl: _source.organization ? _source.organization.organization_url : null,
@@ -45,7 +45,7 @@ function mapProject(project) {
 }
 
 function mapCode(project) {
-  const _source = project._source.doc;
+  const _source = project._source;
 
   return {
     componentDependencies: _source.componentDependencies
@@ -58,12 +58,12 @@ function mapCode(project) {
 //
 function addComponentDependencies(repo) {
   const dependencies = [];
-  if (!repo._source.doc.componentDependencies) {
+  if (!repo._source.componentDependencies) {
     return mapProject(repo);
   }
 
   // noinspection JSAnnotator
-  for (const dependency of repo._source.doc.componentDependencies) {
+  for (const dependency of repo._source.componentDependencies) {
     dependencies.push(dependency);
   }
   const results = mapProject(repo);
@@ -73,12 +73,12 @@ function addComponentDependencies(repo) {
 
 function addCodeComponentDependencies(repo) {
   const dependencies = [];
-  if (!repo._source.doc.componentDependencies) {
+  if (!repo._source.componentDependencies) {
     return mapCode(repo);
   }
 
   // noinspection JSAnnotator
-  for (const dependency of repo._source.doc.componentDependencies) {
+  for (const dependency of repo._source.componentDependencies) {
     dependencies.push(dependency);
   }
   const results = mapCode(repo);
@@ -88,8 +88,8 @@ function addCodeComponentDependencies(repo) {
 
 function getSonarHealthMetrics(repo) {
   let metrics = {};
-  if (repo._source.doc.metrics) {
-    metrics = repo._source.doc.metrics;
+  if (repo._source.metrics) {
+    metrics = repo._source.metrics;
   }
   return metrics;
 }
@@ -107,7 +107,7 @@ function transform(projects) {
   // This ECMAScript 6 feature is supported but not all ES6 features are.
   // noinspection JSAnnotator
   for (const p of projects) {
-    if(!p._source || !p._source.doc)
+    if(!p._source || !p._source)
       continue;
 
     let t = mapProject(p);

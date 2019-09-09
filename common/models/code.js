@@ -4,7 +4,7 @@
 // Map all json search properties to the Code Model properties
 //
 function mapCode(code) {
-  const _source = code._source.doc;
+  const _source = code._source;
   return {
     organization: _source.organization.organization,
     origin: _source.origin,
@@ -18,8 +18,8 @@ function mapCode(code) {
 
 function getSonarHealthMetrics(repo) {
   let metrics = {};
-  if (repo._source.doc.metrics) {
-    metrics = repo._source.doc.metrics;
+  if (repo._source.metrics) {
+    metrics = repo._source.metrics;
   }
   return metrics;
 }
@@ -58,8 +58,8 @@ function computeBugsAndVulnerabilities(metrics){
 function processTechnicalDebt(repos){
   var technical_debt = 0;
   for (var repo of repos.hits.hits){
-    if(repo._source.doc.metrics){
-      var metric = repo._source.doc.metrics;
+    if(repo._source.metrics){
+      var metric = repo._source.metrics;
       if(metric.sqale_index){
         technical_debt = technical_debt + parseInt(metric.sqale_index.val);
       }
@@ -71,8 +71,8 @@ function processTechnicalDebt(repos){
 function processMetricsAggregation(repos){
   var metrics_summary = {"releasibility":{"OK":0,"WARN":0,"ERROR":0},"reliability":{"A":0,"B":0,"C":0,"D":0,"E":0},"security":{"A":0,"B":0,"C":0,"D":0,"E":0},"maintainability":{"A":0,"B":0,"C":0,"D":0,"E":0}};
   for (var repo of repos.hits.hits){
-    if(repo._source.doc.metrics){
-      var metric = repo._source.doc.metrics;
+    if(repo._source.metrics){
+      var metric = repo._source.metrics;
       if(metric.security_rating){
         const metric_value  = metric.security_rating.val;
         switch (parseInt(metric_value)) {
@@ -168,8 +168,8 @@ function processLanguageStat(repos){
   "XSLT":0,"Groovy":0,"C#":0,"Clojure":0,"Nginx":0,"TypeScript":0,"Scala":0};
   var total_count = 0;
   for(var repo of repos.hits.hits){
-      if(repo._source.doc.language != null){
-      let lang = repo._source.doc.language;
+      if(repo._source.language != null){
+      let lang = repo._source.language;
       if(language_counts_stat.hasOwnProperty(lang))
         language_counts_stat[lang] = Number(language_counts_stat[lang] + 1);
     }
@@ -198,7 +198,7 @@ function processEnterpriseInsight(repos) {
   for(var repo of repos.hits.hits){
     let metrics = getSonarHealthMetrics(repo);
     bugs_vulnerabilities = bugs_vulnerabilities + computeBugsAndVulnerabilities(metrics);
-    organizationDic[repo._source.doc.organization.organization] = organizationDic[repo._source.doc.organization.organization] ? organizationDic[repo._source.doc.organization.organization] + 1 : 1;
+    organizationDic[repo._source.organization.organization] = organizationDic[repo._source.organization.organization] ? organizationDic[repo._source.organization.organization] + 1 : 1;
   }
   repos_summary = {
     number_of_organizations: Object.keys(organizationDic).length,

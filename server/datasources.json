@@ -29,14 +29,14 @@
                     }
                   }
                   },
-                  {"match": { "doc.project_name": { "query": "{params}", "fuzziness": "2" } } },
-                  {"match": { "doc.project_description": { "query": "{params}" } } },
-                  {"match": { "doc.readMe.content": { "query": "{params}"} } },
-                  {"match": { "doc.language": { "query": "{params}"} } },
-                  {"match_phrase": { "doc.project_name": { "query": "{params}" } } },
-                  {"match_phrase": { "doc.project_description": { "query": "{params}" } } },
-                  {"match_phrase": { "doc.readMe.content": { "query": "{params}"} } },
-                  {"match": { "doc.project_name.substring": { "query": "{params}", "boost": 0.3 } } }
+                  {"match": { "project_name": { "query": "{params}", "fuzziness": "2" } } },
+                  {"match": { "project_description": { "query": "{params}" } } },
+                  {"match": { "readMe.content": { "query": "{params}"} } },
+                  {"match": { "language": { "query": "{params}"} } },
+                  {"match_phrase": { "project_name": { "query": "{params}" } } },
+                  {"match_phrase": { "project_description": { "query": "{params}" } } },
+                  {"match_phrase": { "readMe.content": { "query": "{params}"} } },
+                  {"match": { "project_name.substring": { "query": "{params}", "boost": 0.3 } } }
                 ]
               }
             },
@@ -44,9 +44,9 @@
               "pre_tags": ["<em class=\"search-highlight\">"],
               "post_tags": ["</em>"],
               "fields" : {
-                "doc.readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
-                "doc.project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
-                "doc.project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
+                "readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
+                "project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
+                "project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
               }
             },
             "size": "1000"
@@ -164,11 +164,11 @@
           "body": {
             "query": {
               "exists": {
-                "field": "doc.rank"
+                "field": "rank"
               }
             },
             "sort": {
-              "doc.rank": {
+              "rank": {
                 "order": "desc"
               }
             },
@@ -330,13 +330,13 @@
           "body": {
             "query": {
               "exists": {
-                "field": "doc.metrics.reliability_rating.val"
+                "field": "metrics.reliability_rating.val"
               }
             },
             "sort": [
-                {"doc.metrics.reliability_rating.val" : {"order":"asc"}},
-                {"doc.metrics.security_rating.val" : {"order":"asc"}},
-                {"doc.metrics.sqale_rating.val" : {"order":"asc"}}
+                {"metrics.reliability_rating.val" : {"order":"asc"}},
+                {"metrics.security_rating.val" : {"order":"asc"}},
+                {"metrics.sqale_rating.val" : {"order":"asc"}}
               ],
             "size" : 6
           }
