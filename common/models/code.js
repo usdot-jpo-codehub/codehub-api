@@ -42,7 +42,7 @@ function transform(projects) {
 
 function computeBugsAndVulnerabilities(metrics){
   var bugs_vulnerabilities = 0;
-  var metric_string = JSON.stringify(metrics['bugs'])
+  var metric_string = JSON.stringify(metrics['bugs']);
   if(metrics['bugs']){
     var bugs = JSON.parse(JSON.stringify(metrics['bugs']));
     bugs_vulnerabilities = bugs_vulnerabilities + parseInt(bugs['val']);
@@ -51,7 +51,7 @@ function computeBugsAndVulnerabilities(metrics){
     var vulnerabilities = JSON.parse(JSON.stringify(metrics['vulnerabilities']));
     bugs_vulnerabilities = bugs_vulnerabilities + parseInt(vulnerabilities['val']);
   }
-  return bugs_vulnerabilities
+  return bugs_vulnerabilities;
 }
 
 
@@ -74,7 +74,7 @@ function processMetricsAggregation(repos){
     if(repo._source.doc.metrics){
       var metric = repo._source.doc.metrics;
       if(metric.security_rating){
-        var metric_value  = metric.security_rating.val;
+        const metric_value  = metric.security_rating.val;
         switch (parseInt(metric_value)) {
             case 1:
                 metrics_summary.security["A"] = parseInt(metrics_summary.security["A"]) + 1;
@@ -95,7 +95,7 @@ function processMetricsAggregation(repos){
 
       }
       if(metric.reliability_rating){
-        var metric_value  = metric.reliability_rating.val;
+        const metric_value  = metric.reliability_rating.val;
         switch (parseInt(metric_value)) {
             case 1:
                 metrics_summary.reliability["A"] = parseInt(metrics_summary.reliability["A"]) + 1;
@@ -116,7 +116,7 @@ function processMetricsAggregation(repos){
       }
 
       if(metric.sqale_rating){
-        var metric_value  = metric.sqale_rating.val;
+        const metric_value  = metric.sqale_rating.val;
         switch (parseInt(metric_value)) {
             case 1:
                 metrics_summary.maintainability["A"] = parseInt(metrics_summary.maintainability["A"]) + 1;
@@ -137,7 +137,7 @@ function processMetricsAggregation(repos){
       }
 
       if(metric.qualitygates){
-        var metric_value  = metric.qualitygates.projectStatus.status;
+        const metric_value  = metric.qualitygates.projectStatus.status;
         switch (parseInt(metric_value)) {
             case "OK":
                 metrics_summary.releasibility["OK"] = parseInt(metrics_summary.releasibility["OK"]) + 1;
@@ -153,7 +153,7 @@ function processMetricsAggregation(repos){
 
     }
   }
-    return metrics_summary
+    return metrics_summary;
 }
 
 
@@ -169,17 +169,16 @@ function processLanguageStat(repos){
   var total_count = 0;
   for(var repo of repos.hits.hits){
       if(repo._source.doc.language != null){
-      var lang = repo._source.doc.language;
-      language_counts_stat[lang] = Number(language_counts_stat[lang] + 1);
+      let lang = repo._source.doc.language;
+      if(language_counts_stat.hasOwnProperty(lang))
+        language_counts_stat[lang] = Number(language_counts_stat[lang] + 1);
     }
   }
-  for (var lang in language_counts_stat) {
-        if(!(language_counts_stat[lang] != language_counts_stat[lang])){
-          total_count = total_count + language_counts_stat[lang];
-        }
-    }
-  for(var lang in language_percentage_stat){
-    var calculated_percentage = parseFloat(language_counts_stat[lang]/(total_count))*100
+  for (const lang in language_counts_stat) {
+    total_count = total_count + language_counts_stat[lang];
+  }
+  for(const lang in language_percentage_stat){
+    let calculated_percentage = parseFloat(language_counts_stat[lang]/(total_count))*100;
     language_percentage_stat[lang] = calculated_percentage.toFixed(2) + "%";
   }
     lang_summary.push(language_counts_stat);
@@ -197,8 +196,8 @@ function processEnterpriseInsight(repos) {
   var technical_debt = processTechnicalDebt(repos);
   let organizationDic = {};
   for(var repo of repos.hits.hits){
-    let metrics = getSonarHealthMetrics(repo)
-    bugs_vulnerabilities = bugs_vulnerabilities + computeBugsAndVulnerabilities(metrics)
+    let metrics = getSonarHealthMetrics(repo);
+    bugs_vulnerabilities = bugs_vulnerabilities + computeBugsAndVulnerabilities(metrics);
     organizationDic[repo._source.doc.organization.organization] = organizationDic[repo._source.doc.organization.organization] ? organizationDic[repo._source.doc.organization.organization] + 1 : 1;
   }
   repos_summary = {
@@ -208,8 +207,8 @@ function processEnterpriseInsight(repos) {
     technical_debt:technical_debt,
     language_counts_stat:lang_summary[0],
     language_percentage_stat:lang_summary[1],
-    metrics_summary:metrics_summary,
-  }
+    metrics_summary:metrics_summary
+  };
   return repos_summary;
 }
 
