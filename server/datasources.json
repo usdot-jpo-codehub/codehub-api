@@ -12,7 +12,7 @@
       {
         "template": {
           "method": "POST",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
+          "url": "${ELASTICSEARCH_URL}/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -21,32 +21,96 @@
             "query": {
               "bool": {
                 "should": [
-                  {"match": {
-                    "_all": {
-                      "query": "{params}",
-                      "operator": "or",
-                      "prefix_length": "1"
+                  {
+                    "match": {
+                      "_all": {
+                        "query": "{params}",
+                        "operator": "or",
+                        "prefix_length": "1"
+                      }
+                    }
+                  },
+                  {
+                    "match": {
+                      "project_name": {
+                        "query": "{params}",
+                        "fuzziness": "2"
+                      }
+                    }
+                  },
+                  {
+                    "match": {
+                      "project_description": {
+                        "query": "{params}"
+                      }
+                    }
+                  },
+                  {
+                    "match": {
+                      "readMe.content": {
+                        "query": "{params}"
+                      }
+                    }
+                  },
+                  {
+                    "match": {
+                      "language": {
+                        "query": "{params}"
+                      }
+                    }
+                  },
+                  {
+                    "match_phrase": {
+                      "project_name": {
+                        "query": "{params}"
+                      }
+                    }
+                  },
+                  {
+                    "match_phrase": {
+                      "project_description": {
+                        "query": "{params}"
+                      }
+                    }
+                  },
+                  {
+                    "match_phrase": {
+                      "readMe.content": {
+                        "query": "{params}"
+                      }
+                    }
+                  },
+                  {
+                    "match": {
+                      "project_name.substring": {
+                        "query": "{params}",
+                        "boost": 0.3
+                      }
                     }
                   }
-                  },
-                  {"match": { "project_name": { "query": "{params}", "fuzziness": "2" } } },
-                  {"match": { "project_description": { "query": "{params}" } } },
-                  {"match": { "readMe.content": { "query": "{params}"} } },
-                  {"match": { "language": { "query": "{params}"} } },
-                  {"match_phrase": { "project_name": { "query": "{params}" } } },
-                  {"match_phrase": { "project_description": { "query": "{params}" } } },
-                  {"match_phrase": { "readMe.content": { "query": "{params}"} } },
-                  {"match": { "project_name.substring": { "query": "{params}", "boost": 0.3 } } }
                 ]
               }
             },
-            "highlight" : {
-              "pre_tags": ["<em class=\"search-highlight\">"],
-              "post_tags": ["</em>"],
-              "fields" : {
-                "readMe.content" : {"fragment_size" : 1000, "number_of_fragments" : 5},
-                "project_description": {"fragment_size" : 1000, "number_of_fragments" : 5},
-                "project_name": {"fragment_size" : 250, "number_of_fragments" : 5}
+            "highlight": {
+              "pre_tags": [
+                "<em class=\"search-highlight\">"
+              ],
+              "post_tags": [
+                "</em>"
+              ],
+              "fields": {
+                "readMe.content": {
+                  "fragment_size": 1000,
+                  "number_of_fragments": 5
+                },
+                "project_description": {
+                  "fragment_size": 1000,
+                  "number_of_fragments": 5
+                },
+                "project_name": {
+                  "fragment_size": 250,
+                  "number_of_fragments": 5
+                }
               }
             },
             "size": "1000"
@@ -61,7 +125,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_doc/{id}",
+          "url": "${ELASTICSEARCH_URL}/projects/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -79,15 +143,15 @@
       {
         "template": {
           "method": "POST",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
+          "url": "${ELASTICSEARCH_URL}/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
           },
           "body": {
             "query": {
-              "terms" : {
-                "stage_id" : "{params:array}"
+              "terms": {
+                "stage_id": "{params:array}"
               }
             }
           }
@@ -100,26 +164,8 @@
       },
       {
         "template": {
-          "method": "GET",
-          "url": "http://internal-codehub-prod-kindred-lb-1802071829.us-east-1.elb.amazonaws.com:8082/recommendation-service/api/v1/document_sim?docid={id}",
-          "headers": {
-            "accepts": "application/json",
-            "content-type": "application/json"
-          },
-          "query": {
-            "x": "{x}"
-          }
-        },
-        "functions": {
-          "findSimilarProjects": [
-            "id"
-          ]
-        }
-      },
-      {
-        "template": {
           "method": "POST",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_suggest",
+          "url": "${ELASTICSEARCH_URL}/projects/_suggest",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -143,7 +189,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_doc/{id}",
+          "url": "${ELASTICSEARCH_URL}/code/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -162,7 +208,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
+          "url": "${ELASTICSEARCH_URL}/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -178,7 +224,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
+          "url": "${ELASTICSEARCH_URL}/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -204,7 +250,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_doc/{id}",
+          "url": "${ELASTICSEARCH_URL}/code/_doc/{id}",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -223,7 +269,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
+          "url": "${ELASTICSEARCH_URL}/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -234,14 +280,13 @@
           }
         },
         "functions": {
-          "findEnterpriseInsight": [
-          ]
+          "findEnterpriseInsight": []
         }
       },
       {
         "template": {
           "method": "POST",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_doc/{id}/_update",
+          "url": "${ELASTICSEARCH_URL}/projects/_doc/{id}/_update",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -250,7 +295,7 @@
           "body": {
             "script_file": "forked_custom_update",
             "params": {
-                "userForkedReposData" : "{userForkedReposData:json}"
+              "userForkedReposData": "{userForkedReposData:json}"
             }
           },
           "query": {
@@ -267,7 +312,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/projects/_search",
+          "url": "${ELASTICSEARCH_URL}/projects/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -291,7 +336,7 @@
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
+          "url": "${ELASTICSEARCH_URL}/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -302,14 +347,13 @@
           }
         },
         "functions": {
-          "findEnterpriseInsight": [
-          ]
+          "findEnterpriseInsight": []
         }
       },
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
+          "url": "${ELASTICSEARCH_URL}/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json",
@@ -337,14 +381,13 @@
           }
         },
         "functions": {
-          "getLastProcessedDateTime": [
-          ]
+          "getLastProcessedDateTime": []
         }
       },
       {
         "template": {
           "method": "GET",
-          "url": "https://vpc-codehub-search-w7preeplgc7nyjp3ayjc7hfwca.us-east-1.es.amazonaws.com/code/_search",
+          "url": "${ELASTICSEARCH_URL}/code/_search",
           "headers": {
             "accepts": "application/json",
             "content-type": "application/json"
@@ -356,18 +399,29 @@
               }
             },
             "sort": [
-                {"metrics.reliability_rating.val" : {"order":"asc"}},
-                {"metrics.security_rating.val" : {"order":"asc"}},
-                {"metrics.sqale_rating.val" : {"order":"asc"}}
-              ],
-            "size" : 6
+              {
+                "metrics.reliability_rating.val": {
+                  "order": "asc"
+                }
+              },
+              {
+                "metrics.security_rating.val": {
+                  "order": "asc"
+                }
+              },
+              {
+                "metrics.sqale_rating.val": {
+                  "order": "asc"
+                }
+              }
+            ],
+            "size": 6
           }
         },
         "functions": {
           "findHealthiest": []
         }
       }
-
     ]
   }
 }
