@@ -12,7 +12,6 @@
 //
 function mapProject(project) {
   const _source = project._source;
-
   return {
     organization: _source.organization ? _source.organization.organization : null,
     organizationUrl: _source.organization ? _source.organization.organization_url : null,
@@ -40,7 +39,8 @@ function mapProject(project) {
     updatedAt: _source.updated_at,
     id: project._id,
     userForkedRepos: _source.userForkedRepos,
-    highlight: project.highlight
+    highlight: project.highlight,
+    vscan: _source.vscan ? _source.vscan : null
   };
 }
 
@@ -107,7 +107,11 @@ function transform(projects) {
   // This ECMAScript 6 feature is supported but not all ES6 features are.
   // noinspection JSAnnotator
   for (const p of projects) {
-    transformedProjects.push(mapProject(p));
+    if(!p._source || !p._source)
+      continue;
+
+    let t = mapProject(p);
+    transformedProjects.push(t);
   }
   return transformedProjects;
 }
@@ -186,18 +190,28 @@ module.exports = function (Project) {
     next();
   });
 
+  Project.afterRemote('getAll', (ctx, project, next) => {
+    ctx.result = transform(ctx.result.hits.hits);
+    next();
+  });
+
+  Project.afterRemote('findByIds', (ctx, project, next) => {
+    ctx.result = transform(ctx.result.hits.hits);
+    next();
+  });
+
   // ================================
   // Disable all writable REST Operations per Loopback 2.x API
   // ================================
 
-  Project.disableRemoteMethod('create', true);
-  Project.disableRemoteMethod('upsert', true);
-  Project.disableRemoteMethod('patchOrCreate', true);
-  Project.disableRemoteMethod('deleteById', true);
-  Project.disableRemoteMethod('replaceOrCreate', true);
-  Project.disableRemoteMethod('prototype.updateAttributes', true);
-  Project.disableRemoteMethod('createChangeStream', true);
-  Project.disableRemoteMethod('updateAll', true);
-  Project.disableRemoteMethod('replaceById', true);
-  Project.disableRemoteMethod('invoke', true);
+  Project.disableRemoteMethodByName('create', true);
+  Project.disableRemoteMethodByName('upsert', true);
+  Project.disableRemoteMethodByName('patchOrCreate', true);
+  Project.disableRemoteMethodByName('deleteById', true);
+  Project.disableRemoteMethodByName('replaceOrCreate', true);
+  Project.disableRemoteMethodByName('prototype.updateAttributes', true);
+  Project.disableRemoteMethodByName('createChangeStream', true);
+  Project.disableRemoteMethodByName('updateAll', true);
+  Project.disableRemoteMethodByName('replaceById', true);
+  Project.disableRemoteMethodByName('invoke', true);
 };

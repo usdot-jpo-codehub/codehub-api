@@ -1,0 +1,12 @@
+[
+  {
+    "method": "GET",
+    "model": "Users",
+    "expect": 401
+  },
+  {
+      "method": "GET",
+      "model": "api/projects",
+      "expect": 404
+    }
+]
