@@ -16,7 +16,7 @@ phases:
   post_build:
     commands:
       - curl -fsSL https://raw.githubusercontent.com/usdot-jpo-codehub/aws-codebuild-extras/master/install >> extras.sh
-      - . ./extras.sh
+      - . ./extras.sh 
       - echo $CODEBUILD_GIT_BRANCH
       - |
         if [ "$CODEBUILD_GIT_BRANCH" = "master" ] || [ "$CODEBUILD_GIT_BRANCH" = "development" ]; then
