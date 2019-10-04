@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Project-Heimdall/heimdall-webapp.svg?branch=master)](https://travis-ci.org/Project-Heimdall/heimdall-webapp) [![Code Climate](https://codeclimate.com/github/Project-Heimdall/heimdall-webapp/badges/gpa.svg)](https://codeclimate.com/github/Project-Heimdall/heimdall-webapp) [![Test Coverage](https://codeclimate.com/github/Project-Heimdall/heimdall-webapp/badges/coverage.svg)](https://codeclimate.com/github/Project-Heimdall/heimdall-webapp/coverage) [![Issue Count](https://codeclimate.com/github/Project-Heimdall/heimdall-webapp/badges/issue_count.svg)](https://codeclimate.com/github/Project-Heimdall/heimdall-webapp)
+[![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiL3VJMHFKZmYxWXZLUU02d1o0Y2JBUkRjOGxpQzJMTWlrWEhaSjI1b2pwOWZMcXQ1QXdKbnhEWEwrbjdkZHVTRDAveHpGQjN5T0ZFUUZEaFZzN01NOVlrPSIsIml2UGFyYW1ldGVyU3BlYyI6IlZDWk5yKzdoTlI4Z1dHLzgiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 # heimdall-webapp
 
