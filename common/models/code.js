@@ -42,7 +42,6 @@ function transform(projects) {
 
 function computeBugsAndVulnerabilities(metrics){
   var bugs_vulnerabilities = 0;
-  var metric_string = JSON.stringify(metrics['bugs']);
   if(metrics['bugs']){
     var bugs = JSON.parse(JSON.stringify(metrics['bugs']));
     bugs_vulnerabilities = bugs_vulnerabilities + parseInt(bugs['val']);
@@ -158,7 +157,6 @@ function processMetricsAggregation(repos){
 
 
 function processLanguageStat(repos){
-  var hits = repos.hits.hits;
   var lang_summary = [];
   var language_counts_stat = {"Java":0,"JavaScript":0,"Go":0,"CSS":0,"Python":0,"CoffeeScript":0,"Shell":0,"Ruby":0,
   "Puppet":0,"HTML":0,"Swift":0,"C":0,"C++":0,"C-Sharp":0,"PHP":0,"XML":0,"Objective-C":0,"Visual Basic 6":0,"VB.NET":0,
@@ -189,8 +187,6 @@ function processLanguageStat(repos){
 function processEnterpriseInsight(repos) {
   var repos_summary = {};
   var bugs_vulnerabilities = 0;
-  var language_counts_stat = {};
-  var language_percentage_stat = language_percentage_stat;
   var lang_summary = processLanguageStat(repos);
   var metrics_summary = processMetricsAggregation(repos);
   var technical_debt = processTechnicalDebt(repos);
