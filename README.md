@@ -16,7 +16,7 @@ The CodeHub API is a Dockerized application. While it is possible to run this ap
 
 The API requires a running ElasticSearch instance to which it can connect. We recommend using the [Official Docker ElasticSearch Image](https://hub.docker.com/_/elasticsearch).
 
-1. Set the `ELASTICSEARCH_URL` to the full URL and port of your ElasticSearch instance.
+1. Set the `ELASTICSEARCH_URL` environment variable to the full URL and port of your ElasticSearch instance.
 2. Run the `./build-and-run-docker.sh` script present in the top level of this repository.
 
 ## Running the tests
