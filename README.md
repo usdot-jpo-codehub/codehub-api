@@ -2,7 +2,7 @@
 
 # codehub-api
 
-This is the backend application-programming interface (API) for the United States Department of Transportation (USDOT) Joint Program Office (JPO) Intelligent Transit Systems (ITS) CodeHub website located at [https://its.dot.gov/code](https://its.dot.gov/code).
+This is the backend application-programming interface (API) for the United States Department of Transportation (U.S. DOT) Joint Program Office (JPO) Intelligent Transit Systems (ITS) CodeHub website located at [https://its.dot.gov/code](https://its.dot.gov/code).
 
 ## Getting Started
 
