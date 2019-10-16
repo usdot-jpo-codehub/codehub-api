@@ -107,7 +107,7 @@ function transform(projects) {
   // This ECMAScript 6 feature is supported but not all ES6 features are.
   // noinspection JSAnnotator
   for (const p of projects) {
-    if(!p._source || !p._source)
+    if(!p._source)
       continue;
 
     let t = mapProject(p);
