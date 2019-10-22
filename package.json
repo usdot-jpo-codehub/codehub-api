@@ -1,12 +1,11 @@
 {
-  "name": "heimdall-webapp",
+  "name": "codehub-api",
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "node .",
+    "start": "envsubst '${ELASTICSEARCH_URL}' < ./server/datasources.template.json > ./server/datasources.json && node .",
     "pretest": "jshint .",
-    "test": "mocha",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "test": "envsubst '${ELASTICSEARCH_URL}' < ./server/datasources.template.json > ./server/datasources.json && mocha"
   },
   "dependencies": {
     "compression": "^1.7.4",
@@ -38,6 +37,6 @@
     "type": "",
     "url": ""
   },
-  "license": "UNLICENSED",
-  "description": "heimdall-webapp"
+  "license": "Apache-2.0",
+  "description": "CodeHub API"
 }
