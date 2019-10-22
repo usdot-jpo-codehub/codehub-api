@@ -5,8 +5,7 @@
   "scripts": {
     "start": "envsubst '${ELASTICSEARCH_URL}' < ./server/datasources.template.json > ./server/datasources.json && node .",
     "pretest": "jshint .",
-    "test": "mocha",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "test": "envsubst '${ELASTICSEARCH_URL}' < ./server/datasources.template.json > ./server/datasources.json && mocha"
   },
   "dependencies": {
     "compression": "^1.7.4",

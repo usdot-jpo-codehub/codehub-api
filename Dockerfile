@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
+RUN npm test
 RUN npm install pm2 -g
 
 CMD ["/app/entrypoint.sh"]
