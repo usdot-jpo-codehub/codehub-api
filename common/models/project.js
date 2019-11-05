@@ -40,7 +40,8 @@ function mapProject(project) {
     id: project._id,
     userForkedRepos: _source.userForkedRepos,
     highlight: project.highlight,
-    vscan: _source.vscan ? _source.vscan : null
+    vscan: _source.vscan ? _source.vscan : null,
+    badges: _source.badges ? _source.badges : null
   };
 }
 
