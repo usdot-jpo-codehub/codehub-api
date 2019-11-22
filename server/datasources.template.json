@@ -151,7 +151,7 @@
           "body": {
             "query": {
               "terms": {
-                "stage_id": "{params:array}"
+                "_id": "{params:array}"
               }
             }
           }
