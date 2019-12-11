@@ -250,6 +250,31 @@
       {
         "template": {
           "method": "GET",
+          "url": "${ELASTICSEARCH_URL}/projects/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "body": {
+            "query": {
+              "match": {
+                  "badges.featured": true
+              }
+            },
+            "sort": {
+                "rank": {
+                    "order": "desc"
+                }
+            }
+          }
+        },
+        "functions": {
+          "findFeatured": []
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
           "url": "${ELASTICSEARCH_URL}/code/_doc/{id}",
           "headers": {
             "accepts": "application/json",
