@@ -12,6 +12,9 @@
 //
 function mapProject(project) {
   const _source = project._source;
+  if (!_source.project_name) {
+    return null;
+  }
   return {
     organization: _source.organization ? _source.organization.organization : null,
     organizationUrl: _source.organization ? _source.organization.organization_url : null,
@@ -112,7 +115,9 @@ function transform(projects) {
       continue;
 
     let t = mapProject(p);
-    transformedProjects.push(t);
+    if (t) {
+      transformedProjects.push(t);
+    }
   }
   return transformedProjects;
 }
