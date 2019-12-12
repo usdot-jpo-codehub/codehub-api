@@ -211,6 +211,11 @@ module.exports = function (Project) {
     next();
   });
 
+  Project.afterRemote('getProjectsByOrganization', (ctx, project, next) => {
+    ctx.result = transform(ctx.result.hits.hits);
+    next();
+  });
+
   // ================================
   // Disable all writable REST Operations per Loopback 2.x API
   // ================================
