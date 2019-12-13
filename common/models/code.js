@@ -224,22 +224,29 @@ module.exports = function (Code) {
     next();
   });
 
-Code.afterRemote('findEnterpriseInsight', (ctx, code, next) => {
-  ctx.result = processEnterpriseInsight(ctx.result);
-  next();
+  Code.afterRemote('findEnterpriseInsightOrg', (ctx, code, next) => {
+    ctx.result = processEnterpriseInsight(ctx.result);
+    next();
   });
 
-Code.afterRemote('getLastProcessedDateTime', (ctx, code, next) => {
-  var sonarDateTimeList = [];
-  for(var repo of ctx.result){
-    sonarDateTimeList.push(new Date(repo.date));
-  }
-  sonarDateTimeList.sort ( (a, b) => {
-      return b - a;
+  Code.afterRemote('findEnterpriseInsight', (ctx, code, next) => {
+    ctx.result = processEnterpriseInsight(ctx.result);
+    next();
   });
-  ctx.result = sonarDateTimeList[0].toLocaleString();
-  next();
-});
+
+
+  Code.afterRemote('getLastProcessedDateTime', (ctx, code, next) => {
+    var sonarDateTimeList = [];
+    for(var repo of ctx.result){
+      sonarDateTimeList.push(new Date(repo.date));
+    }
+    sonarDateTimeList.sort ( (a, b) => {
+        return b - a;
+    });
+    ctx.result = sonarDateTimeList[0].toLocaleString();
+    next();
+  });
+
   // ================================
   // Disable all writable REST Operations per Loopback 2.x API
   // ================================

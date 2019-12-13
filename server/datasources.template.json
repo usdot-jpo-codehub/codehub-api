@@ -293,23 +293,6 @@
       },
       {
         "template": {
-          "method": "GET",
-          "url": "${ELASTICSEARCH_URL}/code/_search",
-          "headers": {
-            "accepts": "application/json",
-            "content-type": "application/json",
-            "User-Agent": ""
-          },
-          "body": {
-            "size": 1000
-          }
-        },
-        "functions": {
-          "findEnterpriseInsight": []
-        }
-      },
-      {
-        "template": {
           "method": "POST",
           "url": "${ELASTICSEARCH_URL}/projects/_doc/{id}/_update",
           "headers": {
@@ -349,6 +332,27 @@
         "functions": {
           "getAll": []
         }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "${ELASTICSEARCH_URL}/projects/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "body": {
+            "query": {
+              "match": {
+                  "organization.organization": "{param}"
+              }
+            },
+            "size": 1000
+          }
+        },
+        "functions": {
+          "getProjectsByOrganization": ["param"]
+        }
       }
     ]
   },
@@ -373,6 +377,28 @@
         },
         "functions": {
           "findEnterpriseInsight": []
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "${ELASTICSEARCH_URL}/code/_search",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "User-Agent": ""
+          },
+          "body": {
+            "query": {
+              "match": {
+                  "organization.organization": "{param}"
+              }
+            },
+            "size": 1000
+          }
+        },
+        "functions": {
+          "findEnterpriseInsightOrg": ["param"]
         }
       },
       {
